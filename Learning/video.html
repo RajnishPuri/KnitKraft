@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="theme-color" content="#000000" />
+    <title>Finapp</title>
+    <meta name="description" content="Finapp HTML Mobile Template" />
+    <meta name="keywords"
+        content="bootstrap, wallet, banking, fintech mobile template, cordova, phonegap, mobile, html, responsive" />
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png" sizes="32x32" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/icon/192x192.png" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="manifest" href="../__manifest.json" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Video Slider</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .video-slider {
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .video-slider .videos {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .video-slide {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding: 0 10px;
+            transition: transform 0.5s ease;
+        }
+
+        .video-slide video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Media queries for responsiveness */
+        @media (min-width: 768px) {
+            .video-slide {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .video-slide {
+                flex: 0 0 33.333%;
+                max-width: 33.333%;
+            }
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+    <!-- loader -->
+    <div id="loader">
+        <img src="../assets/img/loading-icon.png" alt="icon" class="loading-icon">
+    </div>
+    <!-- * loader -->
+
+    <!-- App Header -->
+    <div class="appHeader bg-primary text-light">
+        <div class="left">
+            <a href="#" class="headerButton" data-bs-toggle="modal" data-bs-target="#sidebarPanel">
+                <ion-icon name="menu-outline"></ion-icon>
+            </a>
+        </div>
+        <div class="pageTitle">
+            <img src="../assets/img/logo.png" alt="logo" class="logo">
+        </div>
+        <div class="right">
+            <a href="app-notifications.html" class="headerButton">
+                <ion-icon class="icon" name="notifications-outline"></ion-icon>
+                <span class="badge badge-danger">4</span>
+            </a>
+            <a href="app-settings.html" class="headerButton">
+                <img src="../assets/img/sample/avatar/avatar1.jpg" alt="image" class="imaged w32">
+                <span class="badge badge-danger">6</span>
+            </a>
+        </div>
+    </div>
+    <!-- * App Header -->
+
+
+
+    <!-- Search Component -->
+    <div id="search" class="appHeader">
+        <form class="search-form">
+            <div class="form-group searchbox">
+                <input type="text" class="form-control" placeholder="Search...">
+                <i class="input-icon icon ion-ios-search"></i>
+                <a href="#" class="ms-1 close toggle-searchbox"><i class="icon ion-ios-close-circle"></i></a>
+            </div>
+        </form>
+    </div>
+    <!-- * Search Component -->
+
+
+
+    <!-- App Capsule -->
+    <div id="appCapsule">
+        <!-- Go to Live Button -->
+        <div class="section mt-1">
+
+            <div class="card-body pt-0">
+                <ul class="nav nav-tabs lined" role="tablist">
+                    <li class="nav-item">
+                        <div class="fab fab-fixed fab-fixed-big fab-fixed-bottom ">
+                            <a href="#" class="btn btn-float btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#DialogBasic">
+                                <ion-icon name="videocam-outline"></ion-icon>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+
+
+
+
+            <!-- Dialog Basic -->
+            <div class="modal fade dialogbox" id="DialogBasic" data-bs-backdrop="static" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Do you want to joint</h5>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure about that?
+                        </div>
+                        <div class="modal-footer">
+                            <div class="btn-inline">
+                                <a href="#" class="btn btn-text-secondary" data-bs-dismiss="modal">Cancel</a>
+                                <a href="meetPage.html" class="btn btn-text-primary" >Request/Join</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- * Dialog Basic -->
+            <!-- * Go to Live Button -->
+
+            <div class="section mt-1">
+                <div class="card">
+                    <div class="card-body pt-0">
+                        <ul class="nav nav-tabs lined" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#english" role="tab">
+                                    English
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#hindi" role="tab">
+                                    Hindi
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transactions -->
+            <div class="tab-content mt-2">
+                <div class="tab-pane fade show active" id="english" role="tabpanel">
+            <div class="section mt-4">
+                <div class="section-heading"></div>
+                <div class="transactions">
+                    <!-- item -->
+
+                    <div class="video-slider">
+                        <div class="videos">
+                            <div class="video-slide">
+                                <video controls>
+                                    <source
+                                        src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4 "
+                                        type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                Finapp is Bootstrap 5 based template
+                            </div>
+                        </div>
+                        <div class="section mt-2 mb-05">
+                        </div>
+                    </div>
+                    <div class="video-slider">
+                        <div class="videos">
+                            <div class="video-slide">
+                                <video controls>
+                                    <source
+                                        src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4 "
+                                        type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+
+                            <!-- Add more video slides as needed -->
+                        </div>
+                    </div>
+                    <!--  -->
+                    <!-- * item -->
+
+                    <div class="card">
+                        <div class="card-body">
+                            Finapp is Bootstrap 5 based template
+                        </div>
+                    </div>
+                    <div class="section mt-2 mb-05">
+                    </div>
+
+                    <div class="video-slider">
+                        <div class="videos">
+                            <div class="video-slide">
+                                <video controls>
+                                    <source
+                                        src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4 "
+                                        type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+
+                            <!-- Add more video slides as needed -->
+                        </div>
+                    </div>
+                        <div class="card">
+                            <div class="card-body">
+                                Finapp is Bootstrap 5 based template
+                            </div>
+                        </div>
+                        <div class="section mt-2 mb-05">
+                        </div>
+                </div>
+            </div>
+                </div>
+            <div class="tab-pane fade show active" id="hindi" role="tabpanel">
+                <div class="section mt-4">
+                    <div class="section-heading"></div>
+                    <div class="transactions">
+                        <!-- item -->
+    
+                        <div class="video-slider">
+                            <div class="videos">
+                                <div class="video-slide">
+                                    <video controls>
+                                        <source
+                                            src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4 "
+                                            type="video/mp4" />
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+    
+                            <div class="card">
+                                <div class="card-body">
+                                    Finapp is Bootstrap 5 based template
+                                </div>
+                            </div>
+                            <div class="section mt-2 mb-05">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                  
+
+
+
+                    <!-- App Bottom Menu -->
+    <div class="appBottomMenu">
+        <a href="../index.html" class="item">
+            <div class="col">
+                <ion-icon name="pie-chart-outline"></ion-icon>
+                <strong>Overview</strong>
+            </div>
+        </a>
+        <a href="../Woolkart/" class="item">
+            <div class="col">
+                <ion-icon name="card-outline"></ion-icon>
+                <strong>WoolKart</strong>
+            </div>
+        </a>
+        <a href="../Learning" class="item active">
+            <div class="col">
+                <ion-icon name="apps-outline"></ion-icon>
+                <strong>Learnings</strong>
+            </div>
+        </a>
+  
+        <a href="../Services" class="item">
+            <div class="col">
+                <ion-icon name="document-text-outline"></ion-icon>
+                <strong>Services</strong>
+            </div>
+        </a>
+        <a href="../Statistics" class="item">
+            <div class="col">
+                <ion-icon name="settings-outline"></ion-icon>
+                <strong>Statistics</strong>
+            </div>
+        </a>
+    </div>
+    <!-- * App Bottom Menu -->
+    <!-- App-Sidebar -->
+    <div
+      class="modal fade panelbox panelbox-left"
+      id="sidebarPanel"
+      tabindex="-1"
+      role="dialog"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <!-- profile box -->
+            <div class="profileBox pt-2 pb-2">
+              <div class="image-wrapper">
+                <img
+                  src="../assets/img/sample/avatar/avatar1.jpg"
+                  alt="image"
+                  class="imaged w36"
+                />
+              </div>
+              <div class="in">
+                <strong>Sebastian Doe</strong>
+                <div class="text-muted">4029209</div>
+              </div>
+              <a
+                href="#"
+                class="btn btn-link btn-icon sidebar-close"
+                data-bs-dismiss="modal"
+              >
+                <ion-icon name="close-outline"></ion-icon>
+              </a>
+            </div>
+            <!-- * profile box -->
+            <!-- balance -->
+            <div class="sidebar-balance">
+              <div class="listview-title">Balance</div>
+              <div class="in">
+                <h1 class="amount">₹2,562.50</h1>
+              </div>
+            </div>
+            <!-- * balance -->
+
+            <!-- action group -->
+            <div class="action-group">
+              <a href="index.html" class="action-button">
+                <div class="in">
+                  <div class="iconbox">
+                    <ion-icon name="add-outline"></ion-icon>
+                  </div>
+                  Deposit
+                </div>
+              </a>
+              <a href="index.html" class="action-button">
+                <div class="in">
+                  <div class="iconbox">
+                    <ion-icon name="arrow-down-outline"></ion-icon>
+                  </div>
+                  Withdraw
+                </div>
+              </a>
+              <a href="index.html" class="action-button">
+                <div class="in">
+                  <div class="iconbox">
+                    <ion-icon name="arrow-forward-outline"></ion-icon>
+                  </div>
+                  Send
+                </div>
+              </a>
+              <a href="app-cards.html" class="action-button">
+                <div class="in">
+                  <div class="iconbox">
+                    <ion-icon name="card-outline"></ion-icon>
+                  </div>
+                  My Cards
+                </div>
+              </a>
+            </div>
+            <!-- * action group -->
+
+            <!-- menu -->
+            <div class="listview-title mt-1">Menu</div>
+            <ul class="listview flush transparent no-line image-listview">
+              <li>
+                <a href="../index.html" class="item">
+                  <div class="icon-box bg-primary">
+                    <ion-icon name="pie-chart-outline"></ion-icon>
+                  </div>
+                  <div class="in">
+                    Overview
+                    <span class="badge badge-primary">10</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="app-pages.html" class="item">
+                  <div class="icon-box bg-primary">
+                    <ion-icon name="document-text-outline"></ion-icon>
+                  </div>
+                  <div class="in">Pages</div>
+                </a>
+              </li>
+              <li>
+                <a href="app-components.html" class="item">
+                  <div class="icon-box bg-primary">
+                    <ion-icon name="apps-outline"></ion-icon>
+                  </div>
+                  <div class="in">Components</div>
+                </a>
+              </li>
+              <li>
+                <a href="app-cards.html" class="item">
+                  <div class="icon-box bg-primary">
+                    <ion-icon name="card-outline"></ion-icon>
+                  </div>
+                  <div class="in">My Cards</div>
+                </a>
+              </li>
+            </ul>
+            <!-- * menu -->
+
+            <!-- others -->
+            <div class="listview-title mt-1">Others</div>
+            <ul class="listview flush transparent no-line image-listview">
+              <li>
+                <a href="app-settings.html" class="item">
+                  <div class="icon-box bg-primary">
+                    <ion-icon name="settings-outline"></ion-icon>
+                  </div>
+                  <div class="in">Settings</div>
+                </a>
+              </li>
+              <li>
+                <a href="component-messages.html" class="item">
+                  <div class="icon-box bg-primary">
+                    <ion-icon name="chatbubble-outline"></ion-icon>
+                  </div>
+                  <div class="in">Support</div>
+                </a>
+              </li>
+              <li>
+                <a href="../Pages/app-login.html" class="item">
+                  <div class="icon-box bg-primary">
+                    <ion-icon name="log-out-outline"></ion-icon>
+                  </div>
+                  <div class="in">Log out</div>
+                </a>
+              </li>
+            </ul>
+            <!-- * others -->
+
+            <!-- send money -->
+            <div class="listview-title mt-1">Send Money</div>
+            <ul class="listview image-listview flush transparent no-line">
+              <li>
+                <a href="#" class="item">
+                  <img
+                    src="../assets/img/sample/avatar/avatar2.jpg"
+                    alt="image"
+                    class="image"
+                  />
+                  <div class="in">
+                    <div>Artem Sazonov</div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="item">
+                  <img
+                    src="../assets/img/sample/avatar/avatar4.jpg"
+                    alt="image"
+                    class="image"
+                  />
+                  <div class="in">
+                    <div>Sophie Asveld</div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="item">
+                  <img
+                    src="../assets/img/sample/avatar/avatar3.jpg"
+                    alt="image"
+                    class="image"
+                  />
+                  <div class="in">
+                    <div>Kobus van de Vegte</div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+            <!-- * send money -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- * App Sidebar -->
+
+                    <script>
+                        // Optional JavaScript for slider functionality (if needed)
+                        const videos = document.querySelector(".videos");
+                        let isDragging = false;
+                        let startPosition = 0;
+                        let currentTranslate = 0;
+                        let prevTranslate = 0;
+
+                        videos.addEventListener("mousedown", startDrag);
+                        videos.addEventListener("mouseup", endDrag);
+                        videos.addEventListener("mouseleave", endDrag);
+                        videos.addEventListener("mousemove", drag);
+                        videos.addEventListener("transitionend", () => {
+                            isDragging = false;
+                        });
+
+                        function startDrag(event) {
+                            if (!isDragging) {
+                                startPosition = event.clientX;
+                                isDragging = true;
+                            }
+                        }
+
+                        function drag(event) {
+                            if (isDragging) {
+                                const currentPosition = event.clientX;
+                                currentTranslate = prevTranslate + currentPosition - startPosition;
+                                videos.style.transform = `translateX(${currentTranslate}px)`;
+                            }
+                        }
+
+                        function endDrag() {
+                            isDragging = false;
+                            prevTranslate = currentTranslate;
+                        }
+                    </script>
+
+                    <!-- ========= JS Files =========  -->
+                    <!-- Bootstrap -->
+                    <script src="../assets/js/lib/bootstrap.bundle.min.js"></script>
+                    <!-- Ionicons -->
+                    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+                    <!-- Splide -->
+                    <script src="../assets/js/plugins/splide/splide.min.js"></script>
+                    <!-- Base Js File -->
+                    <script src="../assets/js/base.js"></script>
+
+
+                    <script src="../assets/js/lib/bootstrap.bundle.min.js"></script>
+                    <!-- Ionicons -->
+                    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+                    <!-- Splide -->
+
+
+
+
+
+                    <script>
+                        // Add to Home with 2 seconds delay.
+                        AddtoHome("2000", "once");
+                    </script>
+</body>
+
+</html>
