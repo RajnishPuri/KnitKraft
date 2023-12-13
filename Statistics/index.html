@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
+    <title>Finapp</title>
+    <meta name="description" content="Finapp HTML Mobile Template">
+    <meta name="keywords"
+        content="bootstrap, wallet, banking, fintech mobile template, cordova, phonegap, mobile, html, responsive" />
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/icon/192x192.png">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+        .flip-card-1 {
+            height: 170px;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .flip-card-inner {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card-1:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            background: rgba(53, 182, 74, 0.493);
+            /* Front side color */
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+            background: rgb(53, 182, 74);
+            /* Back side color */
+        }
+
+        .myimage {
+            height: 100%;
+            width: 100%;
+            border-radius: 0%;
+            position: relative;
+        }
+
+        .nimg {
+            /* position: absolute; */
+            /* height: 75%;
+            width: 100%;
+            top: 2vh; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            height: 75%;
+            width: 100%;
+        }
+
+        .img1 {
+            border-radius: 50%;
+        }
+
+        .details_stat {
+            position: absolute;
+            height: auto;
+            width: 100%;
+            bottom: 0.1vh;
+
+        }
+
+        .alpaca {
+            margin-left: 35%;
+            color: brown;
+        }
+
+        .Camel-hair-wool {
+
+            margin-left: 15%;
+            color: brown;
+        }
+
+        .Camel-para_price {
+            margin-left: 14%;
+        }
+
+        .para_price {
+            margin-left: 23%;
+        }
+
+        .content-wool {
+            overflow: scroll;
+            height: 100%;
+            margin: 1vw;
+            color: white;
+        }
+
+        .Merinowool-price {
+            margin-left: 14%;
+        }
+
+        .Merinowool {
+
+            margin-left: 23%;
+            color: brown;
+        }
+        .Angora-Wool{
+          margin-left: 23%;
+            color: brown;
+        }
+
+        .Angora-Wool_price{
+            margin-left: 14%;
+        }
+
+        .News{
+            margin-top: 2vh;
+        }
+
+        /* Add these styles to your existing CSS or in a separate style tag or file */
+#search-input {
+    padding: 8px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#search-btn {
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#search-btn:hover {
+    background-color: #45a049;
+}
+
+    </style>
+    <link rel="manifest" href="../__manifest.json">
+</head>
+
+
+<body>
+
+    <!-- loader -->
+    <div id="loader">
+        <img src="../assets/img/loading-icon.png" alt="icon" class="loading-icon">
+    </div>
+    <!-- * loader -->
+
+    App Header
+    <div class="appHeader">
+        <div class="left">
+            <a href="#" class="headerButton goBack">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+            </a>
+        </div>
+        <div class="pageTitle">Charts</div>
+        <div class="right">
+        </div>
+    </div>
+    <!-- * App Header -->
+
+    <!-- App Capsule -->
+    <div id="appCapsule">
+
+
+
+
+
+
+        <div class="section mt-2 mb-3">
+            <div class="section-title">Line</div>
+            <div class="card">
+
+            </div>
+        </div>
+        <div class="section mb-2">
+
+            <div class="card coin-chart">
+                <div class="card-body pt-1">
+                    <!-- tabs -->
+                    <ul class="nav nav-tabs lined" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#tab-24h" role="tab">
+                                24H
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab-1w" role="tab">
+                                1W
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab-1m" role="tab">
+                                1M
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab-1y" role="tab">
+                                1Y
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab-all" role="tab">
+                                All
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- * tabs -->
+                </div>
+
+
+                <!-- tab content -->
+                <div class="tab-content">
+
+                    <div class="tab-pane fade show active" id="tab-24h" role="tabpanel">
+                        <div class="chart-example-1"></div>
+                    </div>
+
+                    <div class="tab-pane fade" id="tab-1w" role="tabpanel">
+                        <div class="chart-example-2"></div>
+                    </div>
+                    <div class="tab-pane fade" id="tab-1m" role="tabpanel">
+                        <div class="chart-example-3"></div>
+                    </div>
+                    <div class="tab-pane fade" id="tab-1y" role="tabpanel">
+                        <div class="chart-example-4"></div>
+                    </div>
+                    <div class="tab-pane fade" id="tab-all" role="tabpanel">
+                        <div class="chart-example-5"></div>
+                    </div>
+                </div>
+                <!-- * tab content -->
+
+            </div>
+        </div>
+        <!-- App Capsule -->
+
+        <div class="listview-title mt-1">Market Price</div>
+        <!-- tst 2 -->
+        <div class="section tab-content mt-2 mb-2">
+
+            <div class="row">
+                <div class="col-12 mb-2">
+                    <input type="text" id="search-input" placeholder="Search...">
+                    <button id="search-btn">Search</button>
+                </div>
+                <div class="col-6 mb-2 flip-card-1">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="myimage">
+                                <div class="nimg">
+                                    <img src="../assets/img/alpaca-fleece.jpg" height="70%" width="70%%" class="img1"
+                                        alt="icon">
+                                </div>
+                                <div class="details_stat">
+                                    <strong class="alpaca">Alpaca</strong>
+                                    <h3 class="para_price">PRICE - <strong>&#8377 50</strong></h3>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4 class="content-wool">Alpaca fleece is the natural fiber harvested from an alpaca. There
+                                are two different types of alpaca fleece. The most common fleece type comes from a
+                                Huacaya. Huacaya fiber grows and looks similar to sheep wool in that the animal looks
+                                "fluffy"</h4>
+                            <!-- Back content -->
+                            <!-- Your back content goes here -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 mb-2 flip-card-1">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="myimage">
+                                <div class="nimg">
+                                    <img src="../assets/img/camelwool.jpg" height="70%" width="70%%" class="img1"
+                                        alt="icon">
+                                </div>
+                                <div class="details_stat">
+                                    <strong class="Camel-hair-wool">Camel hair wool</strong>
+                                    <h3 class="Camel-para_price">PRICE - <strong>&#8377 37.50</strong></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4 class="content-wool">Camel hair specifically refers to the fur from the body of a camel,
+                                but more generally refers to the fibre that may be made from either pure camel hair or a
+                                blend of camel hair and another fibre. Camel hair has two components: guard hair and
+                                undercoat.</h4>
+                            <!-- Back content -->
+                            <!-- Your back content goes here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 mb-2 flip-card-1">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="myimage">
+                                <div class="nimg">
+                                    <img src="../assets/img/MerinoWool.jpeg" height="70%" width="70%%" class="img1"
+                                        alt="icon">
+                                </div>
+                                <div class="details_stat">
+                                    <strong class="Merinowool">Merino wool</strong>
+                                    <h3 class="Merinowool-price">PRICE - <strong>&#8377 15.78</strong></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4 class="content-wool">The Merino is a breed or group of breeds of domestic sheep, characterised by very fine soft wool. It was established in Spain near the end of the Middle Ages, and was for several centuries kept as a strict Spanish monopoly; exports of the breed were not allowed, and those who tried risked the death penalty. </h4>
+                            <!-- Back content -->
+                            <!-- Your back content goes here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 mb-2 flip-card-1">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="myimage">
+                                <div class="nimg">
+                                    <img src="../assets/img/Valeria_Di_Roma_Angora_Red.jpg" height="70%" width="70%%" class="img1"
+                                        alt="icon">
+                                </div>
+                                <div class="details_stat">
+                                    <strong class="Angora-Wool">Angora Wool</strong>
+                                    <h3 class="Angora-Wool_price">PRICE - <strong>&#8377 37.50</strong></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4 class="content-wool">Angora hair or Angora fibre refers to the downy coat produced by the Angora rabbit. While the names of the source animals are similar, Angora fibre is distinct from mohair, which comes from the Angora goat. Angora fibre is also distinct from cashmere, which comes from the cashmere goat.</h4>
+                            <!-- Back content -->
+                            <!-- Your back content goes here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <a href="#" class="btn btn-block btn-primary btn-lg">Load More</a>
+            </div>
+
+            <div class="News">
+                <a href="../Pages/app-blog-post.html" class="btn btn-block btn-primary btn-lg">NEWS BOX</a>
+            </div>
+
+        </div>
+        <!-- tst 2 -->
+
+        <!-- * App Capsule -->
+
+
+        <!-- App Bottom Menu -->
+    <!-- App Bottom Menu -->
+    <div class="appBottomMenu">
+        <a href="../index.html" class="item">
+            <div class="col">
+                <ion-icon name="pie-chart-outline"></ion-icon>
+                <strong>Overview</strong>
+            </div>
+        </a>
+        <a href="../Woolkart" class="item">
+            <div class="col">
+                <ion-icon name="card-outline"></ion-icon>
+                <strong>WoolKart</strong>
+            </div>
+        </a>
+        <a href="../Learning" class="item">
+            <div class="col">
+                <ion-icon name="apps-outline"></ion-icon>
+                <strong>Learnings</strong>
+            </div>
+        </a>
+  
+        <a href="../Services" class="item">
+            <div class="col">
+                <ion-icon name="document-text-outline"></ion-icon>
+                <strong>Services</strong>
+            </div>
+        </a>
+        <a href="../Statistics" class="item active">
+            <div class="col">
+                <ion-icon name="settings-outline"></ion-icon>
+                <strong>Statistics</strong>
+            </div>
+        </a>
+    </div>
+    <!-- * App Bottom Menu -->
+    <!-- * App Bottom Menu -->
+
+        <!-- ========= JS Files =========  -->
+        <!-- Bootstrap -->
+        <script src="../assets/js/lib/bootstrap.bundle.min.js"></script>
+        <!-- Ionicons -->
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <!-- Splide -->
+        <script src="../assets/js/plugins/splide/splide.min.js"></script>
+        <!-- Base Js File -->
+        <script src="../assets/js/base.js"></script>
+        <!-- Apex Charts -->
+        <script src="../assets/js/plugins/apexcharts/apexcharts.min.js"></script>
+
+
+
+
+
+
+        <script>
+            //test start 
+            var chartExample1 = {
+                series: [{
+                    data: [555, 1222, 777, 888, 555, 888, 999, 1222, 777, 888, 555, 888,]
+                }],
+                chart: {
+                    type: 'area',
+                    width: '100%',
+                    height: 250,
+                    sparkline: {
+                        enabled: false
+                    }
+                },
+                stroke: {
+                    width: 2,
+                },
+                colors: ['#6236FF'],
+                labels: [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "Jun",
+                    "Jul",
+                    "Aug",
+                    "Sep",
+                    "Oct",
+                    "Nov",
+                    "Dec",],
+                stroke: {
+                    width: 2,
+                },
+                colors: ['#1DCC70'],
+                tooltip: {
+                    enabled: false
+                }
+            };
+
+            var chartExample2 = {
+                series: [{
+                    data: [512, 405, 666, 1090, 1309, 1400, 1500, 700, 1700, 1600, 1400, 1600]
+                }],
+                chart: {
+                    type: 'area',
+                    width: '100%',
+                    height: 250,
+                    sparkline: {
+                        enabled: false
+                    }
+                },
+                stroke: {
+                    width: 2,
+                },
+                colors: ['#6236FF'],
+                labels: [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "Jun",
+                    "Jul",
+                    "Aug",
+                    "Sep",
+                    "Oct",
+                    "Nov",
+                    "Dec",],
+                stroke: {
+                    width: 2,
+                },
+                colors: ['#1DCC70'],
+                tooltip: {
+                    enabled: false
+                }
+            };
+
+            var chartExample3 = {
+                series: [{
+                    data: [512, 405, 666, 1090, 1309, 1400, 1500, 700, 405, 666, 1090, 1309, 1400, 1500]
+                }],
+                chart: {
+                    type: 'area',
+                    width: '100%',
+                    height: 250,
+                    sparkline: {
+                        enabled: false
+                    }
+                },
+                stroke: {
+                    width: 2,
+                },
+                colors: ['#6236FF'],
+                labels: [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "Jun",
+                    "Jul",
+                    "Aug",
+                    "Sep",
+                    "Oct",
+                    "Nov",
+                    "Dec",],
+                stroke: {
+                    width: 2,
+                },
+                colors: ['#1DCC70'],
+                tooltip: {
+                    enabled: false
+                }
+            };
+
+            var chartExample4 = {
+                series: [{
+                    data: [512, 405, 666, 1090, 1309, 1400, 1500, 700, 1000, 2000, 512, 405, 666, 1090, 1309, 1400, 1500]
+                }],
+                chart: {
+                    type: 'area',
+                    width: '100%',
+                    height: 250,
+                    sparkline: {
+                        enabled: false
+                    }
+                },
+                stroke: {
+                    width: 2,
+                },
+                colors: ['#6236FF'],
+                labels: [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "Jun",
+                    "Jul",
+                    "Aug",
+                    "Sep",
+                    "Oct",
+                    "Nov",
+                    "Dec",],
+                stroke: {
+                    width: 2,
+                },
+                colors: ['#1DCC70'],
+                tooltip: {
+                    enabled: false
+                }
+            };
+
+            var chartExample5 = {
+                series: [{
+                    data: [512, 405, 666, 1090, 1309, 1400, 1309, 1400, 1500]
+                }],
+                chart: {
+                    type: 'area',
+                    width: '100%',
+                    height: 250,
+                    sparkline: {
+                        enabled: false
+                    }
+                },
+                stroke: {
+                    width: 2,
+                },
+                colors: ['#6236FF'],
+                labels: [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "Jun",
+                    "Jul",
+                    "Aug",
+                    "Sep",
+                    "Oct",
+                    "Nov",
+                    "Dec",],
+                stroke: {
+                    width: 2,
+                },
+                colors: ['#1DCC70'],
+                tooltip: {
+                    enabled: false
+                }
+            };
+
+            document.addEventListener('DOMContentLoaded', function () {
+                document.querySelectorAll('.chart-example-1').forEach(chart => new ApexCharts(chart, chartExample1).render());
+                document.querySelectorAll('.chart-example-2').forEach(chart => new ApexCharts(chart, chartExample2).render());
+                document.querySelectorAll('.chart-example-3').forEach(chart => new ApexCharts(chart, chartExample3).render());
+                document.querySelectorAll('.chart-example-4').forEach(chart => new ApexCharts(chart, chartExample4).render());
+                document.querySelectorAll('.chart-example-5').forEach(chart => new ApexCharts(chart, chartExample5).render());
+            })
+            //test end
+
+
+
+
+            // Demo Charts
+
+            
+</script>
+            
+            <!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Function to handle search
+        $("#search-btn").on("click", function () {
+            var searchTerm = $("#search-input").val().toLowerCase();
+
+            // Hide all flip cards
+            $(".flip-card-1").hide();
+
+            // Show only the flip card that matches the search term
+            $(".flip-card-1:contains('" + searchTerm + "')").show();
+        });
+    });
+
+    // Custom jQuery contains function case insensitive
+    $.expr[':'].contains = function (a, i, m) {
+        return $(a).text().toLowerCase().indexOf(m[3].toLowerCase()) >= 0;
+    };
+</script>
+
+        
+
+
+</body>
+
+</html>
