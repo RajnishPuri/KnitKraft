@@ -123,7 +123,221 @@
 
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
     <script>
-      var CHOOSED_WAREHOUSE_PRICE = 0;
+      var TRANSPORTS = [
+        {
+          name: "ExpressConnect Logistics",
+          location: { lng: 80.190507, lat: 13.08268 },
+          address: {
+            state: "Tamil Nadu",
+            city: "Chennai",
+            country: "India",
+            pincode: "600001",
+          },
+          owner: {
+            name: "Priyanka Gupta",
+            mobile: "7778889999",
+            email: "priyanka@example.com",
+          },
+          description:
+            "ExpressConnect Logistics offers rapid and efficient transport services in Chennai, Tamil Nadu. Our dedicated team ensures seamless deliveries with a focus on customer satisfaction. Prices start at $15 per kilogram.",
+          initialPrice: 15,
+          vehicles: {
+            Truck: 15,
+            Train: 10,
+            Ship: 5,
+          },
+          image: "https://placekitten.com/200/312",
+        },
+        {
+          name: "MetroMover Express",
+          location: { lng: 77.594562, lat: 12.971598 },
+          address: {
+            state: "Karnataka",
+            city: "Bangalore",
+            country: "India",
+            pincode: "560001",
+          },
+          owner: {
+            name: "Rahul Kapoor",
+            mobile: "8887776666",
+            email: "rahul@example.com",
+          },
+          description:
+            "MetroMover Express ensures swift and reliable transport solutions in Bangalore, Karnataka. Our fleet is equipped for various cargo sizes, providing prompt and secure deliveries. Prices start at $22 per kilogram.",
+          initialPrice: 22,
+          vehicles: {
+            Truck: 15,
+            Train: 10,
+            Ship: 5,
+          },
+          image: "https://placekitten.com/200/313",
+        },
+        {
+          name: "GlobalFreight Shippers",
+          location: { lng: 72.825836, lat: 18.975 },
+          address: {
+            state: "Gujarat",
+            city: "Ahmedabad",
+            country: "India",
+            pincode: "380001",
+          },
+          owner: {
+            name: "Amit Desai",
+            mobile: "8881234567",
+            email: "amit@example.com",
+          },
+          description:
+            "GlobalFreight Shippers provides international-standard freight services in Ahmedabad, Gujarat. With a global network, we ensure your shipments reach any destination with efficiency. Prices start at $25 per kilogram.",
+          initialPrice: 25,
+          vehicles: {
+            Truck: 15,
+            Train: 10,
+            Ship: 5,
+          },
+          image: "https://placekitten.com/200/314",
+        },
+        {
+          name: "SpeedyHaul Transport",
+          location: { lng: 77.209021, lat: 28.613939 },
+          address: {
+            state: "Delhi",
+            city: "New Delhi",
+            country: "India",
+            pincode: "110001",
+          },
+          owner: {
+            name: "Anita Verma",
+            mobile: "9993334444",
+            email: "anita@example.com",
+          },
+          description:
+            "SpeedyHaul Transport specializes in fast and secure hauling services in New Delhi. Our well-maintained fleet ensures timely and safe deliveries for a variety of cargo. Prices start at $20 per kilogram.",
+          initialPrice: 20,
+          vehicles: {
+            Truck: 15,
+            Train: 10,
+            Ship: 5,
+          },
+          image: "https://placekitten.com/200/315",
+        },
+        {
+          name: "RapidCargo Movers",
+          location: { lng: 88.363895, lat: 22.572645 },
+          address: {
+            state: "West Bengal",
+            city: "Kolkata",
+            country: "India",
+            pincode: "700001",
+          },
+          owner: {
+            name: "Vikram Singh",
+            mobile: "7775554444",
+            email: "vikram@example.com",
+          },
+          description:
+            "RapidCargo Movers delivers speedy and reliable cargo services in Kolkata, West Bengal. Our logistics solutions cover a wide range of industries with competitive pricing starting at $18 per kilogram.",
+          initialPrice: 18,
+          vehicles: {
+            Truck: 15,
+            Train: 10,
+            Ship: 5,
+          },
+          image: "https://placekitten.com/200/316",
+        },
+        {
+          name: "TransContinental Logistics",
+          location: { lng: 72.877656, lat: 19.07609 },
+          address: {
+            state: "Maharashtra",
+            city: "Mumbai",
+            country: "India",
+            pincode: "400001",
+          },
+          owner: {
+            name: "Aditya Kapoor",
+            mobile: "9994443333",
+            email: "aditya@example.com",
+          },
+          description:
+            "TransContinental Logistics ensures seamless cargo transportation in Mumbai, Maharashtra. Our global connections and efficient operations guarantee timely and secure deliveries. Prices start at $23 per kilogram.",
+          initialPrice: 23,
+          vehicles: {
+            Truck: 15,
+            Train: 10,
+            Ship: 5,
+          },
+          image: "https://placekitten.com/200/317",
+        },
+        {
+          name: "TruckMaster Freight Services",
+          location: { lng: 73.856743, lat: 18.52043 },
+          address: {
+            state: "Goa",
+            city: "Panaji",
+            country: "India",
+            pincode: "403001",
+          },
+          owner: {
+            name: "Sara Fernandes",
+            mobile: "8889990000",
+            email: "sara@example.com",
+          },
+          description:
+            "TruckMaster Freight Services excels in trucking solutions in Panaji, Goa. Our fleet of reliable trucks ensures efficient and secure transportation for various cargo types. Prices start at $20 per kilogram.",
+          initialPrice: 20,
+          image: "https://placekitten.com/200/318",
+        },
+        {
+          name: "Sunrise Shipping Express",
+          location: { lng: 76.612189, lat: 30.704647 },
+          address: {
+            state: "Haryana",
+            city: "Chandigarh",
+            country: "India",
+            pincode: "160001",
+          },
+          owner: {
+            name: "Rajiv Malik",
+            mobile: "7771112222",
+            email: "rajiv@example.com",
+          },
+          description:
+            "Sunrise Shipping Express provides sunrise-to-sunset shipping services in Chandigarh, Haryana. Our commitment to timely deliveries and customer satisfaction sets us apart. Prices start at $21 per kilogram.",
+          initialPrice: 21,
+          vehicles: {
+            Truck: 15,
+            Train: 10,
+            Ship: 5,
+          },
+          image: "https://placekitten.com/200/319",
+        },
+        {
+          name: "Northern Star Logistics",
+          location: { lng: 77.586017, lat: 12.971598 },
+          address: {
+            state: "Karnataka",
+            city: "Bangalore",
+            country: "India",
+            pincode: "560001",
+          },
+          owner: {
+            name: "Neha Sharma",
+            mobile: "9996663333",
+            email: "neha@example.com",
+          },
+          description:
+            "Northern Star Logistics is your go-to partner for efficient logistics solutions in Bangalore, Karnataka. Our experienced team ensures safe and secure transportation for a range of cargo types. Prices start at $24 per kilogram.",
+          initialPrice: 24,
+          vehicles: {
+            Truck: 15,
+            Train: 10,
+            Ship: 5,
+          },
+          image: "https://placekitten.com/200/320",
+        },
+      ];
+
+      var CHOOSED_TRANSPORT_PRICE = 0;
       var FARMER_DETAILS = {};
     </script>
   </head>
@@ -146,20 +360,20 @@
           <ion-icon name="chevron-back-outline"></ion-icon>
         </a>
       </div>
-      <div class="pageTitle">WareHouse Services</div>
+      <div class="pageTitle">Transport Services</div>
     </div>
     <!-- App Header -->
 
     <!-- App Capsule -->
     <div id="appCapsule">
-      <div class="listview-title mt-1">WareHouse Services</div>
+      <div class="listview-title mt-1">Transport Services</div>
       <div id="myModal" class="modal" style="z-index: 100">
         <!-- Modal content -->
         <div class="modal-content">
           <!-- <span class="close">&times;</span> -->
 
-          <form id="requestWareHouseForm">
-            <h5 class="title mb-2">Request for WareHouse</h5>
+          <form id="requestTransportForm">
+            <h5 class="title mb-2">Request for Transport</h5>
             <div class="form-group basic">
               <div class="input-wrapper">
                 <label class="label" for="nameInput">Name</label>
@@ -173,23 +387,23 @@
             </div>
             <div class="form-group basic">
               <div class="input-wrapper">
-                <label class="label" for="mobileInput">Phone Number</label>
-                <input
-                  type="tel"
-                  id="mobileInput"
-                  class="form-control"
-                  placeholder="Enter Phone Number"
-                />
-              </div>
-            </div>
-            <div class="form-group basic">
-              <div class="input-wrapper">
                 <label class="label" for="emailInput">Email</label>
                 <input
                   type="email"
                   id="emailInput"
                   class="form-control"
                   placeholder="Enter Email"
+                />
+              </div>
+            </div>
+            <div class="form-group basic">
+              <div class="input-wrapper">
+                <label class="label" for="mobileInput">Phone Number</label>
+                <input
+                  type="tel"
+                  id="mobileInput"
+                  class="form-control"
+                  placeholder="Enter Phone Number"
                 />
               </div>
             </div>
@@ -217,24 +431,44 @@
             </div>
             <div class="form-group basic">
               <div class="input-wrapper">
-                <label class="label" for="fromDateInput">From Date</label>
+                <label class="label" for="sourceAddressInput"
+                  >Source Address</label
+                >
                 <input
-                  type="date"
-                  id="fromDateInput"
+                  type="text"
+                  id="sourceAddressInput"
                   class="form-control"
-                  placeholder="Select From Date"
+                  placeholder="Enter Source Address"
                 />
               </div>
             </div>
             <div class="form-group basic">
               <div class="input-wrapper">
-                <label class="label" for="toDateInput">To Date</label>
+                <label class="label" for="destAddressInput"
+                  >Destination Address</label
+                >
                 <input
-                  type="date"
-                  id="toDateInput"
+                  type="text"
+                  id="destAddressInput"
                   class="form-control"
-                  placeholder="Select To Date"
+                  placeholder="Enter Destination Address"
                 />
+              </div>
+            </div>
+
+            <div class="form-group basic">
+              <div class="input-wrapper">
+                <label class="label" for="vehicleType">Vehicle Type</label>
+                <select
+                  name="vehicleType"
+                  id="vehicleType"
+                  class="form-control"
+                  style="font-size: 0.8em !important"
+                >
+                  <option value="Truck">Truck</option>
+                  <option value="Train">Train</option>
+                  <option value="Ship">Ship</option>
+                </select>
               </div>
             </div>
 
@@ -273,43 +507,36 @@
           align-items: center;
         "
       >
-        <h5 class="mb-1">Warehouses</h5>
+        <h5 class="mb-1">Transport Services</h5>
         <input
           type="search"
           name="search"
-          id="warehouseSearch"
-          placeholder="Search for warehouse location"
+          id="transportSearch"
+          placeholder="Search for transport location"
           autocomplete="off"
           style="padding: 2px 5px; border-radius: 5px; border: 1px solid #ccc"
         />
       </div>
-      <div id="warehousesList"></div>
+      <div id="transportsList"></div>
 
       <!-- <mapbox-search-box
         access-token="pk.eyJ1IjoibGVnaXRjb2RlciIsImEiOiJjbHEzczEwYmUwZmZxMnNxd3FwZWhjbzdmIn0.Jzm8D0cdCnrJrcInGe1p4Q"
         proximity="0,0"
       ></mapbox-search-box> -->
       <script>
-        requestWareHouseForm.onsubmit = function (e) {
+        requestTransportForm.onsubmit = function (e) {
           e.preventDefault();
-          var fromDate = new Date(
-            document.getElementById("fromDateInput").value
-          );
-          var toDate = new Date(document.getElementById("toDateInput").value);
-          var days = (toDate - fromDate) / (1000 * 3600 * 24);
-          var amount =
-            days *
-            document.getElementById("quantityInput").value *
-            CHOOSED_WAREHOUSE_PRICE;
+          var amount = CHOOSED_TRANSPORT_PRICE;
           FARMER_DETAILS = {
             name: document.getElementById("nameInput").value,
-            mobile: document.getElementById("mobileInput").value,
             email: document.getElementById("emailInput").value,
+            mobile: document.getElementById("mobileInput").value,
             address: document.getElementById("addressInput").value,
             quantity: document.getElementById("quantityInput").value,
-            fromDate: document.getElementById("fromDateInput").value,
-            toDate: document.getElementById("toDateInput").value,
-            paid: amount,
+            sourceAddress: document.getElementById("sourceAddressInput").value,
+            destAddress: document.getElementById("destAddressInput").value,
+            vehicleType: document.getElementById("vehicleType").value,
+            amount: amount,
           };
           myModal.style.display = "none";
           document.getElementById("calPrice").innerHTML = amount;
@@ -341,218 +568,41 @@
           const geocoder = new MapboxGeocoder({
             accessToken: mapboxgl.accessToken,
             mapboxgl: mapboxgl,
-            placeholder: "Search for warehouses",
+            placeholder: "Search for transports",
             proximity: {
               longitude: center[0],
               latitude: center[1],
             },
           });
 
-          var WAREHOUSES = [
-            {
-              name: "SecureStorage Plus",
-              location: { lng: 85.52357816010955, lat: 25.641208847465327 },
-              address: {
-                state: "Bihar",
-                city: "Bakhtiyarpur",
-                country: "India",
-                pincode: "123456",
-              },
-              owner: {
-                name: "Bob Smith",
-                mobile: "5551234567",
-                email: "bob@example.com",
-              },
-              description:
-                "SecureStorage Plus offers state-of-the-art storage solutions for your valuable goods. Our warehouse, conveniently located in Bakhtiyarpur, Bihar, provides top-notch security measures, climate-controlled units, and 24/7 monitoring. Whether you need short-term storage during a move or long-term storage for business inventory, SecureStorage Plus has you covered. Pricing starts at $10 per kilogram per day, ensuring affordability without compromising on quality.",
-              pricePerKGperDay: 10,
-              image: "https://placekitten.com/200/300",
-            },
-            {
-              name: "ClimateControl Warehousing",
-              location: { lng: 85.5278481979343, lat: 25.601939994727994 },
-              address: {
-                state: "Bihar",
-                city: "Patna",
-                country: "India",
-                pincode: "789012",
-              },
-              owner: {
-                name: "Jane Doe",
-                mobile: "9876543210",
-                email: "jane@example.com",
-              },
-              description:
-                "Welcome to ClimateControl Warehousing, where your belongings are safeguarded in a controlled environment. Our facility in Patna, Bihar, ensures that temperature-sensitive items are kept at optimal conditions. With a focus on reliability and customer satisfaction, we offer competitive pricing starting at $8 per kilogram per day. Trust ClimateControl Warehousing for secure and climate-friendly storage solutions.",
-              pricePerKGperDay: 8,
-              image: "https://placekitten.com/200/301",
-            },
-            {
-              name: "Central Storage Hub",
-              location: { lng: 77.594562, lat: 12.971598 },
-              address: {
-                state: "Karnataka",
-                city: "Bangalore",
-                country: "India",
-                pincode: "560001",
-              },
-              owner: {
-                name: "Alice Johnson",
-                mobile: "9998765432",
-                email: "alice@example.com",
-              },
-              description:
-                "Central Storage Hub is your go-to destination for secure and efficient storage solutions in Bangalore, Karnataka. Our facility boasts cutting-edge security features and spacious storage units suitable for various needs. Whether it's household items or commercial inventory, we provide reliable storage at a competitive price of $12 per kilogram per day.",
-              pricePerKGperDay: 12,
-              image: "https://placekitten.com/200/302",
-            },
-            {
-              name: "Rajasthan Warehousing",
-              location: { lng: 75.78727, lat: 26.912434 },
-              address: {
-                state: "Rajasthan",
-                city: "Jaipur",
-                country: "India",
-                pincode: "302001",
-              },
-              owner: {
-                name: "Raj Sharma",
-                mobile: "8887654321",
-                email: "raj@example.com",
-              },
-              description:
-                "Discover secure storage solutions at Rajasthan Warehousing in the historic city of Jaipur, Rajasthan. Our facility offers a range of storage options with 24/7 surveillance and excellent customer service. For a competitive price of $11 per kilogram per day, trust Rajasthan Warehousing for all your storage needs.",
-              pricePerKGperDay: 11,
-              image: "https://placekitten.com/200/303",
-            },
-            {
-              name: "Central India Storage",
-              location: { lng: 78.137008, lat: 23.473324 },
-              address: {
-                state: "Madhya Pradesh",
-                city: "Indore",
-                country: "India",
-                pincode: "452001",
-              },
-              owner: {
-                name: "Mohan Patel",
-                mobile: "7776543210",
-                email: "mohan@example.com",
-              },
-              description:
-                "Central India Storage, located in the vibrant city of Indore, Madhya Pradesh, provides secure and reliable storage solutions. Our facility is equipped with advanced security measures, and our experienced team ensures the safety of your belongings. Avail our storage services at a competitive price of $9 per kilogram per day.",
-              pricePerKGperDay: 9,
-              image: "https://placekitten.com/200/304",
-            },
-            {
-              name: "Eastern Oasis Storage",
-              location: { lng: 86.83867, lat: 21.166519 },
-              address: {
-                state: "West Bengal",
-                city: "Kolkata",
-                country: "India",
-                pincode: "700001",
-              },
-              owner: {
-                name: "Priya Das",
-                mobile: "6669876543",
-                email: "priya@example.com",
-              },
-              description:
-                "Eastern Oasis Storage welcomes you to Kolkata, West Bengal, with secure and affordable storage solutions. Our facility ensures the safety of your possessions with 24/7 monitoring and climate-controlled storage units. Experience quality storage services at a competitive price of $10 per kilogram per day.",
-              pricePerKGperDay: 10,
-              image: "https://placekitten.com/200/305",
-            },
-            {
-              name: "Golden Triangle Storage",
-              location: { lng: 77.226394, lat: 28.613939 },
-              address: {
-                state: "Uttar Pradesh",
-                city: "Agra",
-                country: "India",
-                pincode: "282001",
-              },
-              owner: {
-                name: "Vikram Verma",
-                mobile: "5559876543",
-                email: "vikram@example.com",
-              },
-              description:
-                "Discover secure and convenient storage solutions at Golden Triangle Storage in the historic city of Agra, Uttar Pradesh. Our facility combines advanced security features with friendly service, providing storage options for various needs. Avail our competitive pricing starting at $10 per kilogram per day.",
-              pricePerKGperDay: 10,
-              image: "https://placekitten.com/200/306",
-            },
-            {
-              name: "Western Gateway Warehousing",
-              location: { lng: 72.825836, lat: 18.975 },
-              address: {
-                state: "Gujarat",
-                city: "Ahmedabad",
-                country: "India",
-                pincode: "380001",
-              },
-              owner: {
-                name: "Amit Desai",
-                mobile: "8881234567",
-                email: "amit@example.com",
-              },
-              description:
-                "Welcome to Western Gateway Warehousing in the vibrant city of Ahmedabad, Gujarat. Our facility offers secure and well-maintained storage solutions for your belongings. With competitive pricing starting at $11 per kilogram per day, trust us for reliable and cost-effective storage services.",
-              pricePerKGperDay: 11,
-              image: "https://placekitten.com/200/307",
-            },
-            {
-              name: "Northern Breeze Warehousing",
-              location: { lng: 77.209021, lat: 28.613939 },
-              address: {
-                state: "Delhi",
-                city: "New Delhi",
-                country: "India",
-                pincode: "110001",
-              },
-              owner: {
-                name: "Ankit Khanna",
-                mobile: "9991234567",
-                email: "ankit@example.com",
-              },
-              description:
-                "Discover secure storage at Northern Breeze Warehousing in the heart of New Delhi, India's capital territory. Our facility offers reliable storage solutions with advanced security features and competitive pricing starting at $12 per kilogram per day. Trust us for your storage needs.",
-              pricePerKGperDay: 12,
-              image: "https://placekitten.com/200/309",
-            },
-          ];
-
-          WAREHOUSES = WAREHOUSES.map((warehouse) => {
+          TRANSPORTS = TRANSPORTS.map((transport) => {
             return {
-              ...warehouse,
-              distance: calculateDistance(center, warehouse.location),
+              ...transport,
+              distance: calculateDistance(center, transport.location),
             };
           });
-          WAREHOUSES.sort((a, b) => {
+          TRANSPORTS.sort((a, b) => {
             return a.distance - b.distance;
           });
-          var RESULTWAREHOUSE = WAREHOUSES.filter((warehouse) => {
-            return warehouse.distance;
-          });
-          console.log(WAREHOUSES);
+          console.log(TRANSPORTS);
           document
             .getElementById("geocoder-container")
             .appendChild(geocoder.onAdd(map));
-          document.getElementById("warehouseSearch").onkeyup = function (e) {
+          document.getElementById("transportSearch").onkeyup = function (e) {
             if (e.key == "Enter") {
-              var first = warehousesListFill(WAREHOUSES, e.target.value);
+              var first = transportsListFill(TRANSPORTS, e.target.value);
               if (first.location)
                 map.flyTo({
                   center: first.location,
                   zoom: 14,
                 });
             } else {
-              warehousesListFill(WAREHOUSES, e.target.value);
+              transportsListFill(TRANSPORTS, e.target.value);
             }
           };
 
           // add markers to map
-          WAREHOUSES.forEach((marker) => {
+          TRANSPORTS.forEach((marker) => {
             var dist = calculateDistance(center, marker.location);
             var el = document.createElement("div");
             el.className = "marker";
@@ -560,114 +610,105 @@
               .setLngLat(marker.location)
               .setPopup(
                 new mapboxgl.Popup({ offset: 25 }).setHTML(`
-                          ${marker.name},
-                          ${dist} <br>
-                          <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addCardActionSheet">Request</button>
-                        `)
+                                  ${marker.name},
+                                  ${dist} <br>
+                                  <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addCardActionSheet">Request</button>
+                                `)
               )
               .addTo(map);
           });
-          function warehousesListFill(WAREHOUSES, searchText = "", mode) {
-            var warehousesList = document.getElementById("warehousesList");
-            warehousesList.innerHTML = "";
+          function transportsListFill(TRANSPORTS, searchText = "", mode) {
+            var transportsList = document.getElementById("transportsList");
+            transportsList.innerHTML = "";
             var FIRST = {};
-            WAREHOUSES.forEach((warehouse, index) => {
-              console.log(warehouse);
+            TRANSPORTS.forEach((transport, index) => {
+              console.log(transport);
               if (
-                warehouse.name
+                transport.name
                   .toLowerCase()
                   .includes(searchText.toLowerCase()) ||
-                warehouse.address.city
+                transport.address.city
                   .toLowerCase()
                   .includes(searchText.toLowerCase()) ||
-                warehouse.address.state
+                transport.address.state
                   .toLowerCase()
                   .includes(searchText.toLowerCase()) ||
-                warehouse.address.country
+                transport.address.country
                   .toLowerCase()
                   .includes(searchText.toLowerCase()) ||
-                warehouse.address.pincode
+                transport.address.pincode
                   .toLowerCase()
                   .includes(searchText.toLowerCase()) ||
-                warehouse.owner.name
+                transport.owner.name
                   .toLowerCase()
                   .includes(searchText.toLowerCase()) ||
-                warehouse.owner.mobile
+                transport.owner.mobile
                   .toLowerCase()
                   .includes(searchText.toLowerCase()) ||
-                warehouse.owner.email
+                transport.owner.email
                   .toLowerCase()
                   .includes(searchText.toLowerCase()) ||
-                warehouse.description
-                  .toLowerCase()
-                  .includes(searchText.toLowerCase()) ||
-                warehouse.pricePerKGperDay
-                  .toString()
-                  .includes(searchText.toLowerCase()) ||
-                warehouse.distance
-                  .toString()
-                  .includes(searchText.toLowerCase()) ||
-                warehouse.image
+                transport.description
                   .toLowerCase()
                   .includes(searchText.toLowerCase()) ||
                 searchText == ""
               ) {
-                if (!FIRST.name) FIRST = warehouse;
-                warehousesList.innerHTML += `
-                          <div class="accordion mb-2" id="accordionExample${index}">
-                          <div class="accordion-item">
-                            <h2
-                              class="accordion-header"
-                              style="display: flex; align-items: center; margin-left: 3vw"
-                            >
-                              
-                              <button
-                                class="accordion-button collapsed"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#accordion00${index}"
-                              >
-                                ${warehouse.name} - ${warehouse.distance} km
-                              </button>
-                            </h2>
-                            <div
-                              id="accordion00${index}"
-                              class="accordion-collapse collapse"
-                              data-bs-parent="#accordionExample${index}"
-                            >
-                              <div class="accordion-body">
-                                <p style="text-align: center; margin-top: 1rem">
-                                  <img
-                                    src="${warehouse.image}"
-                                    alt="warehouse image"
-                                    style=" max-height: 200px"
-                                  />
-                                </p>
-                                <strong>Address:</strong> ${warehouse.address.city}, ${warehouse.address.state}, ${warehouse.address.country}, ${warehouse.address.pincode} <br>
-                                <strong>Owner:</strong> ${warehouse.owner.name} <br>
-                                <strong>Phone:</strong> ${warehouse.owner.mobile} <br>
-                                <strong>Email:</strong> ${warehouse.owner.email} <br>
-                                <strong>Price:</strong> ₹${warehouse.pricePerKGperDay}/kg/day <br>
-                                <strong>Description:</strong> ${warehouse.description} <br>
-                                
-                                <p style="text-align: center; margin-top: 1rem">
-                                  <button class="btn btn-success btn-sm mb-2" style="margin: 0 auto;"
-                                  onclick="CHOOSED_WAREHOUSE_PRICE = ${warehouse.pricePerKGperDay}; document.getElementById('myModal').style.display = 'flex';"
-                                  >Request</button>
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                `;
+                if (!FIRST.name) FIRST = transport;
+                transportsList.innerHTML += `
+                                  <div class="accordion mb-2" id="accordionExample${index}">
+                                  <div class="accordion-item">
+                                    <h2
+                                      class="accordion-header"
+                                      style="display: flex; align-items: center; margin-left: 3vw"
+                                    >
+
+                                      <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#accordion00${index}"
+                                      >
+                                        ${transport.name} - ${transport.distance} km
+                                      </button>
+                                    </h2>
+                                    <div
+                                      id="accordion00${index}"
+                                      class="accordion-collapse collapse"
+                                      data-bs-parent="#accordionExample${index}"
+                                    >
+                                      <div class="accordion-body">
+                                        <p style="text-align: center; margin-top: 1rem">
+                                          <img
+                                            src="${transport.image}"
+                                            alt="transport image"
+                                            style=" max-height: 200px"
+                                          />
+                                        </p>
+                                        <strong>Address:</strong> ${transport.address.city}, ${transport.address.state}, ${transport.address.country}, ${transport.address.pincode} <br>
+                                        <strong>Owner:</strong> ${transport.owner.name} <br>
+                                        <strong>Phone:</strong> ${transport.owner.mobile} <br>
+                                        <strong>Email:</strong> ${transport.owner.email} <br>
+                                        <strong>Initial Price:</strong> ₹${transport.initialPrice} <br>
+                                        <strong>Description:</strong> ${transport.description} <br>
+
+                                        <p style="text-align: center; margin-top: 1rem">
+                                          <button class="btn btn-success btn-sm mb-2" style="margin: 0 auto;"
+                                          onclick="CHOOSED_TRANSPORT_PRICE = ${transport.initialPrice}; document.getElementById('myModal').style.display = 'flex';"
+                                          >Request</button>
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                        `;
               }
             });
             if (!FIRST.location)
-              warehousesList.innerHTML =
+              transportsList.innerHTML =
                 "<p style='text-align: center'>No results found</p>";
             return FIRST;
           }
-          warehousesListFill(WAREHOUSES);
+          transportsListFill(TRANSPORTS);
         }
         function calculateDistance(center, location) {
           var R = 6371e3; // metres
@@ -956,7 +997,7 @@
               <h5 class="modal-title">Success</h5>
             </div>
             <div class="modal-body">
-              Your WareHouse has been booked.
+              Your Transport has been booked.
               <br />
               <br />
               <a href="../Orders.html" class="btn btn-primary"
