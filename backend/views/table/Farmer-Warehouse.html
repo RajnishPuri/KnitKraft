@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
+    <title>Finapp</title>
+    <meta name="description" content="Finapp HTML Mobile Template">
+    <meta name="keywords"
+        content="bootstrap, wallet, banking, fintech mobile template, cordova, phonegap, mobile, html, responsive" />
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/icon/192x192.png">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <!-- <link rel="manifest" href="__manifest.json"> -->
+</head>
+
+<body>
+
+    <!-- loader -->
+    <div id="loader">
+        <img src="../assets/img/loading-icon.png" alt="icon" class="loading-icon">
+    </div>
+    <!-- * loader -->
+
+    <!-- App Header -->
+    <div class="appHeader">
+        <div class="left">
+            <a href="#" class="headerButton goBack">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+            </a>
+        </div>
+        <div class="pageTitle">Table</div>
+        <div class="right">
+            <div class="right">
+                <a href="app-notifications.html" class="headerButton">
+                    <ion-icon class="icon" name="notifications-outline"></ion-icon>
+                    <span class="badge badge-danger">4</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- * App Header -->
+
+    <!-- App Capsule -->
+    <div id="appCapsule">
+
+
+        <div class="section mt-2 mb-2">
+            <div class="section-title">Order Information</div>
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Mobile</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">From Date</th>
+                                <th scope="col">To Date</th>
+                                <th scope="col">Paid</th>
+                                <th scope="col">Source Address</th>
+                                <th scope="col">Acction</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>John Doe</td>
+                                <td>johndoe@example.com</td>
+                                <td>+1234567890</td>
+                                <td>State: California<br>City: Los Angeles<br>Country: USA<br>Pincode: 12345</td>
+                                <td>5</td>
+                                <td>2023-01-01</td>
+                                <td>2023-01-05</td>
+                                <td>Yes</td>
+                                
+                                <td>Source Address Example</td>
+                                <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#progressTrackingModal">
+                                    Progress Tracking
+                                </button></td>
+                            </tr>
+                            <!-- Add more rows for additional orders -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+<!-- Button to trigger the modal -->
+
+
+<!-- Progress Tracking Modal -->
+<div class="modal fade" id="progressTrackingModal" tabindex="-1" aria-labelledby="progressTrackingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="progressTrackingModalLabel">Progress Tracking</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="timeline">
+                    <div class="item">
+                        <div class="dot bg-primary"></div>
+                        <div class="content">
+                            <h4 class="title">Farmer Sent Request</h4>
+                            <div class="text">Description or details about the request sent by the farmer.</div>
+                            <button class="btn btn-sm btn-success mt-2" onclick="toggleCheck('farmerSentRequest')">Mark as Done</button>
+                            <span id="checkFarmerSentRequest" class="text-success ms-2" style="display: none;">
+                                <i class="bi bi-check"></i>
+                            </span>
+                            <div class="phase-details" id="farmerSentRequestDetails" style="display: none;">
+                                <!-- Additional details or progress tracking information for this phase -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Repeat this structure for other phases -->
+                    <div class="item">
+                        <div class="dot"></div>
+                        <div class="content">
+                            <h4 class="title">Warehouse Confirmed Availability</h4>
+                            <div class="text">Description or details about the warehouse confirmation.</div>
+                            <button class="btn btn-sm btn-success mt-2" onclick="toggleCheck('warehouseConfirmed')">Mark as Done</button>
+                            <span id="checkWarehouseConfirmed" class="text-success ms-2" style="display: none;">
+                                <i class="bi bi-check"></i>
+                            </span>
+                            <div class="phase-details" id="warehouseConfirmedDetails" style="display: none;">
+                                <!-- Additional details or progress tracking information for this phase -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more phases as needed -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Function to toggle checkmark when "Mark as Done" button is clicked
+    function toggleCheck(phase) {
+        const checkElement = document.getElementById(`check${phase}`);
+        if (checkElement.style.display === 'none') {
+            checkElement.style.display = 'inline-block';
+        } else {
+            checkElement.style.display = 'none';
+        }
+    }
+</script>
+
+<script>
+    // Function to toggle between Mark as Done and Completed
+    function toggleCompletion(phase) {
+        const button = document.getElementById(`button${phase}`);
+        if (button.innerText === 'Mark as Done') {
+            button.innerText = 'Completed';
+            button.classList.remove('btn-success');
+            button.classList.add('btn-secondary');
+        } else if (button.innerText === 'Completed') {
+            button.innerText = 'Mark as Done';
+            button.classList.remove('btn-secondary');
+            button.classList.add('btn-success');
+        }
+    }
+</script>
+
+<!-- Bootstrap JavaScript -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+
+
+        <!-- App Bottom Menu -->
+        <div class="appBottomMenu">
+            <a href="index.html" class="item">
+                <div class="col">
+                    <ion-icon name="pie-chart-outline"></ion-icon>
+                    <strong>Overview</strong>
+                </div>
+            </a>
+            <a href="app-pages.html" class="item">
+                <div class="col">
+                    <ion-icon name="document-text-outline"></ion-icon>
+                    <strong>Pages</strong>
+                </div>
+            </a>
+            <a href="app-components.html" class="item">
+                <div class="col">
+                    <ion-icon name="apps-outline"></ion-icon>
+                    <strong>Components</strong>
+                </div>
+            </a>
+            <a href="app-cards.html" class="item">
+                <div class="col">
+                    <ion-icon name="card-outline"></ion-icon>
+                    <strong>My Cards</strong>
+                </div>
+            </a>
+            <a href="app-settings.html" class="item">
+                <div class="col">
+                    <ion-icon name="settings-outline"></ion-icon>
+                    <strong>Settings</strong>
+                </div>
+            </a>
+        </div>
+        <!-- * App Bottom Menu -->
+
+
+        <!-- ========= JS Files =========  -->
+        <!-- Bootstrap -->
+        <script src="../assets/js/lib/bootstrap.bundle.min.js"></script>
+        <!-- Ionicons -->
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <!-- Splide -->
+        <script src="../assets/js/plugins/splide/splide.min.js"></script>
+        <!-- Base Js File -->
+        <script src="../assets/js/base.js"></script>
+
+</body>
+
+</html>
