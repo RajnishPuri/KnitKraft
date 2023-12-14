@@ -1,0 +1,50 @@
+{
+    "WELCOME_MSG": "नमस्ते! स्वागत है!",
+    "CONTACT_TEXT": "अधिक जानकारी",
+    "wallet": {
+      "Total_Balance": "कुल शेष",
+      "Withdraw": "निकास",
+      "Send": "भेजें",
+      "Cards": "कार्ड",
+      "Exchange": "विनिमय"
+    },
+    "modal": {
+        "Add_Balance": "Add Balance",       
+         "Deposit": "Deposit",
+        "Withdraw_Money": "पैसा निकालें",
+        "From": "से",
+        "To": "को",
+        "Savings": "बचत (*** 5019)",
+        "Investment": "निवेश (*** 6212)",
+        "Mortgage": "गिरवी (*** 5021)",
+        "Enter_Amount": "राशि दर्ज करें",
+        "Enter_IBAN": "IBAN दर्ज करें",
+        "Enter_Bank_ID": "बैंक ID दर्ज करें",
+        "Withdraw": "निकालें",
+        "Send": "भेजें",
+        "Exchange_Money": "मुद्रा विनिमय करें",
+      
+        "EUR": "यूरो",
+        "USD": "यूएसडी",
+        "AUD": "एयूडी",
+        "CAD": "सीएडी",
+      
+        "Exchange": "विनिमय"
+      },
+      "FarmServices": "खेत सेवाएं",
+    "SheepBreedingServices": "भेड़ प्रजनन सेवाएं",
+    "WoolHarvestingShearingServices": "ऊन कटाई और केश सेवाएं",
+    "FodderNutritionServices": "चारा और पोषण सेवाएं",
+    "VeterinaryServices": "पशुचिकित्सा सेवाएं",
+    "QualityServices": "गुणवत्ता सेवाएं",
+    "WoolGrading": "ऊन ग्रेडिंग",
+    "FarmEquipmentSuppliers": "खेती उपकरण आपूर्तिकर्ता",
+    "WarehouseServices": "वेयरहाउस सेवाएं",
+    "WareHouseServices": "वेयरहाउस सेवाएं",
+    "WoolProcessingServices": "ऊन प्रसंस्करण सेवाएं",
+    "TransportationServices": "परिवहन सेवाएं",
+    "EnvironmentalConsulting": "पर्यावरण परामर्श",
+    "FinancialServices": "वित्तीय सेवाएं",
+    "InsuranceServices": "बीमा सेवाएं",
+    "FinancialAndLegalServices": "वित्तीय और कानूनी सेवाएं"
+  }
