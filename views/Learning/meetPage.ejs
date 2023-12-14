@@ -198,7 +198,7 @@
           <!-- Modal content -->
           <div class="modal-content">
             <!-- <span class="close">&times;</span> -->
-            <form>
+            <form action="/userbook" method="post">
               <h5 class="title mb-2">Request 1:1 Live Session</h5>
               <input
                 type="text"
@@ -234,7 +234,9 @@
               <input
                 type="text"
                 placeholder="Enter your message"
-                class="form-control mb-2"
+                class="form-control mb-2",
+                name="message"
+                
               />
 
               <button

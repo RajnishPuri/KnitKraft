@@ -4,6 +4,10 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var i18n = require("i18n-express");
+ require("./src/db/cons");
+
+
+
  
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
