@@ -376,10 +376,12 @@
             <h5 class="title mb-2">Request for Transport</h5>
             <div class="form-group basic">
               <div class="input-wrapper">
+                <input type="hidden" name="farmerId" value="43689564389" />
                 <label class="label" for="nameInput">Name</label>
                 <input
                   type="text"
                   id="nameInput"
+                  name="name"
                   class="form-control"
                   placeholder="Enter Name"
                 />
@@ -391,6 +393,7 @@
                 <input
                   type="email"
                   id="emailInput"
+                  name="email"
                   class="form-control"
                   placeholder="Enter Email"
                 />
@@ -402,6 +405,7 @@
                 <input
                   type="tel"
                   id="mobileInput"
+                  name="mobile"
                   class="form-control"
                   placeholder="Enter Phone Number"
                 />
@@ -413,6 +417,7 @@
                 <input
                   type="text"
                   id="addressInput"
+                  name="address"
                   class="form-control"
                   placeholder="Enter Address"
                 />
@@ -424,6 +429,7 @@
                 <input
                   type="number"
                   id="quantityInput"
+                  name="quantity"
                   class="form-control"
                   placeholder="Enter Quantity"
                 />
@@ -437,6 +443,7 @@
                 <input
                   type="text"
                   id="sourceAddressInput"
+                  name="sourceAddress"
                   class="form-control"
                   placeholder="Enter Source Address"
                 />
@@ -450,6 +457,7 @@
                 <input
                   type="text"
                   id="destAddressInput"
+                  name="destAddress"
                   class="form-control"
                   placeholder="Enter Destination Address"
                 />
@@ -478,6 +486,8 @@
                 style="margin: 0 auto"
                 data-bs-toggle="modal"
                 data-bs-target="#addCardActionSheet"
+                id="payBtn"
+                type="button"
               >
                 Pay
               </button>
@@ -494,7 +504,6 @@
       </div>
       <div class="wrapper">
         <div id="geocoder-container"></div>
-
         <div id="map"></div>
       </div>
       <hr />
@@ -523,21 +532,11 @@
         access-token="pk.eyJ1IjoibGVnaXRjb2RlciIsImEiOiJjbHEzczEwYmUwZmZxMnNxd3FwZWhjbzdmIn0.Jzm8D0cdCnrJrcInGe1p4Q"
         proximity="0,0"
       ></mapbox-search-box> -->
+      <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
       <script>
-        requestTransportForm.onsubmit = function (e) {
+        payBtn.onclick = function (e) {
           e.preventDefault();
           var amount = CHOOSED_TRANSPORT_PRICE;
-          FARMER_DETAILS = {
-            name: document.getElementById("nameInput").value,
-            email: document.getElementById("emailInput").value,
-            mobile: document.getElementById("mobileInput").value,
-            address: document.getElementById("addressInput").value,
-            quantity: document.getElementById("quantityInput").value,
-            sourceAddress: document.getElementById("sourceAddressInput").value,
-            destAddress: document.getElementById("destAddressInput").value,
-            vehicleType: document.getElementById("vehicleType").value,
-            amount: amount,
-          };
           myModal.style.display = "none";
           document.getElementById("calPrice").innerHTML = amount;
           document.getElementById("calPrice2").innerHTML = amount;
@@ -550,6 +549,24 @@
             enableHighAccuracy: true,
           }
         );
+        function submitRequestForm() {
+          var form = $("#requestTransportForm");
+          $.ajax({
+            type: "POST",
+            url: "http://localhost:4000/api/bookTransport",
+            data: form.serialize(), // serializes the form's elements.
+            success: function (data) {
+              console.log(data);
+              if (data.status == "success") {
+                FARMER_DETAILS = data.data;
+                notification("SUCCESS-NOTIFICATION", 3000);
+                successCall.click();
+              } else {
+                alert("Something went wrong");
+              }
+            },
+          });
+        }
         function successLocation(position) {
           setupMap([position.coords.longitude, position.coords.latitude]);
         }
@@ -897,15 +914,15 @@
                     >
                   </div>
                   <script>
-                    confirmBtn.addEventListener("click", function () {
+                    confirmBtn.addEventListener("click", function (e) {
+                      e.preventDefault();
                       if (walletPin.value == "1111") {
                         loader.setAttribute("style", "display: flex;");
                         loader.classList.add("service-loader");
                         setTimeout(function () {
                           loader.setAttribute("style", "display: none;");
-                          notification("SUCCESS-NOTIFICATION", 3000);
-                          successCall.click();
-                        }, 1500);
+                          submitRequestForm();
+                        }, 150);
                       } else {
                         loader.setAttribute("style", "display: flex;");
                         loader.classList.add("service-loader");

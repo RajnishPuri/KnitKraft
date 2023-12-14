@@ -67,6 +67,7 @@
       #appCapsule {
         min-height: 100vh;
       }
+
       .modal {
         display: none;
         position: fixed;
@@ -82,6 +83,7 @@
         background-color: rgb(0, 0, 0);
         background-color: rgba(0, 0, 0, 0.4);
       }
+
       .modal-content {
         background-color: #fefefe;
         margin: 15% auto;
@@ -91,6 +93,7 @@
         text-align: center;
         position: relative;
       }
+
       .pininp {
         font-size: 0.8em !important;
       }
@@ -192,26 +195,35 @@
           Request 1:1 Live Session
         </button>
 
+        <div class="section mt-2 mb-2">
+          <div class="section-title">All Your Meetings</div>
+          <div class="table-responsive">
+            <div class="container" id="allMeetings"></div>
+          </div>
+        </div>
+
         <!-- Create a model popup box -->
 
         <div id="myModal" class="modal" style="z-index: 100">
           <!-- Modal content -->
           <div class="modal-content">
             <!-- <span class="close">&times;</span> -->
-            <form>
+            <form id="bookMeetForm">
               <h5 class="title mb-2">Request 1:1 Live Session</h5>
+              <input type="hidden" name="farmerId" value="43689564389" />
               <input
                 type="text"
                 id="name"
+                name="name"
                 placeholder="Enter your name"
                 class="form-control mb-2"
               />
-              <select class="form-control mb-2">
-                <option value="1">Select Your Topic</option>
-                <option value="2">Farming</option>
-                <option value="3">Shipping</option>
-                <option value="4">Shearing</option>
-                <option value="5">Bread Detection</option>
+              <select class="form-control mb-2" name="topic">
+                <option disabled selected>Select Topic</option>
+                <option value="Farming">Farming</option>
+                <option value="Sheep Breeding">Sheep Breeding</option>
+                <option value="Wool Processing">Wool Processing</option>
+                <option value="Wool Marketing">Wool Marketing</option>
               </select>
               <div>
                 <!-- <label for="date">Select Date</label> -->
@@ -220,6 +232,7 @@
                   id="date"
                   class="form-control mb-2"
                   value="2022-12-21"
+                  name="date"
                 />
               </div>
               <div>
@@ -227,22 +240,33 @@
                 <input
                   type="time"
                   id="time"
+                  name="time"
                   class="form-control mb-2"
                   value="13:45"
                 />
               </div>
               <input
                 type="text"
+                name="message"
                 placeholder="Enter your message"
                 class="form-control mb-2"
               />
 
               <button
-                type="button"
+                type="submit"
                 class="btn btn-block btn-primary btn-lg mb-2"
                 style="max-width: 200px"
+                id="bookMeetBtn"
               >
                 Book 1:1 Session
+              </button>
+              <button
+                type="button"
+                class="btn btn-block btn-secondary btn-lg"
+                style="max-width: 200px"
+                onclick="document.getElementById('myModal').style.display = 'none'"
+              >
+                Cancel
               </button>
             </form>
           </div>
@@ -257,14 +281,6 @@
 
           // Get the button that opens the modal
           var btn = document.getElementById("myBtn");
-
-          // Get the <span> element that closes the modal
-          var span = document.getElementsByClassName("close")[0];
-
-          // When the user clicks on <span> (x), close the modal
-          span.onclick = function () {
-            modal.style.display = "none";
-          };
 
           // When the user clicks anywhere outside of the modal, close it
           window.onclick = function (event) {
@@ -432,6 +448,8 @@
                         setTimeout(function () {
                           loader.setAttribute("style", "display: none;");
                           notification("SUCCESS-NOTIFICATION", 3000);
+                          document.getElementById("myModal").style.display =
+                            "flex";
                         }, 1500);
                       } else {
                         loader.setAttribute("style", "display: flex;");
@@ -454,34 +472,35 @@
 
     <!-- App Bottom Menu -->
     <div class="appBottomMenu">
-      <a href="../index.html" class="item active">
+      <a href="../index.html" class="item">
         <div class="col">
           <ion-icon name="pie-chart-outline"></ion-icon>
           <strong>Overview</strong>
         </div>
       </a>
-      <a href="app-pages.html" class="item">
-        <div class="col">
-          <ion-icon name="document-text-outline"></ion-icon>
-          <strong>Pages</strong>
-        </div>
-      </a>
-      <a href="app-components.html" class="item">
-        <div class="col">
-          <ion-icon name="apps-outline"></ion-icon>
-          <strong>Components</strong>
-        </div>
-      </a>
-      <a href="app-cards.html" class="item">
+      <a href="../Woolkart" class="item">
         <div class="col">
           <ion-icon name="card-outline"></ion-icon>
-          <strong>My Cards</strong>
+          <strong>WoolKart</strong>
         </div>
       </a>
-      <a href="app-settings.html" class="item">
+      <a href="../Learning" class="item active">
+        <div class="col">
+          <ion-icon name="apps-outline"></ion-icon>
+          <strong>Learnings</strong>
+        </div>
+      </a>
+
+      <a href="../Services" class="item">
+        <div class="col">
+          <ion-icon name="document-text-outline"></ion-icon>
+          <strong>Services</strong>
+        </div>
+      </a>
+      <a href="../Statistics" class="item">
         <div class="col">
           <ion-icon name="settings-outline"></ion-icon>
-          <strong>Settings</strong>
+          <strong>Statistics</strong>
         </div>
       </a>
     </div>
@@ -497,12 +516,104 @@
     ></script>
     <!-- Splide -->
     <script src="../assets/js/plugins/splide/splide.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <!-- Apex Charts -->
     <script src="../assets/js/plugins/apexcharts/apexcharts.min.js"></script>
     <!-- Base Js File -->
     <script src="../assets/js/base.js"></script>
 
     <script>
+      var allMeetings = document.getElementById("allMeetings");
+
+      $.getJSON("http://localhost:4000/api/getMeetings", function (data) {
+        var allMeetings = "";
+        if (data.status == "success") {
+          data = data.meetings;
+          $.each(data, function (key, value) {
+            console.log(value);
+            key = value;
+            if (key.farmerId == "43689564389")
+              allMeetings += `
+                <div class="row ">
+                            <div class="col-md-6">
+                                <div class="card mb-3 p-2">
+                                    <div class="card-body">
+                                        <h6 class="card-subtitle mb-2 text-muted">Topic Name: ${
+                                          key.topic
+                                        }</h6>
+                                        <p class="card-text">Date: ${
+                                          key.date
+                                        }</p>
+                                        <p class="card-text">Time: ${
+                                          key.time
+                                        }</p>
+                                        <p class="card-text">Description: ${
+                                          key.message
+                                        }</p>
+                                        <p class="card-text badge
+                                        ${
+                                          key.status == "Pending" ||
+                                          key.status == "reject"
+                                            ? "bg-warning"
+                                            : "bg-success"
+                                        }">Status: ${key.status}</p>
+                                        <td>
+                                          ${
+                                            key.response
+                                              ? `<p class="card-text">Response: ${key.response}</p>`
+                                              : ""
+                                          }
+                                          </td>
+                                    </div>
+                                    <button onclick="deleteMeeting('${
+                                      key._id
+                                    }')" class="btn btn-danger" >Remove</button>
+                                </div>
+                            </div>
+                </div>
+                `;
+          });
+        } else allMeetings = "No Meetings Found";
+        $("#allMeetings").append(allMeetings);
+      });
+
+      function deleteMeeting(id) {
+        $.ajax({
+          type: "POST",
+          url: "http://localhost:4000/api/deleteMeet",
+          data: { id: id },
+          success: function (data) {
+            console.log(data);
+            if (data.status == "success") {
+              alert("Meeting Deleted");
+              location.reload();
+            } else {
+              alert("There is some error");
+            }
+          },
+        });
+      }
+
+      $(document).ready(function () {
+        $("#bookMeetForm").submit(function (e) {
+          e.preventDefault();
+          var form = $(this);
+          var url = form.attr("action");
+          $.ajax({
+            type: "POST",
+            url: "http://localhost:4000/api/bookMeet",
+            data: form.serialize(),
+            success: function (data) {
+              console.log(data);
+              if (data.status == "success") {
+                $("#myModal").css("display", "none");
+              } else {
+                alert("There is some error");
+              }
+            },
+          });
+        });
+      });
       var sparklineAreaExampleSuccess1 = {
         series: [
           {

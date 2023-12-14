@@ -10,45 +10,69 @@ router.get('/index.html', function (req, res) {
   res.render('index');
 });
 
-router.get('/Woolkart', function (req, res) {
-  res.render('Woolkart/index');
-});
-router.get('/Woolkart/:path', function (req, res) {
-  res.render('Woolkart/' + req.params.path.replace('.html', ''));
-});
-
-router.get('/Learning', function (req, res) {
-  res.render('Learning/index');
-});
-router.get('/Learning/:path', function (req, res) {
-  res.render('Learning/' + req.params.path.replace('.html', ''));
+// input
+router.get('/input/:path?', function (req, res) {
+  
+  const path = req.params.path || 'index';
+  res.render('input/' + path.replace('.html', ''));
 });
 
-router.get('/Services', function (req, res) {
-  res.render('Services/index');
+// Learning
+router.get('/Learning/:path?', function (req, res) {
+  const path = req.params.path || 'index';
+  res.render('Learning/' + path.replace('.html', ''));
 });
 
-
-router.get('/Services/:path', function (req, res) {
-  res.render('Services/' + req.params.path.replace('.html', ''));
+//overview
+router.get('/overview/:path?', function (req, res) {
+  const path = req.params.path || 'index';
+  res.render('overview/' + path.replace('.html', ''));
 });
 
-//Statistics
-router.get('/Statistics', function (req, res) {
-  res.render('Statistics/index');
+//pages
+router.get('/Pages/:path?', function (req, res) {
+  const path = req.params.path || 'index';
+  res.render('Pages/' + path.replace('.html', ''));
 });
 
+//statistics
 
-
-
-//add video
-router.get('/overview/profile.html', function (req, res) {
-  res.render('overview/profile');
+router.get('/Statistics/:path?', function (req, res) {
+  const path = req.params.path || 'index';
+  res.render('Statistics/' + path.replace('.html', ''));
 });
+
+//services
+router.get('/Services/:path?', function (req, res) {
+  const path = req.params.path || 'index';
+  res.render('Services/' + path.replace('.html', ''));
+});
+
+//table
+router.get('/table/:path?', function (req, res) {
+  const path = req.params.path || 'index';
+  res.render('table/' + path.replace('.html', ''));
+});
+
+//teacher
+router.get("/teacher/:path?", function (req, res) {
+  const path = req.params.path || "index";
+  res.render("teacher/" + path.replace(".html", ""));
+});
+
+// Wollkart
+router.get('/Woolkart/:path?', function (req, res) {
+  const path = req.params.path || 'index';
+  res.render('Woolkart/' + path.replace('.html', ''));
+});
+
 router.get('/app-notifications.html', function (req, res) {
   res.render('app-notifications');
 });
 router.get('/app-profile.html', function (req, res) {
   res.render('app-profile');
 });
+
+
+
 module.exports = router;
