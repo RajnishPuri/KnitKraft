@@ -68,24 +68,8 @@
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>John Doe</td>
-                                <td>johndoe@example.com</td>
-                                <td>+1234567890</td>
-                                <td>State: California<br>City: Los Angeles<br>Country: USA<br>Pincode: 12345</td>
-                                <td>5</td>
-                                <td>Source Address Example</td>
-                                <td>Destination Address Example</td>
-                                <td>Yes</td>
-                                <td>
-                                    <!-- tracking buttion  -->
-                                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#trackingModal">Progress</button>
-
-                                    <!-- * tracking buttion  -->
-
-                            </tr>
+                        <tbody id="transportData">
+                            
                             <!-- Add more rows for additional orders -->
                         </tbody>
                     </table>
@@ -172,6 +156,54 @@
 
 <!-- Bootstrap JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $.getJSON("http://localhost:4000/api/getTransports", function(data) {
+        var transportData = '';
+        if(data.status == "success") {
+            data = data.transport;
+        }else{
+            data = [];
+        }
+        if(data.length == 0) {
+            transportData += `
+            <tr>
+                                <td colspan="10" class="text-center">No Data Found</td>
+                            </tr>
+            `;
+        }else{
+
+        $.each(data, function(key, value) {
+            transportData += `
+            <tr>
+                                <td>1</td>
+                                <td>${
+                                    value.name
+                                }</td>
+                                <td>
+                                    ${
+                                        value.email
+                                    }
+                                    </td>
+                                <td>
+                                    ${
+                                        value.mobile
+                                    }
+                                    </td>
+                                <td>State: California<br>City: Los Angeles<br>Country: USA<br>Pincode: 12345</td>
+                                <td>5</td>
+                                <td>Source Address Example</td>
+                                <td>Destination Address Example</td>
+                                <td>Yes</td>
+                                <td>
+                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#trackingModal">Progress</button>
+                            </tr>
+            `;
+        });
+    }
+        $('#transportData').append(transportData);
+    });
+</script>
 
 <script>
     // Function to toggle checkmark when "Mark as Done" button is clicked

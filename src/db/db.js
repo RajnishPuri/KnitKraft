@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect( 'mongodb+srv://krishna:krishna@krishna.ycyvltx.mongodb.net/app',{ useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect( 'mongodb+srv://admin123:admin@cluster0.strys4u.mongodb.net/KnitKraft?retryWrites=true&w=majority',{ useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Connected to database!');
   })

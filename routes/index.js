@@ -61,7 +61,7 @@ router.get("/teacher/:path?", function (req, res) {
 });
 
 // Wollkart
-router.render('/Woolkart/:path?', function (req, res) {
+router.get('/Woolkart/:path?', function (req, res) {
   const path = req.params.path || 'index';
   res.render('Woolkart/' + path.replace('.html', ''));
 });
