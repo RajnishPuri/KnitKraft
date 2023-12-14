@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="theme-color" content="#000000" />
+    <title>Finapp</title>
+    <meta name="description" content="Finapp HTML Mobile Template" />
+    <meta
+      name="keywords"
+      content="bootstrap, wallet, banking, fintech mobile template, cordova, phonegap, mobile, html, responsive"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../assets/img/favicon.png"
+      sizes="32x32"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../assets/img/icon/192x192.png"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="manifest" href="../__manifest.json" />
+  </head>
+
+  <body>
+    <!-- loader -->
+    <div id="loader">
+      <img
+        src="../assets/img/loading-icon.png"
+        alt="icon"
+        class="loading-icon"
+      />
+    </div>
+    <!-- * loader -->
+
+    <!-- App Header -->
+    <div class="appHeader">
+      <div class="left">
+        <a href="#" class="headerButton goBack">
+          <ion-icon name="chevron-back-outline"></ion-icon>
+        </a>
+      </div>
+      <div class="pageTitle">My Orders</div>
+      <div class="right"></div>
+    </div>
+    <!-- * App Header -->
+
+    <!-- App Capsule -->
+    <script>
+      var PAYMENTS = [
+        {
+          date: "2021-09-01",
+          amount: 1000,
+          type: "Credit",
+          description: "Learning Meet",
+          isTrackable: false,
+        },
+        {
+          date: "2021-09-02",
+          amount: 1000,
+          type: "Credit",
+          description: "Transportation",
+          isTrackable: true,
+          progress: [
+            {
+              name: "Payment Initiated",
+              date: "2021-09-02",
+              isCompleted: true,
+            },
+            {
+              name: "Item Picked",
+              date: "2021-09-03",
+              isCompleted: true,
+            },
+            {
+              name: "Item Delivered",
+              date: "2021-09-04",
+              isCompleted: false,
+            },
+          ],
+        },
+        {
+          date: "2021-09-03",
+          amount: 1000,
+          type: "Credit",
+          description: "Buy",
+          isTrackable: true,
+          progress: [
+            {
+              name: "Payment Initiated",
+              date: "2021-09-02",
+              isCompleted: true,
+            },
+            {
+              name: "Item Picked",
+              date: "2021-09-03",
+              isCompleted: true,
+            },
+            {
+              name: "Item Delivered",
+              date: "2021-09-04",
+              isCompleted: false,
+            },
+          ],
+        },
+      ];
+    </script>
+    <div id="appCapsule">
+      <div class="listview-title mt-1">Recent Orders</div>
+      <div class="listview image-listview inset" id="ORDERS"></div>
+    </div>
+
+    <script>
+      PAYMENTS.forEach((payment, index) => {
+        let html = `
+        <div class="accordion-item">
+            <h2
+              class="accordion-header"
+              style="display: flex; align-items: center;"
+            >
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#accordion00${index}"
+              >
+                <div class="item">
+                    <div>
+                        <div class="subtitle">${payment.description}</div>
+                      <div class="title">${payment.date}</div>
+                    </div>
+                </div>
+              </button>
+            </h2>
+            <div
+              id="accordion00${index}"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample${index}"
+            >
+              <div class="accordion-body">
+                <div>
+                    <strong>Amount: </strong> ${payment.amount} <br />
+                    <strong>Type: </strong> ${payment.type} <br />
+                </div>
+
+                ${
+                  payment.isTrackable
+                    ? `
+                <div class="row">
+                  <div class="col-12">
+                    <div class="title">
+                        <div class="timeline timed ms-1 me-2">
+                        ${payment.progress
+                          .map(
+                            (progress) => `
+                            <div class="item">
+                                <span class="time">${progress.date}</span>
+                                <div class="dot ${
+                                  progress.isCompleted
+                                    ? "bg-primary"
+                                    : "bg-danger"
+                                }"></div>
+                                <div class="content">
+                                    <h4 class="title">${progress.name}</h4>
+                                </div>
+                        `
+                          )
+                          .join("")}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                `
+                    : ""
+                }
+              </div>
+            </div> 
+          </div>
+            `;
+        ORDERS.innerHTML += html;
+      });
+    </script>
+    <!-- App Capsule -->
+    <!-- 
+
+    <div class="timeline timed ms-1 me-2">
+
+                    <div class="item">
+                        <span class="time">02:40 PM</span>
+                        <div class="dot bg-primary"></div>
+                        <div class="content">
+                            <h4 class="title">Payment sent</h4>
+                            <div class="text">You sent $50 to John</div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <span class="time">09:00 PM</span>
+                        <div class="dot"></div>
+                        <div class="content">
+                            <h4 class="title">KYC Documents</h4>
+                            <div class="text">Your ID has been approved.</div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <span class="time">02:40 AM</span>
+                        <div class="dot bg-info"></div>
+                        <div class="content">
+                            <h4 class="title">Your card has been added</h4>
+                            <div class="text">*** 5039</div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <span class="time">06:24 PM</span>
+                        <div class="dot bg-danger"></div>
+                        <div class="content">
+                            <h4 class="title">Friend Requests</h4>
+                            <div class="text">
+                                <img src="assets/img/sample/avatar/avatar4.jpg" alt="avatar" class="imaged w24 rounded">
+                                <img src="assets/img/sample/avatar/avatar5.jpg" alt="avatar" class="imaged w24 rounded">
+                                <img src="assets/img/sample/avatar/avatar6.jpg" alt="avatar" class="imaged w24 rounded">
+                                <img src="assets/img/sample/avatar/avatar7.jpg" alt="avatar" class="imaged w24 rounded">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+ -->
+    <!-- App Bottom Menu -->
+    <div class="appBottomMenu">
+      <a href="../index.html" class="item">
+        <div class="col">
+          <ion-icon name="pie-chart-outline"></ion-icon>
+          <strong>Overview</strong>
+        </div>
+      </a>
+      <a href="../Woolkart" class="item">
+        <div class="col">
+          <ion-icon name="card-outline"></ion-icon>
+          <strong>WoolKart</strong>
+        </div>
+      </a>
+      <a href="../Learning" class="item">
+        <div class="col">
+          <ion-icon name="apps-outline"></ion-icon>
+          <strong>Learnings</strong>
+        </div>
+      </a>
+
+      <a href="../Services" class="item">
+        <div class="col">
+          <ion-icon name="document-text-outline"></ion-icon>
+          <strong>Services</strong>
+        </div>
+      </a>
+      <a href="../Statistics" class="item">
+        <div class="col">
+          <ion-icon name="settings-outline"></ion-icon>
+          <strong>Statistics</strong>
+        </div>
+      </a>
+    </div>
+    <!-- * App Bottom Menu -->
+
+    <!-- ========= JS Files =========  -->
+    <!-- Bootstrap -->
+    <script src="../assets/js/lib/bootstrap.bundle.min.js"></script>
+    <!-- Ionicons -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <!-- Splide -->
+    <script src="../assets/js/plugins/splide/splide.min.js"></script>
+    <!-- Base Js File -->
+    <script src="../assets/js/base.js"></script>
+  </body>
+</html>
