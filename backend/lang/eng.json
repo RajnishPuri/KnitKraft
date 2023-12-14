@@ -1,0 +1,51 @@
+{
+    "WELCOME_MSG": "Hello! Welcome!",
+    "CONTACT_TEXT": "More information",
+    "wallet": {
+      "Total_Balance": "Total Balance",
+      "Withdraw": "Withdraw",
+      "Send": "Send",
+      "Cards": "Cards",
+      "Exchange": "Exchange"
+    },
+    "modal": {
+      "Add_Balance": "Add Balance",
+      "Deposit": "Deposit",
+      "Withdraw_Money": "Withdraw Money",
+      "From": "From",
+      "To": "To",
+      "Savings": "Savings (*** 5019)",
+      "Investment": "Investment (*** 6212)",
+      "Mortgage": "Mortgage (*** 5021)",
+      "Enter_Amount": "Enter Amount",
+      "Enter_IBAN": "Enter IBAN",
+      "Enter_Bank_ID": "Enter Bank ID",
+      "Withdraw": "Withdraw",
+      "Send": "Send",
+      "Exchange_Money": "Exchange Money",
+    
+      "EUR": "EUR",
+      "USD": "USD",
+      "AUD": "AUD",
+      "CAD": "CAD",
+    
+      "Exchange": "Exchange"
+    },
+    "FarmServices": "Farm Services",
+    "SheepBreedingServices": "Sheep Breeding Services",
+    "WoolHarvestingShearingServices": "Wool Harvesting and Shearing Services",
+    "FodderNutritionServices": "Fodder and Nutrition Services",
+    "VeterinaryServices": "Veterinary Services",
+    "QualityServices": "Quality Services",
+    "WoolGrading": "Wool Grading",
+    "FarmEquipmentSuppliers": "Farm Equipment Suppliers",
+    "WarehouseServices": "Warehouse Services",
+    "WareHouseServices": "WareHouse Services",
+    "WoolProcessingServices": "Wool Processing Services",
+    "TransportationServices": "Transportation Services",
+    "EnvironmentalConsulting": "Environmental Consulting",
+    "FinancialServices": "Financial Services",
+    "InsuranceServices": "Insurance Services",
+    "FinancialAndLegalServices": "Financial and Legal Services"
+  }
+  
