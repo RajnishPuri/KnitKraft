@@ -8,7 +8,7 @@ var i18n = require("i18n-express");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var api = require("./routes/api");
-var db = require("./src/db/db");
+ require("./src/db/db");
 
 
  

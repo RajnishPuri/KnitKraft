@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect( 'mongodb+srv://admin123:admin@cluster0.strys4u.mongodb.net/KnitKraft?retryWrites=true&w=majority',{ useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect( 'mongodb+srv://admin123:admin@cluster0.strys4u.mongodb.net/KnitKraft?retryWrites=true&w=majority',)
   .then(() => {
     console.log('Connected to database!');
   })
@@ -9,4 +9,4 @@ mongoose.connect( 'mongodb+srv://admin123:admin@cluster0.strys4u.mongodb.net/Kni
     console.log(error);
   });
 
-module.exports = mongoose;
+// module.exports = mongoose;
