@@ -4,6 +4,7 @@ const Meeting = require('../models/Meeting');
 const Transport = require('../models/Transport');
 const mongoose = require('mongoose');
 const { json } = require('express');
+const Warehouse = require('../models/Warehouse');
 
 
 router.get('/', function (req, res) {
@@ -196,7 +197,6 @@ router.post("/deleteTransport", function (req, res) {
 );
 
 // WAREHOUSE API
-const Warehouse = require('../models/Warehouse');
 
 router.post("/bookWarehouse", function (req, res) {
     const warehouse = new Warehouse({
@@ -209,6 +209,7 @@ router.post("/bookWarehouse", function (req, res) {
         quantity: req.body.quantity,
         fromDate: req.body.fromDate,
         toDate: req.body.toDate,
+        woolType: req.body.woolType,
         status: "pending",
     });
     warehouse.save().then((result) => {
