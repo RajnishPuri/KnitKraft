@@ -106,6 +106,12 @@ router.post("/bookTransport", function (req, res) {
         sourceAddress: req.body.sourceAddress,
         destAddress: req.body.destAddress,
         vehicleType: req.body.vehicleType,
+        progress: {
+            initiated: true,
+            shipped: false,
+            outForDelivery: false,
+            delivered: false,
+        },
     });
     transport.save().then((result) => {
         console.log(result);
@@ -139,5 +145,50 @@ router.get("/getTransports", function (req, res) {
         });
     });
 });
-console.log("Api Is Working");
+
+router.post("/updateTransportProgress", function (req, res) {
+    var id = req.body.id;
+    var progress = req.body.progress;
+    console.log(progress, "progress");
+    Transport.findOneAndUpdate({ _id: id }, { $set: { progress: progress } }).then((result) => {
+        console.log(result);
+        res.status(201).json({
+            message: "Transport Updated Successfully",
+            transport: result,
+            status: "success",
+        });
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json({
+            error: err,
+            status: "failed",
+        });
+    });
+});
+
+router.post("/deleteTransport", function (req, res) {
+    var id = req.body.id;
+    Transport.findOneAndDelete({ _id: id }).then((result) => {
+        console.log(result);
+        res.status(201).json({
+            message: "Transport Deleted Successfully",
+            transport: result,
+            status: "success",
+        });
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json({
+            error: err,
+            status: "failed",
+        });
+    });
+
+}
+);
+
+
+
+
+
+console.log("http://localhost:4000");
 module.exports = router;
