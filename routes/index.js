@@ -93,9 +93,7 @@ router.post('/pages/app-register', async (req, res) => {
     });
     if (req.body.password !== req.body.passwordAgain) {
       return res.status(400).json({ message: 'Passwords do not match' });
-    }
-
-    
+    } 
 
     // Save the new user to the database
     const savedUser = await newUser.save();

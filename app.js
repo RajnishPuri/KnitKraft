@@ -32,7 +32,7 @@ app.use(
     siteLangs: ["eng", "hin"],
     textsVarName: "translation",
     browserEnable: true,
-    defaultLang: "hin",
+    defaultLang: "eng",
   })
 );
  
