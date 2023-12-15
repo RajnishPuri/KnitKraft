@@ -1,286 +1,518 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover"
+    />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#000000">
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="theme-color" content="#000000" />
     <title>Finapp</title>
-    <meta name="description" content="Finapp HTML Mobile Template">
-    <meta name="keywords"
-        content="bootstrap, wallet, banking, fintech mobile template, cordova, phonegap, mobile, html, responsive" />
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png" sizes="32x32">
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/icon/192x192.png">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <meta name="description" content="Finapp HTML Mobile Template" />
+    <meta
+      name="keywords"
+      content="bootstrap, wallet, banking, fintech mobile template, cordova, phonegap, mobile, html, responsive"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../assets/img/favicon.png"
+      sizes="32x32"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../assets/img/icon/192x192.png"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
     <!-- <link rel="manifest" href="__manifest.json"> -->
-</head>
+    <script>
+      var TRANSPORTATION = [];
+    </script>
+  </head>
 
-<body>
-
+  <body>
     <!-- loader -->
     <div id="loader">
-        <img src="../assets/img/loading-icon.png" alt="icon" class="loading-icon">
+      <img
+        src="../assets/img/loading-icon.png"
+        alt="icon"
+        class="loading-icon"
+      />
     </div>
     <!-- * loader -->
 
     <!-- App Header -->
     <div class="appHeader">
-        <div class="left">
-            <a href="#" class="headerButton goBack">
-                <ion-icon name="chevron-back-outline"></ion-icon>
-            </a>
-        </div>
-        <div class="pageTitle">Table</div>
+      <div class="left">
+        <a href="#" class="headerButton goBack">
+          <ion-icon name="chevron-back-outline"></ion-icon>
+        </a>
+      </div>
+      <div class="pageTitle">Table</div>
+      <div class="right">
         <div class="right">
-            <div class="right">
-                <a href="notification.html" class="headerButton">
-                    <ion-icon class="icon" name="notifications-outline"></ion-icon>
-                    <span class="badge badge-danger">4</span>
-                </a>
-            </div>
+          <a href="notification.html" class="headerButton">
+            <ion-icon class="icon" name="notifications-outline"></ion-icon>
+            <span class="badge badge-danger">4</span>
+          </a>
         </div>
+      </div>
     </div>
     <!-- * App Header -->
 
     <!-- App Capsule -->
     <div id="appCapsule">
-
-
-        <div class="section mt-2 mb-2">
-            <div class="section-title">Order Information</div>
-            <div class="card">
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Mobile</th>
-                                <th scope="col">Address</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Source Address</th>
-                                <th scope="col">Destination Address</th>
-                                <th scope="col">Paid</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="transportData">
-                            
-                            <!-- Add more rows for additional orders -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+      <div class="section mt-2 mb-2">
+        <div class="section-title">Order Information</div>
+        <div class="card">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Mobile</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Source Address</th>
+                  <th scope="col">Destination Address</th>
+                  <th scope="col">Vehicles</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody id="transportData">
+                <!-- Add more rows for additional orders -->
+              </tbody>
+            </table>
+          </div>
         </div>
+      </div>
 
-
-<!-- Tracking Phases Modal -->
-<div class="modal fade" id="trackingModal" tabindex="-1" aria-labelledby="trackingModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
+      <!-- Tracking Phases Modal -->
+      <div
+        class="modal fade"
+        id="trackingModal"
+        tabindex="-1"
+        aria-labelledby="trackingModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="trackingModalLabel">Product Tracking Phases</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <h5 class="modal-title" id="trackingModalLabel">
+                Product Tracking Phases
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
             </div>
             <div class="modal-body">
-                <!-- Tracking phases content -->
-                <div class="timeline">
+              <!-- Tracking phases content -->
+              <div class="timeline" id="progressTimeLine">
+                <div class="item">
+                  <div class="dot bg-primary"></div>
+                  <div class="content">
+                    <h4 class="title">Initiated</h4>
+                    <div class="text">Order has been initiated</div>
+                    <button
+                      class="btn btn-sm btn-success mt-2"
+                      onclick="toggleCheck('phase1')"
+                    >
+                      Mark as Done
+                    </button>
+                    <span
+                      id="checkPhase1"
+                      class="text-success ms-2"
+                      style="display: none"
+                    >
+                      <i class="bi bi-check"></i>
+                      <!-- Bootstrap Icon for Checkmark -->
+                      <!-- Replace with your own checkmark icon or text -->
+                    </span>
+                    <div
+                      class="phase-details"
+                      id="phase1Details"
+                      style="display: none"
+                    >
+                      <!-- Detailed progress tracking for Phase 1 -->
+                      <p>
+                        Your order has been initiated and is being processed.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- Add more phases following a similar structure -->
+                <div class="item">
+                  <div class="dot"></div>
+                  <div class="content">
+                    <h4 class="title">shipped</h4>
+                    <div class="text">
+                      Order has been shipped and is on the way
+                    </div>
+                    <button
+                      class="btn btn-sm btn-success mt-2"
+                      onclick="toggleCheck('phase2')"
+                    >
+                      Mark as Done
+                    </button>
+                    <span
+                      id="checkPhase2"
+                      class="text-success ms-2"
+                      style="display: none"
+                    >
+                      <i class="bi bi-check"></i>
+                    </span>
+                    <div
+                      class="phase-details"
+                      id="phase2Details"
+                      style="display: none"
+                    >
+                      <p>Your order has been shipped and is on the way.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="dot bg-info"></div>
+                  <div class="content">
+                    <h4 class="title">Out for Delivery</h4>
+                    <div class="text">Order is out for delivery</div>
+                    <button
+                      class="btn btn-sm btn-success mt-2"
+                      onclick="toggleCheck('phase3')"
+                    >
+                      Mark as Done
+                    </button>
+                    <span
+                      id="checkPhase3"
+                      class="text-success ms-2"
+                      style="display: none"
+                    >
+                      <i class="bi bi-check"></i>
+                    </span>
+                    <div
+                      class="phase-details"
+                      id="phase3Details"
+                      style="display: none"
+                    >
+                      <p>Your order is out for delivery.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="dot bg-danger"></div>
+                  <div class="content">
+                    <h4 class="title">Delivered</h4>
+                    <div class="text">Order has been delivered</div>
+                    <button
+                      class="btn btn-sm btn-success mt-2"
+                      onclick="toggleCheck('phase4')"
+                    >
+                      Mark as Done
+                    </button>
+                    <span
+                      id="checkPhase4"
+                      class="text-success ms-2"
+                      style="display: none"
+                    >
+                      <i class="bi bi-check"></i>
+                    </span>
+                    <div
+                      class="phase-details"
+                      id="phase4Details"
+                      style="display: none"
+                    >
+                      <p>Your order has been delivered.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a
+        data-bs-toggle="modal"
+        data-bs-target="#trackingModal"
+        id="progressTimeLineOpenBtn"
+        style="display: none"
+      ></a>
+    </div>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $.getJSON("http://localhost:4000/api/getTransports", function (data) {
+        var transportData = "";
+        if (data.status == "success") {
+          data = data.transport;
+        } else {
+          data = [];
+        }
+        TRANSPORTATION = data;
+        if (data.length == 0) {
+          transportData += `
+            <tr>
+                                <td colspan="10" class="text-center">No Data Found</td>
+                            </tr>
+            `;
+        } else {
+          $.each(data, function (key, value) {
+            transportData += `
+            <tr>
+                                <td>1</td>
+                                <td>${value.name}</td>
+                                <td>
+                                    ${value.email}
+                                    </td>
+                                <td>
+                                    ${value.mobile}
+                                    </td>
+                                <td>
+                                        {
+                                        value.address
+                                        }
+                                    </td>
+                                <td>
+                                    ${value.quantity}
+                                    </td>
+                                <td>${value.sourceAddress}</td>
+                                <td>${value.destAddress}</td>
+                                <td>${value.vehicleType}</td>
+                                <td>
+                                <button class="btn btn-sm btn-primary" onclick="openProgressTimeline(${key})">Progress</button>
+                            </tr>
+            `;
+          });
+        }
+        $("#transportData").append(transportData);
+      });
+
+      function openProgressTimeline(i) {
+        console.log(TRANSPORTATION[i]);
+        progressTimeLine.innerHTML = `
                     <div class="item">
-                        <div class="dot bg-primary"></div>
+                        <div class="dot ${
+                          TRANSPORTATION[i].progress?.initiated
+                            ? "bg-primary"
+                            : ""
+                        }"></div>
                         <div class="content">
-                            <h4 class="title">Phase 1</h4>
-                            <div class="text">Description of Phase 1</div>
-                            <button class="btn btn-sm btn-success mt-2" onclick="toggleCheck('phase1')">Mark as Done</button>
+                            <h4 class="title">
+                                Initiated
+                            </h4>
+                            <div class="text">
+                                Order has been initiated
+                            </div>
+                            <button class="btn btn-sm btn-success mt-2" onclick="updateProgress(${i}, 'initiated');">Mark as Done</button>
                             <span id="checkPhase1" class="text-success ms-2" style="display: none;">
                                 <i class="bi bi-check"></i> <!-- Bootstrap Icon for Checkmark -->
                                 <!-- Replace with your own checkmark icon or text -->
                             </span>
                             <div class="phase-details" id="phase1Details" style="display: none;">
                                 <!-- Detailed progress tracking for Phase 1 -->
-                                <p>Detailed progress tracking for Phase 1...</p>
+                                <p>
+                                    Your order has been initiated and is being processed.
+                                </p>
                             </div>
                         </div>
                     </div>
                     <!-- Add more phases following a similar structure -->
                     <div class="item">
-                        <div class="dot"></div>
+                        <div class="dot ${
+                          TRANSPORTATION[i].progress?.shipped ? "" : ""
+                        }"></div>
                         <div class="content">
-                            <h4 class="title">Phase 2</h4>
-                            <div class="text">Description of Phase 2</div>
-                            <button class="btn btn-sm btn-success mt-2" onclick="toggleCheck('phase2')">Mark as Done</button>
+                            <h4 class="title">
+                                shipped
+                            </h4>
+                            <div class="text">
+                                Order has been shipped and is on the way
+                            </div>
+                            <button class="btn btn-sm btn-success mt-2" onclick="updateProgress(${i}, 'shipped');">Mark as Done</button>
                             <span id="checkPhase2" class="text-success ms-2" style="display: none;">
                                 <i class="bi bi-check"></i>
                             </span>
                             <div class="phase-details" id="phase2Details" style="display: none;">
-                                <p>Detailed progress tracking for Phase 2...</p>
+                                <p>
+                                    Your order has been shipped and is on the way.
+                                </p>
                             </div>
                         </div>
+
                     </div>
+
                     <div class="item">
-                        <div class="dot bg-info"></div>
+                        <div class="dot ${
+                          TRANSPORTATION[i].progress?.outForDelivery
+                            ? "bg-info"
+                            : ""
+                        }"></div>
                         <div class="content">
-                            <h4 class="title">Phase 3</h4>
-                            <div class="text">Description of Phase 3</div>
-                            <button class="btn btn-sm btn-success mt-2" onclick="toggleCheck('phase3')">Mark as Done</button>
+                            <h4 class="title">
+                                Out for Delivery
+                            </h4>
+                            <div class="text">
+                                Order is out for delivery
+                            </div>
+                            <button class="btn btn-sm btn-success mt-2" onclick="updateProgress(${i}, 'outForDelivery');">Mark as Done</button>
                             <span id="checkPhase3" class="text-success ms-2" style="display: none;">
                                 <i class="bi bi-check"></i>
                             </span>
                             <div class="phase-details" id="phase3Details" style="display: none;">
-                                <p>Detailed progress tracking for Phase 3...</p>
+                                <p>
+                                    Your order is out for delivery.
+                                </p>
                             </div>
                         </div>
                     </div>
+
                     <div class="item">
-                        <div class="dot bg-danger"></div>
+                        <div class="dot ${
+                          TRANSPORTATION[i].progress?.delivered
+                            ? "bg-danger"
+                            : ""
+                        }"></div>
                         <div class="content">
-                            <h4 class="title">Phase 4</h4>
-                            <div class="text">Description of Phase 4</div>
-                            <button class="btn btn-sm btn-success mt-2" onclick="toggleCheck('phase4')">Mark as Done</button>
+                            <h4 class="title">
+                                Delivered
+                            </h4>
+                            <div class="text">
+                                Order has been delivered
+                            </div>
+                            <button class="btn btn-sm btn-success mt-2" onclick="updateProgress(${i}, 'delivered');">Mark as Done</button>
                             <span id="checkPhase4" class="text-success ms-2" style="display: none;">
                                 <i class="bi bi-check"></i>
                             </span>
                             <div class="phase-details" id="phase4Details" style="display: none;">
-                                <p>Detailed progress tracking for Phase 4...</p>
+                                <p>
+                                    Your order has been delivered.
+                                </p>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- Bootstrap JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $.getJSON("http://localhost:4000/api/getTransports", function(data) {
-        var transportData = '';
-        if(data.status == "success") {
-            data = data.transport;
-        }else{
-            data = [];
-        }
-        if(data.length == 0) {
-            transportData += `
-            <tr>
-                                <td colspan="10" class="text-center">No Data Found</td>
-                            </tr>
-            `;
-        }else{
 
-        $.each(data, function(key, value) {
-            transportData += `
-            <tr>
-                                <td>1</td>
-                                <td>${
-                                    value.name
-                                }</td>
-                                <td>
-                                    ${
-                                        value.email
-                                    }
-                                    </td>
-                                <td>
-                                    ${
-                                        value.mobile
-                                    }
-                                    </td>
-                                <td>State: California<br>City: Los Angeles<br>Country: USA<br>Pincode: 12345</td>
-                                <td>5</td>
-                                <td>Source Address Example</td>
-                                <td>Destination Address Example</td>
-                                <td>Yes</td>
-                                <td>
-                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#trackingModal">Progress</button>
-                            </tr>
-            `;
-        });
-    }
-        $('#transportData').append(transportData);
-    });
-</script>
 
-<script>
-    // Function to toggle checkmark when "Mark as Done" button is clicked
-    function toggleCheck(phase) {
+        `;
+
+        progressTimeLineOpenBtn.click();
+      }
+
+      function updateProgress(i, phase) {
+        var progress = TRANSPORTATION[i].progress;
+        progress[phase] = true;
+        var data = {
+          id: TRANSPORTATION[i]._id,
+          progress: {
+            initiated: true,
+            shipped: false,
+            outForDelivery: false,
+            delivered: false,
+          },
+        };
+        console.log(data);
+        console.log(progress);
+        $.post(
+          "http://localhost:4000/api/updateTransportProgress",
+          data,
+          function (data) {
+            console.log(data);
+            if (data.status == "success") {
+              alert("Progress Updated");
+              window.location.reload();
+            } else {
+              alert("Something went wrong");
+            }
+          }
+        );
+      }
+    </script>
+
+    <script>
+      // Function to toggle checkmark when "Mark as Done" button is clicked
+      function toggleCheck(phase) {
         const checkElement = document.getElementById(`check${phase}`);
-        if (checkElement.style.display === 'none') {
-            checkElement.style.display = 'inline-block';
+        if (checkElement.style.display === "none") {
+          checkElement.style.display = "inline-block";
         } else {
-            checkElement.style.display = 'none';
+          checkElement.style.display = "none";
         }
-    }
-</script>
-<script>
-    // Function to toggle between Mark as Done and Completed
-    function toggleCompletion(phase) {
+      }
+    </script>
+    <script>
+      // Function to toggle between Mark as Done and Completed
+      function toggleCompletion(phase) {
         const button = document.getElementById(`button${phase}`);
-        if (button.innerText === 'Mark as Done') {
-            button.innerText = 'Completed';
-            button.classList.remove('btn-success');
-            button.classList.add('btn-secondary');
-        } else if (button.innerText === 'Completed') {
-            button.innerText = 'Mark as Done';
-            button.classList.remove('btn-secondary');
-            button.classList.add('btn-success');
+        if (button.innerText === "Mark as Done") {
+          button.innerText = "Completed";
+          button.classList.remove("btn-success");
+          button.classList.add("btn-secondary");
+        } else if (button.innerText === "Completed") {
+          button.innerText = "Mark as Done";
+          button.classList.remove("btn-secondary");
+          button.classList.add("btn-success");
         }
-    }
-</script>
-<!-- Bootstrap JavaScript -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+      }
+    </script>
+    <!-- Bootstrap JavaScript -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
 
-
-        <!-- App Bottom Menu -->
-        <div class="appBottomMenu">
-            <a href="index.html" class="item">
-                <div class="col">
-                    <ion-icon name="pie-chart-outline"></ion-icon>
-                    <strong>Overview</strong>
-                </div>
-            </a>
-            <a href="app-pages.html" class="item">
-                <div class="col">
-                    <ion-icon name="document-text-outline"></ion-icon>
-                    <strong>Pages</strong>
-                </div>
-            </a>
-            <a href="app-components.html" class="item">
-                <div class="col">
-                    <ion-icon name="apps-outline"></ion-icon>
-                    <strong>Components</strong>
-                </div>
-            </a>
-            <a href="app-cards.html" class="item">
-                <div class="col">
-                    <ion-icon name="card-outline"></ion-icon>
-                    <strong>My Cards</strong>
-                </div>
-            </a>
-            <a href="app-settings.html" class="item">
-                <div class="col">
-                    <ion-icon name="settings-outline"></ion-icon>
-                    <strong>Settings</strong>
-                </div>
-            </a>
+    <!-- App Bottom Menu -->
+    <div class="appBottomMenu">
+      <a href="index.html" class="item">
+        <div class="col">
+          <ion-icon name="pie-chart-outline"></ion-icon>
+          <strong>Overview</strong>
         </div>
-        <!-- * App Bottom Menu -->
+      </a>
+      <a href="app-pages.html" class="item">
+        <div class="col">
+          <ion-icon name="document-text-outline"></ion-icon>
+          <strong>Pages</strong>
+        </div>
+      </a>
+      <a href="app-components.html" class="item">
+        <div class="col">
+          <ion-icon name="apps-outline"></ion-icon>
+          <strong>Components</strong>
+        </div>
+      </a>
+      <a href="app-cards.html" class="item">
+        <div class="col">
+          <ion-icon name="card-outline"></ion-icon>
+          <strong>My Cards</strong>
+        </div>
+      </a>
+      <a href="app-settings.html" class="item">
+        <div class="col">
+          <ion-icon name="settings-outline"></ion-icon>
+          <strong>Settings</strong>
+        </div>
+      </a>
+    </div>
+    <!-- * App Bottom Menu -->
 
-
-        <!-- ========= JS Files =========  -->
-        <!-- Bootstrap -->
-        <script src="../assets/js/lib/bootstrap.bundle.min.js"></script>
-        <!-- Ionicons -->
-        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-        <!-- Splide -->
-        <script src="../assets/js/plugins/splide/splide.min.js"></script>
-        <!-- Base Js File -->
-        <script src="../assets/js/base.js"></script>
-
-</body>
-
+    <!-- ========= JS Files =========  -->
+    <!-- Bootstrap -->
+    <script src="../assets/js/lib/bootstrap.bundle.min.js"></script>
+    <!-- Ionicons -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <!-- Splide -->
+    <script src="../assets/js/plugins/splide/splide.min.js"></script>
+    <!-- Base Js File -->
+    <script src="../assets/js/base.js"></script>
+  </body>
 </html>
