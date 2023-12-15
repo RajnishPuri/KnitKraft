@@ -67,6 +67,12 @@ router.get('/Woolkart/:path?', function (req, res) {
   res.render('Woolkart/' + path.replace('.html', ''));
 });
 
+router.get('/warehouse/:path?', function (req, res) {
+  const path = req.params.path || 'index';
+  res.render('warehouse/' + path.replace('.html', ''));
+});
+
+
 router.get('/app-notifications.html', function (req, res) {
   res.render('app-notifications');
 });

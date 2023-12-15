@@ -162,12 +162,14 @@
             <h5 class="title mb-2">Request for WareHouse</h5>
             <div class="form-group basic">
               <div class="input-wrapper">
+                <input type="hidden" name="farmerId" value="43689564389" />
                 <label class="label" for="nameInput">Name</label>
                 <input
                   type="text"
                   id="nameInput"
                   class="form-control"
                   placeholder="Enter Name"
+                  name="name"
                 />
               </div>
             </div>
@@ -179,6 +181,7 @@
                   id="mobileInput"
                   class="form-control"
                   placeholder="Enter Phone Number"
+                  name="mobile"
                 />
               </div>
             </div>
@@ -190,6 +193,7 @@
                   id="emailInput"
                   class="form-control"
                   placeholder="Enter Email"
+                  name="email"
                 />
               </div>
             </div>
@@ -201,6 +205,7 @@
                   id="addressInput"
                   class="form-control"
                   placeholder="Enter Address"
+                  name="address"
                 />
               </div>
             </div>
@@ -212,6 +217,19 @@
                   id="quantityInput"
                   class="form-control"
                   placeholder="Enter Quantity"
+                  name="quantity"
+                />
+              </div>
+            </div>
+            <div class="form-group basic">
+              <div class="input-wrapper">
+                <label class="label" for="qualityInput">Weight</label>
+                <input
+                  type="text"
+                  id="qualityInput"
+                  class="form-control"
+                  placeholder="Enter Weight"
+                  name="quality"
                 />
               </div>
             </div>
@@ -223,6 +241,7 @@
                   id="fromDateInput"
                   class="form-control"
                   placeholder="Select From Date"
+                  name="fromDate"
                 />
               </div>
             </div>
@@ -234,6 +253,7 @@
                   id="toDateInput"
                   class="form-control"
                   placeholder="Select To Date"
+                  name="toDate"
                 />
               </div>
             </div>
@@ -244,6 +264,8 @@
                 style="margin: 0 auto"
                 data-bs-toggle="modal"
                 data-bs-target="#addCardActionSheet"
+                id="payBtn"
+                type="button"
               >
                 Pay
               </button>
@@ -289,8 +311,10 @@
         access-token="pk.eyJ1IjoibGVnaXRjb2RlciIsImEiOiJjbHEzczEwYmUwZmZxMnNxd3FwZWhjbzdmIn0.Jzm8D0cdCnrJrcInGe1p4Q"
         proximity="0,0"
       ></mapbox-search-box> -->
+
+      <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
       <script>
-        requestWareHouseForm.onsubmit = function (e) {
+        payBtn.onclick = function (e) {
           e.preventDefault();
           var fromDate = new Date(
             document.getElementById("fromDateInput").value
@@ -301,20 +325,27 @@
             days *
             document.getElementById("quantityInput").value *
             CHOOSED_WAREHOUSE_PRICE;
-          FARMER_DETAILS = {
-            name: document.getElementById("nameInput").value,
-            mobile: document.getElementById("mobileInput").value,
-            email: document.getElementById("emailInput").value,
-            address: document.getElementById("addressInput").value,
-            quantity: document.getElementById("quantityInput").value,
-            fromDate: document.getElementById("fromDateInput").value,
-            toDate: document.getElementById("toDateInput").value,
-            paid: amount,
-          };
           myModal.style.display = "none";
           document.getElementById("calPrice").innerHTML = amount;
           document.getElementById("calPrice2").innerHTML = amount;
         };
+
+        function submitRequestForm() {
+          var form = $("#requestWareHouseForm");
+          $.ajax({
+            type: "POST",
+            url: "http://localhost:4000/api/bookWarehouse",
+            data: form.serialize(), // serializes the form's elements.
+            success: function (data) {
+              console.log(data);
+              successCall.click();
+            },
+            error: function (err) {
+              console.log(err);
+              failCall.click();
+            },
+          });
+        }
         // get my current location
         navigator.geolocation.getCurrentPosition(
           successLocation,
@@ -620,7 +651,7 @@
                               class="accordion-header"
                               style="display: flex; align-items: center; margin-left: 3vw"
                             >
-                              
+
                               <button
                                 class="accordion-button collapsed"
                                 type="button"
@@ -649,7 +680,7 @@
                                 <strong>Email:</strong> ${warehouse.owner.email} <br>
                                 <strong>Price:</strong> ₹${warehouse.pricePerKGperDay}/kg/day <br>
                                 <strong>Description:</strong> ${warehouse.description} <br>
-                                
+
                                 <p style="text-align: center; margin-top: 1rem">
                                   <button class="btn btn-success btn-sm mb-2" style="margin: 0 auto;"
                                   onclick="CHOOSED_WAREHOUSE_PRICE = ${warehouse.pricePerKGperDay}; document.getElementById('myModal').style.display = 'flex';"
@@ -862,8 +893,7 @@
                         loader.classList.add("service-loader");
                         setTimeout(function () {
                           loader.setAttribute("style", "display: none;");
-                          notification("SUCCESS-NOTIFICATION", 3000);
-                          successCall.click();
+                          submitRequestForm();
                         }, 1500);
                       } else {
                         loader.setAttribute("style", "display: flex;");
