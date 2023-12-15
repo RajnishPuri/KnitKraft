@@ -107,7 +107,7 @@ router.post("/bookTransport", function (req, res) {
         destAddress: req.body.destAddress,
         vehicleType: req.body.vehicleType,
         progress: {
-            initiated: true,
+            initiated: false,
             shipped: false,
             outForDelivery: false,
             delivered: false,
@@ -146,25 +146,34 @@ router.get("/getTransports", function (req, res) {
     });
 });
 
-router.post("/updateTransportProgress", function (req, res) {
-    var id = req.body.id;
-    var progress = req.body.progress;
-    console.log(progress, "progress");
-    Transport.findOneAndUpdate({ _id: id }, { $set: { progress: progress } }).then((result) => {
+router.post("/updateTransportProgress", async function (req, res) {
+    try {
+        const id = req.body.id;
+        console.log(id, "id");
+        const progress = JSON.parse(req.body.progress);
+        const result = await Transport.findOneAndUpdate({ _id: id }, { $set: { progress: {
+            initiated: progress.initiated,
+            shipped: progress.shipped,
+            outForDelivery: progress.outForDelivery,
+            delivered: progress.delivered,
+        } } });
+
         console.log(result);
+
         res.status(201).json({
             message: "Transport Updated Successfully",
             transport: result,
             status: "success",
         });
-    }).catch((err) => {
-        console.log(err);
+    } catch (err) {
+        console.error(err);
         res.status(500).json({
-            error: err,
+            error: err.message,
             status: "failed",
         });
-    });
+    }
 });
+
 
 router.post("/deleteTransport", function (req, res) {
     var id = req.body.id;
@@ -185,6 +194,93 @@ router.post("/deleteTransport", function (req, res) {
 
 }
 );
+
+// WAREHOUSE API
+const Warehouse = require('../models/Warehouse');
+
+router.post("/bookWarehouse", function (req, res) {
+    const warehouse = new Warehouse({
+        _id: new mongoose.Types.ObjectId(),
+        farmerId: req.body.farmerId,
+        name: req.body.name,
+        mobile: req.body.mobile,
+        email: req.body.email,
+        address: req.body.address,
+        quantity: req.body.quantity,
+        fromDate: req.body.fromDate,
+        toDate: req.body.toDate,
+        status: "pending",
+    });
+    warehouse.save().then((result) => {
+        console.log(result);
+        res.status(201).json({
+            message: "Warehouse Booked Successfully",
+            warehouse: warehouse,
+            status: "success",
+        });
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json({
+            error: err,
+            status: "failed",
+        });
+    });
+}
+);
+
+router.get("/getWarehousesBooking", function (req, res) {
+    Warehouse.find({}).then((result) => {
+        console.log(result);
+        res.status(201).json({
+            message: "Warehouse Fetched Successfully",
+            warehouse: result,
+            status: "success"
+        });
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json({
+            message: err,
+            status: "failed",
+        });
+    });
+});
+
+router.post("/updateWarehouseBookingStatus", function (req, res) {
+    var id = req.body.id;
+    Warehouse.findOneAndUpdate({ _id: id }, { $set: { status: req.body.status } }).then((result) => {
+        console.log(result);
+        res.status(201).json({
+            message: "Warehouse Updated Successfully",
+            warehouse: result,
+            status: "success",
+        });
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json({
+            message: err,
+            status: "failed",
+        });
+    });
+}
+);
+
+router.post("/updateWarehouseBooking", function (req, res) {
+    var id = req.body.id;
+    Warehouse.findOneAndUpdate({ _id: id }, { $set: { status: req.body.status } }).then((result) => {
+        console.log(result);
+        res.status(201).json({
+            message: "Warehouse Updated Successfully",
+            warehouse: result,
+            status: "success",
+        });
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json({
+            message: err,
+            status: "failed",
+        });
+    });
+});
 
 
 

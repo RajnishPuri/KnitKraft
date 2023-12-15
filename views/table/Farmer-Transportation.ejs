@@ -278,13 +278,8 @@
                                     ${value.mobile}
                                     </td>
                                 <td>
-                                        {
-                                        value.address
-                                        }
-                                    </td>
-                                <td>
-                                    ${value.quantity}
-                                    </td>
+                                        ${value.address}</td>
+                                <td>${value.quantity}</td>
                                 <td>${value.sourceAddress}</td>
                                 <td>${value.destAddress}</td>
                                 <td>${value.vehicleType}</td>
@@ -303,8 +298,8 @@
                     <div class="item">
                         <div class="dot ${
                           TRANSPORTATION[i].progress?.initiated
-                            ? "bg-primary"
-                            : ""
+                            ? "bg-info"
+                            : "bg-secondary"
                         }"></div>
                         <div class="content">
                             <h4 class="title">
@@ -329,7 +324,9 @@
                     <!-- Add more phases following a similar structure -->
                     <div class="item">
                         <div class="dot ${
-                          TRANSPORTATION[i].progress?.shipped ? "" : ""
+                          TRANSPORTATION[i].progress?.shipped
+                            ? "bg-info"
+                            : "bg-secondary"
                         }"></div>
                         <div class="content">
                             <h4 class="title">
@@ -355,7 +352,7 @@
                         <div class="dot ${
                           TRANSPORTATION[i].progress?.outForDelivery
                             ? "bg-info"
-                            : ""
+                            : "bg-secondary"
                         }"></div>
                         <div class="content">
                             <h4 class="title">
@@ -379,8 +376,8 @@
                     <div class="item">
                         <div class="dot ${
                           TRANSPORTATION[i].progress?.delivered
-                            ? "bg-danger"
-                            : ""
+                            ? "bg-info"
+                            : "bg-secondary"
                         }"></div>
                         <div class="content">
                             <h4 class="title">
@@ -411,30 +408,29 @@
       function updateProgress(i, phase) {
         var progress = TRANSPORTATION[i].progress;
         progress[phase] = true;
-        var data = {
-          id: TRANSPORTATION[i]._id,
-          progress: {
-            initiated: true,
-            shipped: false,
-            outForDelivery: false,
-            delivered: false,
+
+        $.ajax("http://localhost:4000/api/updateTransportProgress", {
+          type: "POST",
+          data: {
+            id: TRANSPORTATION[i]._id,
+            progress: JSON.stringify(progress),
           },
-        };
-        console.log(data);
-        console.log(progress);
-        $.post(
-          "http://localhost:4000/api/updateTransportProgress",
-          data,
-          function (data) {
+          dataType: "json",
+          accepts: "application/json",
+          success: function (data) {
             console.log(data);
             if (data.status == "success") {
               alert("Progress Updated");
               window.location.reload();
             } else {
-              alert("Something went wrong");
+              alert("Error Occured");
             }
-          }
-        );
+          },
+          error: function (err) {
+            console.log(err);
+            alert("Error Occured");
+          },
+        });
       }
     </script>
 
