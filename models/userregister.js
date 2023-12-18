@@ -27,19 +27,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         enum: ['farmer', 'seller', 'warehouse', 'teacher', 'transport', "service" ],
         required: true
-      },
-      createdAt: {
-        type: Date,
-        default: Date.now
-      },
-      farmerProgress: {
-        type: Object,
-        default: {
-          shearing: false,
-          sorting: false,
-          breeding: false,
-        }
-      },
+      }
     });
     
 
@@ -63,9 +51,8 @@ function verifyToken(req, res, next) {
 // Middleware to verify token and check user role
 function verifyTokenAndRole(role) {
   return function (req, res, next) {
-    // Get token from cookies or wherever it's stored
-    const token = req.cookies.token;
-    console.log(token);
+    // Get token from headers or wherever it's stored
+    const token = req.headers.authorization;
 
     if (!token) {
       return res.status(403).json({ message: 'Token not provided' });
@@ -96,4 +83,3 @@ function verifyTokenAndRole(role) {
 const Userregister = mongoose.model('Userregister', userSchema);
 
 module.exports = Userregister;
-

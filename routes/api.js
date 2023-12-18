@@ -282,6 +282,7 @@ router.post("/updateWarehouseBooking", function (req, res) {
         message: req.body.message,
         shelf: req.body.shelf
      };
+    //  return res.json(data);
     Warehouse.findOneAndUpdate({ _id: id }, { $set: data }).then((result) => {
         console.log(result);
         res.status(201).json({

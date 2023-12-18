@@ -4,7 +4,7 @@ const db = require("../models");
 const User = db.user;
 
 verifyToken = (req, res, next) => {
-  let token = req.cookie.token;
+  let token = req.session.token;
 
   if (!token) {
     return res.status(403).send({
@@ -13,7 +13,7 @@ verifyToken = (req, res, next) => {
   }
 
   jwt.verify(token,
-             "secretSIH",
+             config.secret,
              (err, decoded) => {
               if (err) {
                 return res.status(401).send({

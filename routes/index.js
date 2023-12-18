@@ -12,10 +12,6 @@ router.get('/index.html', function (req, res) {
   res.render('index');
 });
 
-router.get('/index', function (req, res) {
-  res.render('index');
-});
-
 // input
 router.get('/input/:path?', function (req, res) {
 
@@ -85,25 +81,7 @@ router.get('/app-profile.html', function (req, res) {
   res.render('app-profile');
 });
 
-router.get("/farmer/:path?", function (req, res) {
-  const path = req.params.path || "index";
-  res.render("farmer/" + path.replace(".html", ""));
-});
 
-router.get("/seller/:path?", function (req, res) {
-  const path = req.params.path || "index";
-  res.render("seller/" + path.replace(".html", ""));
-});
-
-router.get("/transport/:path?", function (req, res) {
-  const path = req.params.path || "index";
-  res.render("transport/" + path.replace(".html", ""));
-});
-
-router.get("/service/:path?", function (req, res) {
-  const path = req.params.path || "index";
-  res.render("service/" + path.replace(".html", ""));
-});
 
 //user register and login
 //register
@@ -155,11 +133,12 @@ router.post('/pages/login', async (req, res) => {
     const token = jwt.sign({ id: user._id, role: user.role }, "secretSIH");
     console.log(token);
     user.password = "";
+    return res.json({
+      message: 'success',
+      token,
+      user
 
-    // return back index page with more than one cookies
-    console.log(user._id.toString());
-    res.cookie("token", token).cookie("userID", user._id.toString()).cookie("role", user.role).redirect('/index.html');
-
+    })
 
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -171,7 +150,7 @@ router.post("/pages/users", async (req, res) => {
   try {
     const users = await User.find({});
     res.json(users);
-  } catch (error){
+  } catch (error) {
     res.status(400).json({ message: error.message });
   }
 });

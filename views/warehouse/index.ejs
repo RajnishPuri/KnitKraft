@@ -94,9 +94,7 @@
           <!-- Balance -->
           <div class="balance">
             <div class="left">
-              <span class="title">
-                Earned Yet
-              </span>
+              <span class="title">Total Balance</span>
               <h1 class="total">₹2,5612.50</h1>
             </div>
             <div class="right">
@@ -136,6 +134,14 @@
                   <ion-icon name="arrow-forward-outline"></ion-icon>
                 </div>
                 <strong>Send</strong>
+              </a>
+            </div>
+            <div class="item">
+              <a href="app-cards.html">
+                <div class="icon-wrapper bg-success">
+                  <ion-icon name="card-outline"></ion-icon>
+                </div>
+                <strong>Cards</strong>
               </a>
             </div>
             <!-- <div class="item">
@@ -325,7 +331,6 @@
               id="pending"
               autocomplete="off"
               checked
-              onclick="fillWarehouseBookings()"
             />
             <label
               class="btn btn-sm btn-rounded btn-outline-primary"
@@ -339,7 +344,6 @@
               name="status"
               id="confirmed"
               autocomplete="off"
-              onclick="fillWarehouseBookings()"
             />
             <label
               class="btn btn-sm btn-rounded btn-outline-primary"
@@ -557,7 +561,6 @@
           //         </div>
           //         </div>
           //     </div>
-          if(warehouse.status != status) return;
           $("#warehouseBookings").append(
             `<div class="card">
     <div class="card-body">
@@ -588,7 +591,7 @@
       function Popup(id) {
       }
       function changeModelBoxInputValue(id){
-        // alert("clicked")
+        alert("clicked")
         var warehouse = ALL_WAREHOUSE_BOOKINGS.find(warehouse => warehouse._id == id);
         console.log(warehouse);
         $("#quantityInput").val(warehouse.quantity);
@@ -603,7 +606,7 @@
       }
 
       function updateWarehouseBooking(id){
-        // alert("updating")
+        alert("updating")
         var warehouse = ALL_WAREHOUSE_BOOKINGS.find(warehouse => warehouse._id == id);
         var data = {
           ...warehouse,
@@ -627,7 +630,7 @@
           dataType: "json",
           success: function (response) {
             if (response.status == "success") {
-              // alert("Warehouse booking updated successfully");
+              alert("Warehouse booking updated successfully");
               location.reload();
             } else {
               alert("Something went wrong");
