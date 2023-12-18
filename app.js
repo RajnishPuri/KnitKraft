@@ -31,9 +31,10 @@ app.use(
     siteLangs: ["eng", "hin"],
     textsVarName: "translation",
     browserEnable: true,
-    defaultLang: "eng"
+    defaultLang: "eng",
   })
 );
+
 
 app.use(function (req, res, next) {
   if (req.query.clang) {

@@ -62,15 +62,15 @@ var loader =  document.getElementById('loader');
 
 
 //-----------------------------------------------------------------------
-// Service Workers
+// Service Workers [SIH]
 //-----------------------------------------------------------------------
-if (Finapp.PWA.enable) {
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('__service-worker.js')
-            .then(reg => console.log('service worker registered'))
-            .catch(err => console.log('service worker not registered - there is an error.', err));
-    }
-}
+// if (Finapp.PWA.enable) {
+//     if ('serviceWorker' in navigator) {
+//         navigator.serviceWorker.register('__service-worker.js')
+//             .then(reg => console.log('service worker registered'))
+//             .catch(err => console.log('service worker not registered - there is an error.', err));
+//     }
+// }
 //-----------------------------------------------------------------------
 
 
