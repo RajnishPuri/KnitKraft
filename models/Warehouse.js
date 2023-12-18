@@ -11,8 +11,12 @@ const WarehouseSchema = new schema({
     fromDate: { type: String, required: true },
     toDate: { type: String, required: true },
     woolType: { type: String, required: true },
+    createdAt: { type: Date, default: Date.now },
     status: { type: String, required: true, default: "pending" },
+    message: { type: String, default: "" },
+    shelf: { type: String, default: "" }
 });
+
 
 
 module.exports = mongoose.model('Warehouse', WarehouseSchema);

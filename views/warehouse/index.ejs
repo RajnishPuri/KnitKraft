@@ -39,6 +39,9 @@
         margin-bottom: 0.5rem;
         padding: 0 1rem;
       }
+      .modal-content{
+        max-height: none!important;
+      }
     </style>
   </head>
 
@@ -83,6 +86,8 @@
 
     <!-- App Capsule -->
     <div id="appCapsule">
+      <a  data-bs-toggle="modal" data-bs-target="#DialogForm" id="modelShow" style="display: none"></a>
+
       <!-- Wallet Card -->
       <div class="section wallet-card-section pt-1">
         <div class="wallet-card">
@@ -352,7 +357,11 @@
       <!-- * Transactions -->
       >
       <!-- Dialog Box For Each Warehouse -->
-
+<style>
+  #DialogForm{
+    padding: 10px 5vw;
+  }
+</style>
       <div
         class="modal fade dialogbox"
         id="DialogForm"
@@ -365,54 +374,131 @@
             <div class="modal-header">
               <h5 class="modal-title">Deposit Money</h5>
             </div>
-            <form>
-              <div class="modal-body text-start mb-2">
-                <div class="form-group basic">
-                  <div class="input-wrapper">
-                    <label class="label" for="account1">From</label>
-                    <select class="form-control custom-select" id="account1">
-                      <option value="0">Savings (*** 5019)</option>
-                      <option value="1">Investment (*** 6212)</option>
-                      <option value="2">Mortgage (*** 5021)</option>
-                    </select>
-                  </div>
-                  <div class="input-info">Select a bank account</div>
+            <form id="requestWareHouseForm" style="padding: 0 2vw;">
+              <h5 class="title mb-2">Request for WareHouse</h5>
+              <input type="hidden" name="farmerId" value="43689564389" />
+            
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <label class="label" for="quantityInput">Quantity</label>
+                  <input
+                    type="number"
+                    id="quantityInput"
+                    class="form-control"
+                    placeholder="Enter Quantity"
+                    name="quantity"
+                  />
+                </div>
+              </div>
+            
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <label class="label" for="woolTypeInput">Wool Type</label>
+                  <input
+                    type="text"
+                    id="woolTypeInput"
+                    class="form-control"
+                    placeholder="Wool Type"
+                    name="woolType"
+                  />
+                </div>
+              </div>
+            
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <label class="label" for="fromDateInput">From Date</label>
+                  <input
+                    type="date"
+                    id="fromDateInput"
+                    class="form-control"
+                    placeholder="Select From Date"
+                    name="fromDate"
+                  />
+                </div>
+              </div>
+            
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <label class="label" for="toDateInput">To Date</label>
+                  <input
+                    type="date"
+                    id="toDateInput"
+                    class="form-control"
+                    placeholder="Select To Date"
+                    name="toDate"
+                  />
+                </div>
+              </div>
+            
+              <!-- Additional Inputs -->
+              <!-- Status select box pending and confirmed -->
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <label class="label" for="statusInput">Status</label>
+                  <select
+                    class="form-control custom-select"
+                    id="statusInput"
+                    name="status"
+                  >
+                    <option value="pending">Pending</option>
+                    <option value="confirmed">Confirmed</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- for message -->
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <label class="label" for="messageInput">Message</label>
+                  <textarea
+                    class="form-control"
+                    id="messageInput"
+                    rows="3"
+                    name="message"
+                  ></textarea>
                 </div>
 
-                <div class="form-group basic">
-                  <div class="input-wrapper">
-                    <label class="label" for="text1">Enter Amount</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="text1"
-                      value="100"
-                    />
-                    <i class="clear-input">
-                      <ion-icon name="close-circle"></ion-icon>
-                    </i>
-                  </div>
+              </div>
+              
+              <!-- for shelf -->
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <label class="label" for="shelfInput">Shelf</label>
+                  <input
+                    type="text"
+                    id="shelfInput"
+                    class="form-control"
+                    placeholder="Shelf"
+                    name="shelf"
+                  />
                 </div>
               </div>
-              <div class="modal-footer">
-                <div class="btn-inline">
-                  <button
-                    type="button"
-                    class="btn btn-text-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    CANCEL
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-text-primary"
-                    data-bs-dismiss="modal"
-                  >
-                    DEPOSIT
-                  </button>
-                </div>
-              </div>
+
+
+
+
+
+            
+              <p style="text-align: center; margin-top: 1rem">
+                <button
+                  class="btn btn-success btn-sm mb-2"
+                  style="margin: 0 auto"
+                  id="updateBtn"
+                  type="button"
+                >
+                  Update
+                </button>
+                <button
+                  class="btn btn-danger btn-sm mb-2"
+                  style="margin: 0 auto"
+                  onclick="document.getElementById('myModal').style.display = 'none'"
+                >
+                  Cancel
+                </button>
+              </p>
             </form>
+            
+            
           </div>
         </div>
       </div>
@@ -487,7 +573,7 @@
             <div class="col-7">
                 <div class="text-end">
                     <h6 class="card-subtitle mb-2 text-muted">Status: ${warehouse.status}</h6>
-                    <a class="btn btn-primary" onclick="Popup('${warehouse._id}')" data-bs-toggle="modal" data-bs-target="#DialogForm">Action</a>
+                    <a class="btn btn-primary"  onclick="changeModelBoxInputValue('${warehouse._id}')">Action</a>
                     <div class="d-flex justify-content-end align-items-center mt-2">
                         <span class="badge bg-success date">${warehouse.fromDate}</span>
                         <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -503,7 +589,59 @@
         });
       }
       function Popup(id) {
-        $("#modelShow").click();
+      }
+      function changeModelBoxInputValue(id){
+        alert("clicked")
+        var warehouse = ALL_WAREHOUSE_BOOKINGS.find(warehouse => warehouse._id == id);
+        console.log(warehouse);
+        $("#quantityInput").val(warehouse.quantity);
+        $("#woolTypeInput").val(warehouse.woolType);
+        $("#fromDateInput").val(warehouse.fromDate);
+        $("#toDateInput").val(warehouse.toDate);
+        $("#statusInput").val(warehouse.status);
+        $("#messageInput").val(warehouse.message);
+        $("#shelfInput").val(warehouse.shelf);
+        $("#updateBtn").attr("onclick", `updateWarehouseBooking('${warehouse._id}')`);
+        document.getElementById("modelShow").click();
+      }
+
+      function updateWarehouseBooking(id){
+        alert("updating")
+        var warehouse = ALL_WAREHOUSE_BOOKINGS.find(warehouse => warehouse._id == id);
+        var data = {
+          ...warehouse,
+          farmerId: warehouse.farmerId,
+          name: warehouse.name,
+          quantity: $("#quantityInput").val(),
+          fromDate: $("#fromDateInput").val(),
+          toDate: $("#toDateInput").val(),
+          woolType: $("#woolTypeInput").val(),
+          status: $("#statusInput").val(),
+          message: $("#messageInput").val(),
+          shelf: $("#shelfInput").val(),
+        }
+
+        console.log(data, "Updating warehouse booking");
+        $.ajax({
+          type: "POST",
+          url: "http://localhost:4000/api/updateWarehouseBooking",
+          data: JSON.stringify(data),
+          contentType: "application/json",
+          dataType: "json",
+          success: function (response) {
+            if (response.status == "success") {
+              alert("Warehouse booking updated successfully");
+              location.reload();
+            } else {
+              alert("Something went wrong");
+              console.log(response);
+            }
+          },
+          error: function (err) {
+            alert("Something went wrong");
+            console.log(err);
+          },
+        })
       }
     </script>
     <!-- * App Capsule -->
@@ -519,7 +657,7 @@
       <a href="./Woolkart" class="item">
         <div class="col">
           <ion-icon name="card-outline"></ion-icon>
-          <strong>WoolKart</strong>
+          <strong>WoolKaWoolKartrt</strong>
         </div>
       </a>
     </div>

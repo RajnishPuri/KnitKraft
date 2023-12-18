@@ -243,6 +243,7 @@
                   placeholder="Select From Date"
                   name="fromDate"
                 />
+                
               </div>
             </div>
             <div class="form-group basic">
@@ -257,7 +258,11 @@
                 />
               </div>
             </div>
-
+            <script>
+              // stop taking past date
+              fromDateInput.min = new Date().toISOString().split("T")[0];
+              toDateInput.min = new Date().toISOString().split("T")[0];
+            </script>
             <p style="text-align: center; margin-top: 1rem">
               <button
                 class="btn btn-success btn-sm mb-2"
