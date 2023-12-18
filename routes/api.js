@@ -211,6 +211,8 @@ router.post("/bookWarehouse", function (req, res) {
         toDate: req.body.toDate,
         woolType: req.body.woolType,
         status: "pending",
+        message: "",
+        shelf: ""
     });
     warehouse.save().then((result) => {
         console.log(result);
@@ -267,7 +269,20 @@ router.post("/updateWarehouseBookingStatus", function (req, res) {
 
 router.post("/updateWarehouseBooking", function (req, res) {
     var id = req.body.id;
-    Warehouse.findOneAndUpdate({ _id: id }, { $set: { status: req.body.status } }).then((result) => {
+    // update every keys
+    Warehouse.findOneAndUpdate({ _id: id }, { $set: { 
+        name: req.body.name,
+        mobile: req.body.mobile,
+        email: req.body.email,
+        address: req.body.address,
+        quantity: req.body.quantity,
+        fromDate: req.body.fromDate,
+        toDate: req.body.toDate,
+        woolType: req.body.woolType,
+        status: req.body.status,
+        message: req.body.message,
+        shelf: req.body.shelf
+     } }).then((result) => {
         console.log(result);
         res.status(201).json({
             message: "Warehouse Updated Successfully",
