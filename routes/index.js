@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const User = require('../models/userregister');
+const jwt = require('jsonwebtoken');
 
 /* GET home page. */
 router.get('/', function (req, res) {
@@ -13,7 +14,7 @@ router.get('/index.html', function (req, res) {
 
 // input
 router.get('/input/:path?', function (req, res) {
-  
+
   const path = req.params.path || 'index';
   res.render('input/' + path.replace('.html', ''));
 });
@@ -91,7 +92,6 @@ router.post('/pages/app-register', async (req, res) => {
     const newUser = new User({
       email: req.body.email,
       password: req.body.password,
-      passwordAgain: req.body.passwordAgain,
       name: req.body.name,
       mobileNumber: req.body.mobileNumber,
       dateOfBirth: req.body.dateOfBirth,
@@ -100,8 +100,6 @@ router.post('/pages/app-register', async (req, res) => {
     if (req.body.password !== req.body.passwordAgain) {
       return res.status(400).json({ message: 'Passwords do not match' });
     }
-
-    
 
     // Save the new user to the database
     const savedUser = await newUser.save();
@@ -117,28 +115,43 @@ router.post('/pages/app-register', async (req, res) => {
 router.post('/pages/login', async (req, res) => {
   try {
     const { email, password } = req.body;
-    
+
     // Find the user based on the email address in your database
-    const user = await user.findOne({ email }); // Assuming you're using Mongoose or a similar ORM
-    
+    const user = await User.findOne({ email }); // Assuming you're using Mongoose or a similar ORM
+
     if (!user) {
       return res.status(401).json({ message: 'User not found' });
     }
-    
+
     // Validate the password
-    const isPasswordValid = password==user.password; // Assuming bcrypt is used for hashing passwords
-    
+    const isPasswordValid = password == user.password; // Assuming bcrypt is used for hashing passwords
+
     if (!isPasswordValid) {
       return res.status(401).json({ message: 'Invalid password' });
     }
-    
-    // If email and password are correct, you can proceed with login logic (e.g., creating a session, generating JWT, etc.)
-    
-    res.status(200).json({ message: 'Login successful!' });
-    
+    // get jwt token
+    const token = jwt.sign({ id: user._id, role: user.role }, "secretSIH");
+    console.log(token);
+    user.password = "";
+    return res.json({
+      message: 'success',
+      token,
+      user
+
+    })
+
   } catch (error) {
     res.status(400).json({ message: error.message });
-    console.log(error)    ;
+    console.log(error);
+  }
+});
+
+router.post("/pages/users", async (req, res) => {
+  try {
+    const users = await User.find({});
+    res.json(users);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
   }
 });
 
