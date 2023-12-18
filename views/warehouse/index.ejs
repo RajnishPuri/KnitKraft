@@ -94,7 +94,9 @@
           <!-- Balance -->
           <div class="balance">
             <div class="left">
-              <span class="title">Total Balance</span>
+              <span class="title">
+                Earned Yet
+              </span>
               <h1 class="total">₹2,5612.50</h1>
             </div>
             <div class="right">
@@ -134,14 +136,6 @@
                   <ion-icon name="arrow-forward-outline"></ion-icon>
                 </div>
                 <strong>Send</strong>
-              </a>
-            </div>
-            <div class="item">
-              <a href="app-cards.html">
-                <div class="icon-wrapper bg-success">
-                  <ion-icon name="card-outline"></ion-icon>
-                </div>
-                <strong>Cards</strong>
               </a>
             </div>
             <!-- <div class="item">
@@ -331,6 +325,7 @@
               id="pending"
               autocomplete="off"
               checked
+              onclick="fillWarehouseBookings()"
             />
             <label
               class="btn btn-sm btn-rounded btn-outline-primary"
@@ -344,6 +339,7 @@
               name="status"
               id="confirmed"
               autocomplete="off"
+              onclick="fillWarehouseBookings()"
             />
             <label
               class="btn btn-sm btn-rounded btn-outline-primary"
@@ -561,6 +557,7 @@
           //         </div>
           //         </div>
           //     </div>
+          if(warehouse.status != status) return;
           $("#warehouseBookings").append(
             `<div class="card">
     <div class="card-body">

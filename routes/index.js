@@ -12,6 +12,10 @@ router.get('/index.html', function (req, res) {
   res.render('index');
 });
 
+router.get('/index', function (req, res) {
+  res.render('index');
+});
+
 // input
 router.get('/input/:path?', function (req, res) {
 
@@ -150,7 +154,7 @@ router.post("/pages/users", async (req, res) => {
   try {
     const users = await User.find({});
     res.json(users);
-  } catch (error) {
+  } catch (error){
     res.status(400).json({ message: error.message });
   }
 });
