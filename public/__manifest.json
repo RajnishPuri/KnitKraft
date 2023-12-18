@@ -1,6 +1,6 @@
 {
-    "name": "Finapp",
-    "short_name": "Finapp",
+    "name": "Knitkraft",
+    "short_name": "Knitkraft",
     "start_url": "index.html",
     "display": "standalone",
     "scope" : "/",
