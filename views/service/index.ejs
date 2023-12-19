@@ -499,7 +499,7 @@
     <script>
       var ALL_service_BOOKINGS = [];
       $.getJSON(
-        "https://6ef2-2409-40c4-101e-87f8-5fca-3436-f233-fa5f.ngrok-free.app/api/getServiceBookings",
+        "https://knitkraft.onrender.com/api/getServiceBookings",
         function (data) {
           if (data.status == "success") {
             ALL_service_BOOKINGS = data.service;
@@ -558,7 +558,7 @@
       }
       function updateServiceStatus(id, status, response) {
         $.post(
-          "https://6ef2-2409-40c4-101e-87f8-5fca-3436-f233-fa5f.ngrok-free.app/api/updateServiceStatus",
+          "https://knitkraft.onrender.com/api/updateServiceStatus",
           {
             id,
             status,
