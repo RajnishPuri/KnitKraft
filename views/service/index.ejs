@@ -39,8 +39,8 @@
         margin-bottom: 0.5rem;
         padding: 0 1rem;
       }
-      .modal-content{
-        max-height: none!important;
+      .modal-content {
+        max-height: none !important;
       }
     </style>
   </head>
@@ -86,7 +86,12 @@
 
     <!-- App Capsule -->
     <div id="appCapsule">
-      <a  data-bs-toggle="modal" data-bs-target="#DialogForm" id="modelShow" style="display: none"></a>
+      <a
+        data-bs-toggle="modal"
+        data-bs-target="#DialogForm"
+        id="modelShow"
+        style="display: none"
+      ></a>
 
       <!-- Wallet Card -->
       <div class="section wallet-card-section pt-1">
@@ -94,9 +99,7 @@
           <!-- Balance -->
           <div class="balance">
             <div class="left">
-              <span class="title">
-                Earned Yet
-              </span>
+              <span class="title"> Earned Yet </span>
               <h1 class="total">₹2,5612.50</h1>
             </div>
             <div class="right">
@@ -325,7 +328,7 @@
               id="pending"
               autocomplete="off"
               checked
-              onclick="fillWarehouseBookings()"
+              onclick="fillserviceBookings()"
             />
             <label
               class="btn btn-sm btn-rounded btn-outline-primary"
@@ -337,27 +340,27 @@
               type="radio"
               class="btn-check"
               name="status"
-              id="confirmed"
+              id="accepted"
               autocomplete="off"
-              onclick="fillWarehouseBookings()"
+              onclick="fillserviceBookings()"
             />
             <label
               class="btn btn-sm btn-rounded btn-outline-primary"
-              for="confirmed"
-              >Confirmed</label
+              for="accepted"
+              >accepted</label
             >
           </div>
         </div>
-        <div class="warehouseBookings" id="warehouseBookings"></div>
+        <div class="serviceBookings" id="serviceBookings"></div>
       </div>
       <!-- * Transactions -->
       >
-      <!-- Dialog Box For Each Warehouse -->
-<style>
-  #DialogForm{
-    padding: 10px 5vw;
-  }
-</style>
+      <!-- Dialog Box For Each service -->
+      <style>
+        #DialogForm {
+          padding: 10px 5vw;
+        }
+      </style>
       <div
         class="modal fade dialogbox"
         id="DialogForm"
@@ -370,10 +373,9 @@
             <div class="modal-header">
               <h5 class="modal-title">Deposit Money</h5>
             </div>
-            <form id="requestWareHouseForm" style="padding: 0 2vw;">
-              <h5 class="title mb-2">Request for WareHouse</h5>
-              <input type="hidden" name="farmerId" value="43689564389" />
-            
+            <form id="requestserviceForm" style="padding: 0 2vw">
+              <h5 class="title mb-2">Request for service</h5>
+
               <div class="form-group basic">
                 <div class="input-wrapper">
                   <label class="label" for="quantityInput">Quantity</label>
@@ -386,7 +388,7 @@
                   />
                 </div>
               </div>
-            
+
               <div class="form-group basic">
                 <div class="input-wrapper">
                   <label class="label" for="woolTypeInput">Wool Type</label>
@@ -399,7 +401,7 @@
                   />
                 </div>
               </div>
-            
+
               <div class="form-group basic">
                 <div class="input-wrapper">
                   <label class="label" for="fromDateInput">From Date</label>
@@ -412,7 +414,7 @@
                   />
                 </div>
               </div>
-            
+
               <div class="form-group basic">
                 <div class="input-wrapper">
                   <label class="label" for="toDateInput">To Date</label>
@@ -425,9 +427,9 @@
                   />
                 </div>
               </div>
-            
+
               <!-- Additional Inputs -->
-              <!-- Status select box pending and confirmed -->
+              <!-- Status select box pending and accepted -->
               <div class="form-group basic">
                 <div class="input-wrapper">
                   <label class="label" for="statusInput">Status</label>
@@ -437,7 +439,7 @@
                     name="status"
                   >
                     <option value="pending">Pending</option>
-                    <option value="confirmed">Confirmed</option>
+                    <option value="accepted">accepted</option>
                   </select>
                 </div>
               </div>
@@ -453,9 +455,8 @@
                     name="message"
                   ></textarea>
                 </div>
-
               </div>
-              
+
               <!-- for shelf -->
               <div class="form-group basic">
                 <div class="input-wrapper">
@@ -470,11 +471,6 @@
                 </div>
               </div>
 
-
-
-
-
-            
               <p style="text-align: center; margin-top: 1rem">
                 <button
                   class="btn btn-success btn-sm mb-2"
@@ -493,8 +489,6 @@
                 </button>
               </p>
             </form>
-            
-            
           </div>
         </div>
       </div>
@@ -504,143 +498,86 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-      var ALL_WAREHOUSE_BOOKINGS = [];
+      var ALL_service_BOOKINGS = [];
       $.getJSON(
-        "http://localhost:4000/api/getWarehousesBooking",
+        "http://localhost:4000/api/getServiceBookings",
         function (data) {
           if (data.status == "success") {
-            ALL_WAREHOUSE_BOOKINGS = data.warehouse;
-            fillWarehouseBookings("pending");
+            ALL_service_BOOKINGS = data.service;
+            fillserviceBookings("pending");
           } else {
             alert("Something went wrong");
             console.log(data);
           }
         }
       );
-      function fillWarehouseBookings() {
+      function fillserviceBookings() {
         var status = document.querySelector('input[name="status"]:checked').id;
-        $("#warehouseBookings").html("");
-        ALL_WAREHOUSE_BOOKINGS.forEach((warehouse, index) => {
-          //             const WarehouseSchema = new schema({
-          //     farmerId: { type: String, required: true },
-          //     name: { type: String, required: true },
-          //     quantity: { type: String, required: true },
-          //     fromDate: { type: String, required: true },
-          //     toDate: { type: String, required: true },
-          //     woolType: { type: String, required: true },
-          //     status: { type: String, required: true, default: "pending" },
-          // });
-          //   <div class="card">
-          //         <div class="card-body">
-          //         <div class="row">
-          //             <div class="col-4">
-          //             <h5 class="title">${warehouse.name}</h5>
-          //             <h6 class="subtitle">Quantity: ${warehouse.quantity}</h6>
-          //             <h6 class="subtitle">Wool Type: ${warehouse.woolType}</h6>
-
-          //             </div>
-          //             <div class="col-8">
-          //             <div class="text-end">
-          //                 <h6 class="subtitle">Status: ${warehouse.status}</h6>
-          //                 <button class="btn btn-primary" onclick="Popup()">Deposit</button>
-          //                 <div>
-          //                     <span class="bg-success">
-          //                         ${warehouse.fromDate}
-          //                     </span>
-          //                     <ion-icon name="arrow-forward-outline"></ion-icon>
-          //                     <span class="bg-danger">
-          //                         ${warehouse.toDate}
-          //                     </span>
-          //                  </div>
-          //             </div>
-          //             </div>
-          //         </div>
-          //         </div>
-          //     </div>
-          if(warehouse.status != status) return;
-          $("#warehouseBookings").append(
-            `<div class="card">
-    <div class="card-body">
-        <div class="row">
-            <div class="col-5">
-                <h5 class="card-title">${warehouse.name}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Quantity: ${warehouse.quantity}</h6>
-                <h6 class="card-subtitle mb-2 text-muted">Wool Type: ${warehouse.woolType}</h6>
-            </div>
-            <div class="col-7">
-                <div class="text-end">
-                    <h6 class="card-subtitle mb-2 text-muted">Status: ${warehouse.status}</h6>
-                    <a class="btn btn-primary"  onclick="changeModelBoxInputValue('${warehouse._id}')">Action</a>
-                    <div class="d-flex justify-content-end align-items-center mt-2">
-                        <span class="badge bg-success date">${warehouse.fromDate}</span>
-                        <ion-icon name="arrow-forward-outline"></ion-icon>
-                        <span class="badge bg-danger date">${warehouse.toDate}</span>
-                    </div>
+        $("#serviceBookings").html("");
+        ALL_service_BOOKINGS.forEach((service, index) => {
+          if (service.status != status) return;
+          $("#serviceBookings").append(
+            `
+            <div class="row ">
+                            <div class="col-md-6">
+                                <div class="card mb-3 p-2">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Name: ${
+                                          service.name
+                                        }</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Topic Name: ${
+                                          service.serviceType
+                                        }</h6>
+                                        <p class="card-text">Date: ${
+                                          service.serviceDate
+                                        }</p>
+                                        <p class="card-text">Description: ${
+                                          service.message
+                                        }</p>
+                                        <p class="card-text badge
+                                        ${
+                                          service.status == "pending"? "bg-danger" : "bg-success"
+                                        }">Status: ${service.status}</p>
+                                        <td><input type="text" id="meetResponse" class="form-control" value="${
+                                          service.response
+                                        }" ></td>
+                                    </div>
+                                    <button onclick="updateServiceStatus('${service._id}',
+                                    'accepted', this.parentElement.querySelector('#meetResponse').value
+                                    )" class="btn btn-primary" >Approve</button>
+                                    <button onclick="updateServiceStatus('${
+                                      service._id
+                                    }', 'pending', 
+                                        this.parentElement.querySelector('#meetResponse').value
+                                    )" class="btn btn-danger" >Reject</button>
+                                </div>
+                            </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
 `
           );
         });
       }
-      function Popup(id) {
-      }
-      function changeModelBoxInputValue(id){
-        // alert("clicked")
-        var warehouse = ALL_WAREHOUSE_BOOKINGS.find(warehouse => warehouse._id == id);
-        console.log(warehouse);
-        $("#quantityInput").val(warehouse.quantity);
-        $("#woolTypeInput").val(warehouse.woolType);
-        $("#fromDateInput").val(warehouse.fromDate);
-        $("#toDateInput").val(warehouse.toDate);
-        $("#statusInput").val(warehouse.status);
-        $("#messageInput").val(warehouse.message);
-        $("#shelfInput").val(warehouse.shelf);
-        $("#updateBtn").attr("onclick", `updateWarehouseBooking('${warehouse._id}')`);
-        document.getElementById("modelShow").click();
-      }
-
-      function updateWarehouseBooking(id){
-        // alert("updating")
-        var warehouse = ALL_WAREHOUSE_BOOKINGS.find(warehouse => warehouse._id == id);
-        var data = {
-          ...warehouse,
-          farmerId: warehouse.farmerId,
-          name: warehouse.name,
-          quantity: $("#quantityInput").val(),
-          fromDate: $("#fromDateInput").val(),
-          toDate: $("#toDateInput").val(),
-          woolType: $("#woolTypeInput").val(),
-          status: $("#statusInput").val(),
-          message: $("#messageInput").val(),
-          shelf: $("#shelfInput").val(),
-        }
-
-        console.log(data, "Updating warehouse booking");
-        $.ajax({
-          type: "POST",
-          url: "http://localhost:4000/api/updateWarehouseBooking",
-          data: JSON.stringify(data),
-          contentType: "application/json",
-          dataType: "json",
-          success: function (response) {
-            if (response.status == "success") {
-              // alert("Warehouse booking updated successfully");
+      function updateServiceStatus(id, status, response) {
+        $.post(
+          "http://localhost:4000/api/updateServiceStatus",
+          {
+            id,
+            status,
+            response,
+          },
+          function (data) {
+            if (data.status == "success") {
+              alert("Updated");
               location.reload();
             } else {
               alert("Something went wrong");
-              console.log(response);
+              console.log(data);
             }
-          },
-          error: function (err) {
-            alert("Something went wrong");
-            console.log(err);
-          },
-        })
+          }
+        );
       }
-    </script>
+      
+      </script>
     <!-- * App Capsule -->
 
     <!-- App Bottom Menu -->

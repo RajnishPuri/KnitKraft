@@ -5,6 +5,7 @@ const Transport = require('../models/Transport');
 const mongoose = require('mongoose');
 const { json } = require('express');
 const Warehouse = require('../models/Warehouse');
+const Service = require('../models/Service');
 
 
 router.get('/', function (req, res) {
@@ -300,6 +301,74 @@ router.post("/updateWarehouseBooking", function (req, res) {
 });
 
 
+// now for service
+router.post("/bookService", function (req, res) {
+    const service = new Service({
+        _id: new mongoose.Types.ObjectId(),
+        serviceType: req.body.serviceType,
+        farmerId: req.body.farmerId,
+        name: req.body.name,
+        email: req.body.email,
+        mobile: req.body.mobile,
+        serviceDate: req.body.serviceDate,
+        message: req.body.message,
+        status: "pending"
+    });
+    service.save().then((result) => {
+        console.log(result);
+        res.status(201).json({
+            message: "Service Booked Successfully",
+            service: service,
+            status: "success",
+        });
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json({
+            message: err,
+            status: "failed",
+        });
+    });
+}
+);
+
+router.get("/getServiceBookings", function (req, res) {
+    // return all the service bookings in sorted order of date
+    Service.find({}).sort({ createdAt: 1 }).then((result) => {
+        console.log(result);
+        res.status(201).json({
+            message: "Service Fetched Successfully",
+            service: result,
+            status: "success"
+        });
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json({
+            message: err,
+            status: "failed",
+        });
+    });
+}
+);
+
+router.post("/updateServiceStatus", function (req, res) {
+    var id = req.body.id;
+    Service.findOneAndUpdate({ _id: id }, { $set: { status: req.body.status, response: req.body.response?req.body.response:""
+    } }).then((result) => {
+        console.log(result);
+        res.status(201).json({
+            message: "Service Updated Successfully",
+            service: result,
+            status: "success",
+        });
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json({
+            message: err,
+            status: "failed",
+        });
+    });
+}
+);
 
 
 
