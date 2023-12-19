@@ -32,13 +32,17 @@ const userSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
       },
-      farmerProgress: {
-        type: Object,
-        default: {
-          shearing: false,
-          sorting: false,
-          breeding: false,
-        }
+      progress: {
+        type: Number,
+        default: 0
+      },
+      experience: {
+        type: String,
+        default: "none"
+      },
+      lastUpdated: {
+        type: Date,
+        default: Date.now
       },
     });
     

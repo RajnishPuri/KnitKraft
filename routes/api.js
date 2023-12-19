@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const { json } = require('express');
 const Warehouse = require('../models/Warehouse');
 const Service = require('../models/Service');
-
+const User = require('../models/userregister');
 
 router.get('/', function (req, res) {
     res.send("Api Is Working");
@@ -360,6 +360,31 @@ router.post("/updateServiceStatus", function (req, res) {
             service: result,
             status: "success",
         });
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json({
+            message: err,
+            status: "failed",
+        });
+    });
+}
+);
+
+router.post("/updateProgress", function (req, res) {
+    var id = req.body.id;
+    User.findOneAndUpdate({ _id: id }, { $set: { progress: parseInt(req.body.progress),
+        lastUpdated: Date.now()
+    } }).then((result) => {
+        console.log(result);
+        res.status(201).cookie("progress",req.body.progress).cookie(
+            "lastUpdated", Date.now()
+        )
+        .json({
+            message: "Progress Updated Successfully",
+            user: result,
+            status: "success",
+        });
+        
     }).catch((err) => {
         console.log(err);
         res.status(500).json({

@@ -47,11 +47,12 @@
     <!-- App Header -->
     <div class="appHeader">
       <div class="left">
-        <a href="#" class="headerButton goBack">
+        <a href="#" onclick="logout()">
           <ion-icon name="chevron-back-outline"></ion-icon>
+          Logout
         </a>
       </div>
-      <div class="pageTitle">Table</div>
+      <div class="pageTitle">Teacher</div>
       <div class="right">
         <div class="right">
           <a href="app-notifications.html" class="headerButton">
@@ -116,7 +117,6 @@
       </div>
 
       <div class="section mt-2 mb-2">
-        <div class="section-title">listview</div>
         <div class="table-responsive">
           <div class="container" id="allMeetings"></div>
         </div>
@@ -265,7 +265,7 @@
                                     </div>
                                     <button onclick="updateMeeting('${key._id}',
                                     'approve', this.parentElement.querySelector('#meetResponse').value
-                                    )" class="btn btn-primary" >Approve</button>
+                                    )" class="btn btn-primary mb-1" >Approve</button>
                                     <button onclick="updateMeeting('${
                                       key._id
                                     }', 'reject', 
@@ -320,34 +320,16 @@
 
     <!-- App Bottom Menu -->
     <div class="appBottomMenu">
-      <a href="index.html" class="item">
+      <a href="./teacher" class="item">
         <div class="col">
           <ion-icon name="pie-chart-outline"></ion-icon>
           <strong>Overview</strong>
         </div>
       </a>
-      <a href="app-pages.html" class="item">
+      <a href="./teacher/allFarmers" class="item">
         <div class="col">
           <ion-icon name="document-text-outline"></ion-icon>
-          <strong>Pages</strong>
-        </div>
-      </a>
-      <a href="app-components.html" class="item">
-        <div class="col">
-          <ion-icon name="apps-outline"></ion-icon>
-          <strong>Components</strong>
-        </div>
-      </a>
-      <a href="app-cards.html" class="item">
-        <div class="col">
-          <ion-icon name="card-outline"></ion-icon>
-          <strong>My Cards</strong>
-        </div>
-      </a>
-      <a href="app-settings.html" class="item">
-        <div class="col">
-          <ion-icon name="settings-outline"></ion-icon>
-          <strong>Settings</strong>
+          <strong>Farmers</strong>
         </div>
       </a>
     </div>
