@@ -8,7 +8,8 @@ const serviceSchema = new Schema({
     },
     farmerId: {
         type: String,
-        required: true,
+        required: false,
+        default: '',
     },
     name: {
         type: String,

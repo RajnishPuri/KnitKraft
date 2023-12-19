@@ -1283,7 +1283,7 @@ Credit to https://dribbble.com/shots/2350761-Weather-app-illustration for the de
     <script src="assets/js/base.js"></script>
 
     <script>
-        AddtoHome("2000", "once");
+        // AddtoHome("2000", "once");
     </script>
     <script>
 
@@ -1331,7 +1331,7 @@ Credit to https://dribbble.com/shots/2350761-Weather-app-illustration for the de
 
     function updateProgress(index){
       $.ajax({
-        url: "http://localhost:4000/api/updateProgress",
+        url: "https://6ef2-2409-40c4-101e-87f8-5fca-3436-f233-fa5f.ngrok-free.app/api/updateProgress",
         type: "POST",
         data: {
           progress: index,

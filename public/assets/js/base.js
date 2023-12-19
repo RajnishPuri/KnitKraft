@@ -21,7 +21,7 @@ function logout(){
             }
         }
     })();
-    location.href = '../../'
+    location.href = '../../Pages/app-login'
 }
 const Knitkraft = {
     PWA: {

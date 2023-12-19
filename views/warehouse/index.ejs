@@ -506,7 +506,7 @@
     <script>
       var ALL_WAREHOUSE_BOOKINGS = [];
       $.getJSON(
-        "http://localhost:4000/api/getWarehousesBooking",
+        "https://6ef2-2409-40c4-101e-87f8-5fca-3436-f233-fa5f.ngrok-free.app/api/getWarehousesBooking",
         function (data) {
           if (data.status == "success") {
             ALL_WAREHOUSE_BOOKINGS = data.warehouse;
@@ -621,7 +621,7 @@
         console.log(data, "Updating warehouse booking");
         $.ajax({
           type: "POST",
-          url: "http://localhost:4000/api/updateWarehouseBooking",
+          url: "https://6ef2-2409-40c4-101e-87f8-5fca-3436-f233-fa5f.ngrok-free.app/api/updateWarehouseBooking",
           data: JSON.stringify(data),
           contentType: "application/json",
           dataType: "json",
@@ -649,12 +649,6 @@
         <div class="col">
           <ion-icon name="pie-chart-outline"></ion-icon>
           <strong>Overview</strong>
-        </div>
-      </a>
-      <a href="./Woolkart" class="item">
-        <div class="col">
-          <ion-icon name="card-outline"></ion-icon>
-          <strong>WoolKaWoolKartrt</strong>
         </div>
       </a>
     </div>
