@@ -1,46 +1,46 @@
-//-----------------------------------------------------------------------
-// Version:        2.1
-// Template name:  Knitkraft - Wallet & Banking HTML Mobile Template
-// Item URL :      https://themeforest.net/item/Knitkraft-wallet-banking-html-mobile-template/25738217
-// Author:         Bragher
-// Author URL :    https://themeforest.net/user/bragher
-//-----------------------------------------------------------------------
 
-
-//-----------------------------------------------------------------------
-// Template Settings
-//-----------------------------------------------------------------------
 function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(";").shift();
+    return parts.pop().split(";").shift();
+}
+function logout(){
+    (function () {
+        var cookies = document.cookie.split("; ");
+        for (var c = 0; c < cookies.length; c++) {
+            var d = window.location.hostname.split(".");
+            while (d.length > 0) {
+                var cookieBase = encodeURIComponent(cookies[c].split(";")[0].split("=")[0]) + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=' + d.join('.') + ' ;path=';
+                var p = location.pathname.split('/');
+                document.cookie = cookieBase + '/';
+                while (p.length > 0) {
+                    document.cookie = cookieBase + p.join('/');
+                    p.pop();
+                };
+                d.shift();
+            }
+        }
+    })();
+    location.href = '../../Pages/app-login'
 }
 const Knitkraft = {
-    //-------------------------------------------------------------------
-    // PWA Settings
     PWA: {
-        enable: true, // Enable or disable PWA
+        enable: true,
     },
-    //-------------------------------------------------------------------
-    // Dark Mode Settings
     Dark_Mode: {
-        default: false, // Set dark mode as main theme
-        local_mode: { // Activate dark mode between certain times of the day
-            enable: false, // Enable or disable local dark mode
-            start_time: 20, // Start at 20:00
-            end_time: 7, // End at 07:00
+        default: false, 
+        local_mode: { 
+            enable: false, 
+            start_time: 20, 
+            end_time: 7, 
         },
-        auto_detect: { // Auto detect user's preferences and activate dark mode
+        auto_detect: {
             enable: false,
         }
     },
-    //-------------------------------------------------------------------
-    // Right to Left (RTL) Settings
     RTL: {
-        enable: false, // Enable or disable RTL Mode
+        enable: false,
     },
-    //-------------------------------------------------------------------
-    // Animations
     Animation: {
         goBack: false, // Go back page animation
     },
@@ -66,22 +66,6 @@ var loader =  document.getElementById('loader');
 //-----------------------------------------------------------------------
 
 
-//-----------------------------------------------------------------------
-// Service Workers [SIH]
-//-----------------------------------------------------------------------
-// if (Knitkraft.PWA.enable) {
-//     if ('serviceWorker' in navigator) {
-//         navigator.serviceWorker.register('__service-worker.js')
-//             .then(reg => console.log('service worker registered'))
-//             .catch(err => console.log('service worker not registered - there is an error.', err));
-//     }
-// }
-//-----------------------------------------------------------------------
-
-
-//-----------------------------------------------------------------------
-// Page Loader with preload
-//----------------------------------------------------------------------
 setTimeout(() => {
     loader.setAttribute("style", "pointer-events: none; opacity: 0; transition: 0.2s ease-in-out;");
     setTimeout(() => {

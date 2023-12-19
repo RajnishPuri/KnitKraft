@@ -129,7 +129,9 @@ a:hover, a:active, a:focus {
 }
 
 .appHeader .pageTitle .logo {
-  max-height: 24px;
+  /* max-height: 24px; */
+  max-height: 40px;
+  
 }
 
 .appHeader.text-light {
@@ -1164,6 +1166,7 @@ blockquote.blockquote .blockquote-footer {
   align-items: center;
   justify-content: center;
   user-select: none;
+  transform: scale(2);
 }
 
 #loader .loading-icon {
@@ -1181,8 +1184,12 @@ blockquote.blockquote .blockquote-footer {
     transform: rotate(0deg);
   }
   100% {
-    transform: rotate(180deg);
+    transform: rotate(360deg); /* Use 360deg for a full rotation */
   }
+}
+
+#loader .loading-icon {
+  animation: loadingAnimation 1s linear infinite; /* Adjust the duration as needed */
 }
 
 body.animationGoBack {

@@ -131,12 +131,7 @@
               </a>
             </div>
             <!-- <div class="item">
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#exchangeActionSheet">
-                            <div class="icon-wrapper bg-warning">
-                                <ion-icon name="swap-vertical"></ion-icon>
-                            </div>
-                            <strong>Exchange</strong>
-                        </a>
+                        
                     </div> -->
           </div>
           <!-- * Wallet Footer -->
@@ -392,76 +387,18 @@ Credit to https://dribbble.com/shots/2350761-Weather-app-illustration for the de
       <!-- Exchange Action Sheet -->
       <div
         class="modal fade action-sheet"
-        id="exchangeActionSheet"
+        id="progressActionSheet"
         tabindex="-1"
         role="dialog"
       >
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Exchange Money</h5>
+              <h5 class="modal-title">Update Progress</h5>
             </div>
             <div class="modal-body">
-              <div class="action-sheet-content">
-                <form>
-                  <div class="row">
-                    <div class="col-6">
-                      <div class="form-group basic">
-                        <div class="input-wrapper">
-                          <label class="label" for="currency1">From</label>
-                          <select
-                            class="form-control custom-select"
-                            id="currency1"
-                          >
-                            <option value="1">EUR</option>
-                            <option value="2">USD</option>
-                            <option value="3">AUD</option>
-                            <option value="4">CAD</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-6">
-                      <div class="form-group basic">
-                        <div class="input-wrapper">
-                          <label class="label" for="currency2">To</label>
-                          <select
-                            class="form-control custom-select"
-                            id="currency2"
-                          >
-                            <option value="1">USD</option>
-                            <option value="1">EUR</option>
-                            <option value="2">AUD</option>
-                            <option value="3">CAD</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-group basic">
-                    <label class="label">Enter Amount</label>
-                    <div class="input-group mb-2">
-                      <span class="input-group-text" id="basic-addon2">$</span>
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Enter an amount"
-                        value="100"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="form-group basic">
-                    <button
-                      type="button"
-                      class="btn btn-primary btn-block btn-lg"
-                      data-bs-dismiss="modal"
-                    >
-                      Exchange
-                    </button>
-                  </div>
-                </form>
+              <div class="timeline ms-3" id="progressActionSheetBody">
+            
               </div>
             </div>
           </div>
@@ -489,627 +426,37 @@ Credit to https://dribbble.com/shots/2350761-Weather-app-illustration for the de
       <!-- * Stats -->
 
       <!-- Transactions -->
-      <div class="section mt-4">
-        <div class="section-heading">
-          <h2 class="title">Transactions</h2>
-          <a href="app-transactions.html" class="link">View All</a>
-        </div>
-        <div class="transactions">
-          <!-- item -->
-          <a href="app-transaction-detail.html" class="item">
-            <div class="detail">
-              <img
-                src="assets/img/sample/brand/1.jpg"
-                alt="img"
-                class="image-block imaged w48"
-              />
-              <div>
-                <strong>Amazon</strong>
-                <p>Shopping</p>
-              </div>
-            </div>
-            <div class="right">
-              <div class="price text-danger">- ₹150</div>
-            </div>
-          </a>
-          <!-- * item -->
-          <!-- item -->
-          <a href="app-transaction-detail.html" class="item">
-            <div class="detail">
-              <img
-                src="assets/img/sample/brand/2.jpg"
-                alt="img"
-                class="image-block imaged w48"
-              />
-              <div>
-                <strong>Apple</strong>
-                <p>Appstore Purchase</p>
-              </div>
-            </div>
-            <div class="right">
-              <div class="price text-danger">- ₹29</div>
-            </div>
-          </a>
-          <!-- * item -->
-          <!-- item -->
-          <a href="app-transaction-detail.html" class="item">
-            <div class="detail">
-              <img
-                src="assets/img/sample/avatar/avatar3.jpg"
-                alt="img"
-                class="image-block imaged w48"
-              />
-              <div>
-                <strong>Alex Ljung</strong>
-                <p>Transfer</p>
-              </div>
-            </div>
-            <div class="right">
-              <div class="price">+ ₹1,000</div>
-            </div>
-          </a>
-          <!-- * item -->
-          <!-- item -->
-          <a href="app-transaction-detail.html" class="item">
-            <div class="detail">
-              <img
-                src="assets/img/sample/avatar/avatar4.jpg"
-                alt="img"
-                class="image-block imaged w48"
-              />
-              <div>
-                <strong>Beatriz Brito</strong>
-                <p>Transfer</p>
-              </div>
-            </div>
-            <div class="right">
-              <div class="price text-danger">- ₹186</div>
-            </div>
-          </a>
-          <!-- * item -->
-        </div>
-      </div>
+     
       <!-- * Transactions -->
 
-      <!-- my cards -->
-      <div class="section full mt-4">
-        <div class="section-heading padding">
-          <h2 class="title">My Cards</h2>
-          <a href="app-cards.html" class="link">View All</a>
-        </div>
+      <!-- Progress Report -->
 
-        <!-- carousel single -->
-        <div class="carousel-single splide">
-          <div class="splide__track">
-            <ul class="splide__list">
-              <li class="splide__slide">
-                <!-- card block -->
-                <div class="card-block bg-primary">
-                  <div class="card-main">
-                    <div class="card-button dropdown">
-                      <button
-                        type="button"
-                        class="btn btn-link btn-icon"
-                        data-bs-toggle="dropdown"
-                      >
-                        <ion-icon name="ellipsis-horizontal"></ion-icon>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-end">
-                        <a class="dropdown-item" href="#">
-                          <ion-icon name="pencil-outline"></ion-icon>Edit
-                        </a>
-                        <a class="dropdown-item" href="#">
-                          <ion-icon name="close-outline"></ion-icon>Remove
-                        </a>
-                        <a class="dropdown-item" href="#">
-                          <ion-icon name="arrow-up-circle-outline"></ion-icon
-                          >Upgrade
-                        </a>
-                      </div>
-                    </div>
-                    <div class="balance">
-                      <span class="label">BALANCE</span>
-                      <h1 class="title">₹1,256,90</h1>
-                    </div>
-                    <div class="in">
-                      <div class="card-number">
-                        <span class="label">Card Number</span>
-                        •••• 9905
-                      </div>
-                      <div class="bottom">
-                        <div class="card-expiry">
-                          <span class="label">Expiry</span>
-                          12 / 25
-                        </div>
-                        <div class="card-ccv">
-                          <span class="label">CCV</span>
-                          553
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- * card block -->
-              </li>
-
-              <li class="splide__slide">
-                <!-- card block -->
-                <div class="card-block bg-dark">
-                  <div class="card-main">
-                    <div class="card-button dropdown">
-                      <button
-                        type="button"
-                        class="btn btn-link btn-icon"
-                        data-bs-toggle="dropdown"
-                      >
-                        <ion-icon name="ellipsis-horizontal"></ion-icon>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-end">
-                        <a class="dropdown-item" href="#">
-                          <ion-icon name="pencil-outline"></ion-icon>Edit
-                        </a>
-                        <a class="dropdown-item" href="#">
-                          <ion-icon name="close-outline"></ion-icon>Remove
-                        </a>
-                        <a class="dropdown-item" href="#">
-                          <ion-icon name="arrow-up-circle-outline"></ion-icon
-                          >Upgrade
-                        </a>
-                      </div>
-                    </div>
-                    <div class="balance">
-                      <span class="label">BALANCE</span>
-                      <h1 class="title">₹1,256,90</h1>
-                    </div>
-                    <div class="in">
-                      <div class="card-number">
-                        <span class="label">Card Number</span>
-                        •••• 9905
-                      </div>
-                      <div class="bottom">
-                        <div class="card-expiry">
-                          <span class="label">Expiry</span>
-                          12 / 25
-                        </div>
-                        <div class="card-ccv">
-                          <span class="label">CCV</span>
-                          553
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- * card block -->
-              </li>
-
-              <li class="splide__slide">
-                <!-- card block -->
-                <div class="card-block bg-secondary">
-                  <div class="card-main">
-                    <div class="card-button dropdown">
-                      <button
-                        type="button"
-                        class="btn btn-link btn-icon"
-                        data-bs-toggle="dropdown"
-                      >
-                        <ion-icon name="ellipsis-horizontal"></ion-icon>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-end">
-                        <a class="dropdown-item" href="#">
-                          <ion-icon name="pencil-outline"></ion-icon>Edit
-                        </a>
-                        <a class="dropdown-item" href="#">
-                          <ion-icon name="close-outline"></ion-icon>Remove
-                        </a>
-                        <a class="dropdown-item" href="#">
-                          <ion-icon name="arrow-up-circle-outline"></ion-icon
-                          >Upgrade
-                        </a>
-                      </div>
-                    </div>
-                    <div class="balance">
-                      <span class="label">BALANCE</span>
-                      <h1 class="title">₹1,256,90</h1>
-                    </div>
-                    <div class="in">
-                      <div class="card-number">
-                        <span class="label">Card Number</span>
-                        •••• 9905
-                      </div>
-                      <div class="bottom">
-                        <div class="card-expiry">
-                          <span class="label">Expiry</span>
-                          12 / 25
-                        </div>
-                        <div class="card-ccv">
-                          <span class="label">CCV</span>
-                          553
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- * card block -->
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- * carousel single -->
-      </div>
-      <!-- * my cards -->
-
-      <!-- Send Money -->
-      <div class="section full mt-4">
-        <div class="section-heading padding">
-          <h2 class="title">Send Money</h2>
-          <a href="#" class="link">Add New</a>
-        </div>
-        <!-- carousel small -->
-        <div class="carousel-small splide">
-          <div class="splide__track">
-            <ul class="splide__list">
-              <li class="splide__slide">
-                <a href="#">
-                  <div class="user-card">
-                    <img
-                      src="assets/img/sample/avatar/avatar2.jpg"
-                      alt="img"
-                      class="imaged w-100"
-                    />
-                    <strong>rahul</strong>
-                  </div>
-                </a>
-              </li>
-              <li class="splide__slide">
-                <a href="#">
-                  <div class="user-card">
-                    <img
-                      src="assets/img/sample/avatar/avatar3.jpg"
-                      alt="img"
-                      class="imaged w-100"
-                    />
-                    <strong>Elwin</strong>
-                  </div>
-                </a>
-              </li>
-              <li class="splide__slide">
-                <a href="#">
-                  <div class="user-card">
-                    <img
-                      src="assets/img/sample/avatar/avatar4.jpg"
-                      alt="img"
-                      class="imaged w-100"
-                    />
-                    <strong>Alma</strong>
-                  </div>
-                </a>
-              </li>
-              <li class="splide__slide">
-                <a href="#">
-                  <div class="user-card">
-                    <img
-                      src="assets/img/sample/avatar/avatar5.jpg"
-                      alt="img"
-                      class="imaged w-100"
-                    />
-                    <strong>Justine</strong>
-                  </div>
-                </a>
-              </li>
-              <li class="splide__slide">
-                <a href="#">
-                  <div class="user-card">
-                    <img
-                      src="assets/img/sample/avatar/avatar6.jpg"
-                      alt="img"
-                      class="imaged w-100"
-                    />
-                    <strong>Maria</strong>
-                  </div>
-                </a>
-              </li>
-              <li class="splide__slide">
-                <a href="#">
-                  <div class="user-card">
-                    <img
-                      src="assets/img/sample/avatar/avatar7.jpg"
-                      alt="img"
-                      class="imaged w-100"
-                    />
-                    <strong>Pamela</strong>
-                  </div>
-                </a>
-              </li>
-              <li class="splide__slide">
-                <a href="#">
-                  <div class="user-card">
-                    <img
-                      src="assets/img/sample/avatar/avatar8.jpg"
-                      alt="img"
-                      class="imaged w-100"
-                    />
-                    <strong>Neville</strong>
-                  </div>
-                </a>
-              </li>
-              <li class="splide__slide">
-                <a href="#">
-                  <div class="user-card">
-                    <img
-                      src="assets/img/sample/avatar/avatar9.jpg"
-                      alt="img"
-                      class="imaged w-100"
-                    />
-                    <strong>Alex</strong>
-                  </div>
-                </a>
-              </li>
-              <li class="splide__slide">
-                <a href="#">
-                  <div class="user-card">
-                    <img
-                      src="assets/img/sample/avatar/avatar10.jpg"
-                      alt="img"
-                      class="imaged w-100"
-                    />
-                    <strong>Stina</strong>
-                  </div>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- * carousel small -->
-      </div>
-      <!-- * Send Money -->
-
-      <!-- Monthly Bills -->
-      <div class="section full mt-4">
-        <div class="section-heading padding">
-          <h2 class="title">Monthly Bills</h2>
-          <a href="app-bills.html" class="link">View All</a>
-        </div>
-        <!-- carousel multiple -->
-        <div class="carousel-multiple splide">
-          <div class="splide__track">
-            <ul class="splide__list">
-              <li class="splide__slide">
-                <div class="bill-box">
-                  <div class="img-wrapper">
-                    <img
-                      src="assets/img/sample/brand/1.jpg"
-                      alt="img"
-                      class="image-block imaged w48"
-                    />
-                  </div>
-                  <div class="price">₹14</div>
-                  <p>Prime Monthly Subscription</p>
-                  <a href="#" class="btn btn-primary btn-block btn-sm"
-                    >PAY NOW</a
-                  >
-                </div>
-              </li>
-
-              <li class="splide__slide">
-                <div class="bill-box">
-                  <div class="img-wrapper">
-                    <img
-                      src="assets/img/sample/brand/2.jpg"
-                      alt="img"
-                      class="image-block imaged w48"
-                    />
-                  </div>
-                  <div class="price">₹9</div>
-                  <p>Music Monthly Subscription</p>
-                  <a href="#" class="btn btn-primary btn-block btn-sm"
-                    >PAY NOW</a
-                  >
-                </div>
-              </li>
-
-              <li class="splide__slide">
-                <div class="bill-box">
-                  <div class="img-wrapper">
-                    <div class="iconbox bg-danger">
-                      <ion-icon name="medkit-outline"></ion-icon>
-                    </div>
-                  </div>
-                  <div class="price">₹299</div>
-                  <p>Monthly Health Insurance</p>
-                  <a href="#" class="btn btn-primary btn-block btn-sm"
-                    >PAY NOW</a
-                  >
-                </div>
-              </li>
-
-              <li class="splide__slide">
-                <div class="bill-box">
-                  <div class="img-wrapper">
-                    <div class="iconbox">
-                      <ion-icon name="card-outline"></ion-icon>
-                    </div>
-                  </div>
-                  <div class="price">₹962</div>
-                  <p>Credit Card Statement</p>
-                  <a href="#" class="btn btn-primary btn-block btn-sm"
-                    >PAY NOW</a
-                  >
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- * carousel multiple -->
-      </div>
-      <!-- * Monthly Bills -->
-
-      <!-- Saving Goals -->
       <div class="section mt-4">
         <div class="section-heading">
-          <h2 class="title">Saving Goals</h2>
-          <a href="app-savings.html" class="link">View All</a>
+          <h2 class="title">Production Tracking</h2>
+          <a href="app-transactions.html" class="link"></a>
         </div>
-        <div class="goals">
-          <!-- item -->
-          <div class="item">
-            <div class="in">
-              <div>
-                <h4>Gaming Console</h4>
-                <p>Gaming</p>
-              </div>
-              <div class="price">₹499</div>
-            </div>
-            <div class="progress">
-              <div
-                class="progress-bar"
-                role="progressbar"
-                style="width: 85%"
-                aria-valuenow="85"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                85%
-              </div>
-            </div>
-          </div>
-          <!-- * item -->
-          <!-- item -->
-          <div class="item">
-            <div class="in">
-              <div>
-                <h4>New House</h4>
-                <p>Living</p>
-              </div>
-              <div class="price">₹100,000</div>
-            </div>
-            <div class="progress">
-              <div
-                class="progress-bar"
-                role="progressbar"
-                style="width: 55%"
-                aria-valuenow="55"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                55%
-              </div>
-            </div>
-          </div>
-          <!-- * item -->
-          <!-- item -->
-          <div class="item">
-            <div class="in">
-              <div>
-                <h4>Sport Car</h4>
-                <p>Lifestyle</p>
-              </div>
-              <div class="price">₹42,500</div>
-            </div>
-            <div class="progress">
-              <div
-                class="progress-bar"
-                role="progressbar"
-                style="width: 15%"
-                aria-valuenow="15"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                15%
-              </div>
-            </div>
-          </div>
-          <!-- * item -->
-        </div>
+        <button type="button" class="btn btn-primary btn-block btn-lg" data-bs-toggle="modal" data-bs-target="#progressActionSheet">
+          Progress report
+        </button>
       </div>
-      <!-- * Saving Goals -->
 
-      <!-- News -->
-      <div class="section full mt-4 mb-3">
-        <div class="section-heading padding">
-          <h2 class="title">Lastest News</h2>
-          <a href="app-blog.html" class="link">View All</a>
+      <!-- * Progress Report -->
+
+      <!-- Progress Timeline -->
+      <div class="section mt-4">
+        <div class="section-heading">
+          <h2 class="title">Progress Timeline</h2>
+          <a href="app-transactions.html" class="link"></a>
         </div>
-
-        <!-- carousel multiple -->
-        <div class="carousel-multiple splide">
-          <div class="splide__track">
-            <ul class="splide__list">
-              <li class="splide__slide">
-                <a href="./Pages/app-blog-post.html">
-                  <div class="blog-card">
-                    <img
-                      src="assets/img/sample/photo/1.jpg"
-                      alt="image"
-                      class="imaged w-100"
-                    />
-                    <div class="text">
-                      <h4 class="title">
-                        What will be the value of bitcoin in the next...
-                      </h4>
-                    </div>
-                  </div>
-                </a>
-              </li>
-
-              <li class="splide__slide">
-                <a href="./Pages/app-blog-post.html">
-                  <div class="blog-card">
-                    <img
-                      src="assets/img/sample/photo/2.jpg"
-                      alt="image"
-                      class="imaged w-100"
-                    />
-                    <div class="text">
-                      <h4 class="title">Rules you need to know in business</h4>
-                    </div>
-                  </div>
-                </a>
-              </li>
-
-              <li class="splide__slide">
-                <a href="./Pages/app-blog-post.html">
-                  <div class="blog-card">
-                    <img
-                      src="assets/img/sample/photo/3.jpg"
-                      alt="image"
-                      class="imaged w-100"
-                    />
-                    <div class="text">
-                      <h4 class="title">10 easy ways to save your money</h4>
-                    </div>
-                  </div>
-                </a>
-              </li>
-
-              <li class="splide__slide">
-                <a href="./Pages/app-blog-post.html">
-                  <div class="blog-card">
-                    <img
-                      src="assets/img/sample/photo/4.jpg"
-                      alt="image"
-                      class="imaged w-100"
-                    />
-                    <div class="text">
-                      <h4 class="title">Follow the financial agenda with...</h4>
-                    </div>
-                  </div>
-                </a>
-              </li>
-            </ul>
+        <div class="card">
+          <!-- timeline -->
+          <div class="timeline ms-3" id="progressTimeline">
+            
           </div>
+          <!-- * timeline -->
         </div>
-        <!-- * carousel multiple -->
-      </div>
-      <!-- * News -->
-
-      <!-- app footer -->
-      <div class="appFooter">
-        <div class="footer-title">
-          Copyright © Knitkraft 2021. All Rights Reserved.
-        </div>
-        Bootstrap 5 based mobile template.
-      </div>
-      <!-- * app footer -->
+      
     </div>
     <!-- * App Capsule -->
 
@@ -1295,7 +642,7 @@ Credit to https://dribbble.com/shots/2350761-Weather-app-illustration for the de
                 </a>
               </li>
               <li>
-                <a href="./Pages/app-login.html" class="item">
+                <a class="item" onclick="logout()">
                   <div class="icon-box bg-primary">
                     <ion-icon name="log-out-outline"></ion-icon>
                   </div>
@@ -1353,96 +700,572 @@ Credit to https://dribbble.com/shots/2350761-Weather-app-illustration for the de
     <!-- * App Sidebar -->
 
     <!-- iOS Add to Home Action Sheet -->
-    <div
-      class="modal inset fade action-sheet ios-add-to-home"
-      id="ios-add-to-home-screen"
-      tabindex="-1"
-      role="dialog"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Add to Home Screen</h5>
-            <a href="#" class="close-button" data-bs-dismiss="modal">
-              <ion-icon name="close"></ion-icon>
-            </a>
-          </div>
-          <div class="modal-body">
-            <div class="action-sheet-content text-center">
-              <div class="mb-1">
-                <img
-                  src="assets/img/icon/192x192.png"
-                  alt="image"
-                  class="imaged w64 mb-2"
-                />
-              </div>
-              <div>
-                Install <strong>Knitkraft</strong> on your iPhone's home screen.
-              </div>
-              <div>
-                Tap <ion-icon name="share-outline"></ion-icon> and Add to
-                homescreen.
-              </div>
-              <div class="mt-2">
-                <button
-                  class="btn btn-primary btn-block"
-                  data-bs-dismiss="modal"
-                >
-                  CLOSE
-                </button>
-              </div>
+    <div class="modal inset fade action-sheet ios-add-to-home" id="ios-add-to-home-screen" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add to Home Screen</h5>
+                    <a href="#" class="close-button" data-bs-dismiss="modal">
+                        <ion-icon name="close"></ion-icon>
+                    </a>
+                </div>
+                <div class="modal-body">
+                    <div class="action-sheet-content text-center" style="min-height: auto">
+
+                        <div id="carouselExampleIndicators" class="carousel slide" data-interval="false">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">   
+                                   <div>
+
+                                        <div type="button" class="btn btn-primary btn-secondary">welcome to farmers </div>
+                                    </div>
+                                                                                       
+                                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis asperiores numquam quam assumenda tempore amet. Excepturi, eaque debitis dignissimos maiores reprehenderit corrupti quibusdam, quia illo ratione libero quam voluptate laudantium.</p>
+                                 
+                                </div>
+                                <div class="carousel-item">
+                                    <p>                                    2 Lorem ipsum dolor sit amet c onsectetur adipisicing elit. Quisquam, voluptate.
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptate.</p>
+
+                                        <hr>
+                                        <div class="section mt-1 mb-2">
+                                            <div class="section-title">Basic</div>
+                                            <div class="card">
+                                                <!-- timeline -->
+                                                <div class="timeline ms-3">
+                                                    <div class="item">
+                                                        <div class="dot bg-primary"></div>
+                                                        <div class="content">
+                                                            <h4 class="title">Payment sent</h4>
+                                                           
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="item">
+                                                        <div class="dot"></div>
+                                                        <div class="content">
+                                                            <h4 class="title">KYC Documents</h4>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="dot bg-info"></div>
+                                                        <div class="content">
+                                                            <h4 class="title">Your card has been added</h4>
+                                                          
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="dot bg-danger"></div>
+                                                        <div class="content">
+                                                            <h4 class="title">Friend Requests</h4>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="dot bg-primary"></div>
+                                                        <div class="content">
+                                                            <h4 class="title">Payment sent</h4>
+                                                           
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="item">
+                                                        <div class="dot"></div>
+                                                        <div class="content">
+                                                            <h4 class="title">KYC Documents</h4>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="dot bg-info"></div>
+                                                        <div class="content">
+                                                            <h4 class="title">Your card has been added</h4>
+                                                          
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="dot bg-danger"></div>
+                                                        <div class="content">
+                                                            <h4 class="title">Friend Requests</h4>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="dot bg-primary"></div>
+                                                        <div class="content">
+                                                            <h4 class="title">Payment sent</h4>
+                                                           
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="item">
+                                                        <div class="dot"></div>
+                                                        <div class="content">
+                                                            <h4 class="title">KYC Documents</h4>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="dot bg-info"></div>
+                                                        <div class="content">
+                                                            <h4 class="title">Your card has been added</h4>
+                                                          
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="dot bg-danger"></div>
+                                                        <div class="content">
+                                                            <h4 class="title">Friend Requests</h4>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="dot bg-primary"></div>
+                                                        <div class="content">
+                                                            <h4 class="title">Payment sent</h4>
+                                                           
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="item">
+                                                        <div class="dot"></div>
+                                                        <div class="content">
+                                                            <h4 class="title">KYC Documents</h4>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="dot bg-info"></div>
+                                                        <div class="content">
+                                                            <h4 class="title">Your card has been added</h4>
+                                                          
+                                                        </div>
+                                                    </div>
+                                                  
+                                                </div>
+                                                <!-- * timeline -->
+                                            </div>
+                                        </div>
+
+                                </div>
+                                <!-- <div class="carousel-item">
+                                    1 Lorem ipsum dolor sit amet c onsectetur adipisicing elit. Quisquam, voluptate.
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptate.
+                                </div> -->
+                            </div>
+                           
+                        </div>
+
+                        <div class="mt-2">
+                            <button class="btn btn-primary btn-block" id="carouselNextButton">Next</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- END: ed8c6549bwf9 -->
+
+                <script>
+                    document.getElementById('carouselNextButton').addEventListener('click', function() {
+                        var carousel = document.getElementById('carouselExampleIndicators');
+                        var activeItem = carousel.querySelector('.carousel-item.active');
+                        var nextItem = activeItem.nextElementSibling;
+
+                        if (nextItem) {
+                            nextItem.classList.add('active');
+                            activeItem.classList.remove('active');
+                        } else {
+                            // Redirect to some page when the last carousel item is reached
+                            window.location.href = '/index.html';
+                        }
+                    });
+                </script>
             </div>
-          </div>
         </div>
-      </div>
     </div>
     <!-- * iOS Add to Home Action Sheet -->
 
+
     <!-- Android Add to Home Action Sheet -->
-    <div
-      class="modal inset fade action-sheet android-add-to-home"
-      id="android-add-to-home-screen"
-      tabindex="-1"
-      role="dialog"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Add to Home Screen</h5>
-            <a href="#" class="close-button" data-bs-dismiss="modal">
-              <ion-icon name="close"></ion-icon>
-            </a>
-          </div>
-          <div class="modal-body">
-            <div class="action-sheet-content text-center">
-              <div class="mb-1">
-                <img
-                  src="assets/img/icon/192x192.png"
-                  alt="image"
-                  class="imaged w64 mb-2"
-                />
+  <div class="modal inset fade action-sheet android-add-to-home" id="android-add-to-home-screen" tabindex="-1"
+  role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="height: 80vh;">
+      <div class="modal-header">
+        <h5 class="modal-title">Dear Farmer</h5>
+      </div>
+
+
+      <!-- FILEPATH: /E:/SIH/SIH_2023/frontend/index.html -->
+      <!-- BEGIN: ed8c6549bwf9 -->
+      <div class="modal-body">
+        <div class="action-sheet-content text-center" style="min-height: 68vh">
+
+          <div id="carouselExampleIndicators1" class="carousel slide" data-interval="false">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div>
+
+                  <div type="button" class="btn btn-primary btn-secondary">welcome to farmers
+                  </div>
+                </div>
+
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis asperiores
+                  numquam quam assumenda tempore amet. Excepturi, eaque debitis dignissimos
+                  maiores reprehenderit corrupti quibusdam, quia illo ratione libero quam
+                  voluptate laudantium.</p>
+
               </div>
-              <div>
-                Install <strong>Knitkraft</strong> on your Android's home screen.
+              <div class="carousel-item">
+                <p> 2 Lorem ipsum dolor sit amet c onsectetur adipisicing elit. Quisquam, voluptate.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptate.
+                </p>
+
+                <hr>
+                <div class="section mt-1 mb-2">
+
+                  <div class="card">
+                    <!-- timeline -->
+                    <div class="timeline ms-3">
+                      <div class="item">
+                        <div class="dot bg-primary"></div>
+                        <div class="content">
+                          <h4 class="title">Payment sent</h4>
+
+                        </div>
+                      </div>
+
+                      <div class="item">
+                        <div class="dot"></div>
+                        <div class="content">
+                          <h4 class="title">KYC Documents</h4>
+
+                        </div>
+                      </div>
+                      <div class="item">
+                        <div class="dot bg-info"></div>
+                        <div class="content">
+                          <h4 class="title">Your card has been added</h4>
+
+                        </div>
+                      </div>
+                      <div class="item">
+                        <div class="dot bg-danger"></div>
+                        <div class="content">
+                          <h4 class="title">Friend Requests</h4>
+
+                        </div>
+                      </div>
+                      <div class="item">
+                        <div class="dot bg-primary"></div>
+                        <div class="content">
+                          <h4 class="title">Payment sent</h4>
+
+                        </div>
+                      </div>
+
+                      <div class="item">
+                        <div class="dot"></div>
+                        <div class="content">
+                          <h4 class="title">KYC Documents</h4>
+
+                        </div>
+                      </div>
+                      <div class="item">
+                        <div class="dot bg-info"></div>
+                        <div class="content">
+                          <h4 class="title">Your card has been added</h4>
+
+                        </div>
+                      </div>
+                      <div class="item">
+                        <div class="dot bg-danger"></div>
+                        <div class="content">
+                          <h4 class="title">Friend Requests</h4>
+
+                        </div>
+                      </div>
+                      <div class="item">
+                        <div class="dot bg-primary"></div>
+                        <div class="content">
+                          <h4 class="title">Payment sent</h4>
+
+                        </div>
+                      </div>
+
+                      <div class="item">
+                        <div class="dot"></div>
+                        <div class="content">
+                          <h4 class="title">KYC Documents</h4>
+
+                        </div>
+                      </div>
+                      <div class="item">
+                        <div class="dot bg-info"></div>
+                        <div class="content">
+                          <h4 class="title">Your card has been added</h4>
+
+                        </div>
+                      </div>
+                      <div class="item">
+                        <div class="dot bg-danger"></div>
+                        <div class="content">
+                          <h4 class="title">Friend Requests</h4>
+
+                        </div>
+                      </div>
+                      <div class="item">
+                        <div class="dot bg-primary"></div>
+                        <div class="content">
+                          <h4 class="title">Payment sent</h4>
+
+                        </div>
+                      </div>
+
+                      <div class="item">
+                        <div class="dot"></div>
+                        <div class="content">
+                          <h4 class="title">KYC Documents</h4>
+
+                        </div>
+                      </div>
+                      <div class="item">
+                        <div class="dot bg-info"></div>
+                        <div class="content">
+                          <h4 class="title">Your card has been added</h4>
+
+                        </div>
+                      </div>
+
+                    </div>
+                    <!-- * timeline -->
+                  </div>
+                </div>
+
               </div>
-              <div>
-                Tap <ion-icon name="ellipsis-vertical"></ion-icon> and Add to
-                homescreen.
+              <div class="carousel-item">
+                <!-- App Capsule -->
+
+
+                <div class="section mb-2">
+                  <div class="section-title">Dear farmer name</div>
+                  <div class="card">
+                    <div class="card-body">
+                      <form>
+                        <div class="form-group boxed">
+                          <div class="input-wrapper">
+                            <!-- Other input fields remain unchanged -->
+                            <label class="label" for="select4b">State</label>
+                            <select class="form-control custom-select" id="select4b">
+                              <!-- Options will be dynamically populated here -->
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group boxed">
+                          <div class="input-wrapper">
+                            <label class="label" for="woolSource">Source of
+                              Wool</label>
+                            <select class="form-control custom-select" id="woolSource">
+                              <option value="Sheep">Sheep</option>
+                              <option value="Goat">Goat</option>
+                              <option value="Camel">Camel</option>
+                              <option value="Rabbit">Rabbit</option>
+                              <option value="Llamas">Llamas</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group boxed">
+                          <div class="input-wrapper">
+                            <label class="label" for="cattleSize">Cattle
+                              Size</label>
+                            <input type="text" class="form-control" id="cattleSize" placeholder="Cattle Size">
+                          </div>
+                        </div>
+
+                        <div class="form-group boxed">
+                          <div class="input-wrapper">
+                            <label class="label">Do You Own a Farm?</label>
+                            <select class="form-control custom-select">
+                              <option value="Yes">Yes</option>
+                              <option value="No">No</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group boxed">
+                          <div class="input-wrapper">
+                            <label class="label">Do You Own a Cattle?</label>
+                            <select class="form-control custom-select">
+                              <option value="Yes">Yes</option>
+                              <option value="No">No</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group boxed">
+                          <div class="input-wrapper">
+                            <label class="label" for="woolProduction">Your Current
+                              Wool Production Quantity Annually in Kg</label>
+                            <input type="text" class="form-control" id="woolProduction"
+                              placeholder="Wool Production Quantity">
+                          </div>
+                        </div>
+
+                        <div class="form-group boxed">
+                          <div class="input-wrapper">
+                            <label class="label">Do You Have a Warehouse to Store
+                              Your Wool?</label>
+                            <select class="form-control custom-select">
+                              <option value="Yes">Yes</option>
+                              <option value="No">No</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group boxed">
+                          <div class="input-wrapper">
+                            <label class="label">Where do you sell your
+                              wool?</label>
+                            <select class="form-control custom-select">
+                              <option value="Offline market">Offline Market
+                              </option>
+                              <option value="Dealers/Middleman">Dealers/Middleman
+                              </option>
+                              <option value="Authorized Production Houses">
+                                Authorized Production Houses</option>
+                              <option value="Online Market">Online Market</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group boxed">
+                          <div class="input-wrapper">
+                            <label class="label" for="woolType">Type of Wool You
+                              Produce</label>
+                            <input type="text" class="form-control" id="woolType" placeholder="Wool Type">
+                          </div>
+                        </div>
+
+                        <div class="form-group boxed">
+                          <div class="input-wrapper">
+                            <label class="label">Do You Have any Wool Quality
+                              Certificate?</label>
+                            <select class="form-control custom-select">
+                              <option value="Yes">Yes</option>
+                              <option value="No">No</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group boxed">
+                          <div class="input-wrapper">
+                            <label class="label">Do You Produce any Merchandise with
+                              Wool?</label>
+                            <select class="form-control custom-select">
+                              <option value="Yes">Yes</option>
+                              <option value="No">No</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group boxed">
+                          <div class="input-wrapper">
+                            <label class="label" for="merchandiseDesc">If yes, what
+                              do you produce?</label>
+                            <input type="text" class="form-control" id="merchandiseDesc"
+                              placeholder="Merchandise Description">
+                          </div>
+                        </div>
+
+                        <!-- Additional fields following the same structure -->
+
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+
+                <script>
+                  // JavaScript to populate states in the select dropdown
+                  const states = [
+                    "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana",
+                    "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur",
+                    "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu",
+                    "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal", "Andaman and Nicobar Islands",
+                    "Chandigarh", "Dadra and Nagar Haveli", "Daman and Diu", "Delhi", "Jammu and Kashmir", "Ladakh",
+                    "Lakshadweep", "Puducherry"
+                  ];
+
+                  // Function to populate the select dropdown with states
+                  function populateStates() {
+                    const selectDropdown = document.getElementById('select4b');
+                    states.forEach(state => {
+                      const option = document.createElement('option');
+                      option.value = state;
+                      option.textContent = state;
+                      selectDropdown.appendChild(option);
+                    });
+                  }
+
+                  // Call the function to populate states when the window loads
+                  window.onload = populateStates;
+                </script>
+
+
+
+
+
+                </form>
+
+
               </div>
-              <div class="mt-2">
-                <button
-                  class="btn btn-primary btn-block"
-                  data-bs-dismiss="modal"
-                >
-                  CLOSE
-                </button>
-              </div>
+              <!-- * App Capsule -->
             </div>
           </div>
+          <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                          data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                          data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span> -->
+          </button>
+        </div>
+
+        <div class="mt-2">
+          <button class="btn btn-primary btn-block" id="carouselNextButton1">Next</button>
         </div>
       </div>
     </div>
-    <!-- * Android Add to Home Action Sheet -->
+    <!-- END: ed8c6549bwf9 -->
+
+    <script>
+      document.getElementById('carouselNextButton1').addEventListener('click', function () {
+        var carousel = document.getElementById('carouselExampleIndicators1');
+        var activeItem = carousel.querySelector('.carousel-item.active');
+        var nextItem = activeItem.nextElementSibling;
+
+        if (nextItem) {
+          nextItem.classList.add('active');
+          activeItem.classList.remove('active');
+        }
+
+        else {
+          // Redirect to some page when the last carousel item is reached
+          window.location.href = '/index.html';
+        }
+      });
+    </script>
+
+
+  </div>
+</div>
+
+<!-- * Android Add to Home Action Sheet -->
+
 
     <!-- ========= JS Files =========  -->
     <!-- Bootstrap -->
@@ -1454,7 +1277,80 @@ Credit to https://dribbble.com/shots/2350761-Weather-app-illustration for the de
     ></script>
     <!-- Splide -->
     <script src="assets/js/plugins/splide/splide.min.js"></script>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <!-- Base Js File -->
     <script src="assets/js/base.js"></script>
+
+    <script>
+        // AddtoHome("2000", "once");
+    </script>
+    <script>
+
+      var PROGRESS_ARRAY = ["Raising livestock", "Shearing", "Skirting & Sorting", "Cleaning", "Carding", "Combing", "Spinnging", "Dyeing", "Weaving", "Finishing", "Ready to ship"]
+      
+     function FillProgressTimeline(){
+      var progressTimeline = document.getElementById("progressTimeline");
+      progressTimeline.innerHTML = "";
+      progressActionSheetBody.innerHTML = "";
+      const progress = getCookie("progress");
+      var lastUpdated = getCookie("lastUpdated");
+      PROGRESS_ARRAY.forEach((prg,index)=>{
+        
+        progressTimeline.innerHTML += `
+          <div class="item">
+            <div type="radio" class="dot ${
+              index <= progress ? "bg-danger":"bg-secondary"
+            }" ></div>
+            <div class="content">
+              <h4 class="title">${prg}</h4>
+              ${
+                index == progress? `<p class="text-danger">${
+                  lastUpdated?`Last Updated: ${new Date(parseInt(lastUpdated)).toLocaleString()}`:""
+                }</p>`:""
+              }
+            </div>
+          </div>
+          `;
+          progressActionSheetBody.innerHTML += `
+          <div class="item">
+            <input type="radio" class="dot bg-danger" ${
+              index <= progress ? "checked":""
+            }
+            onclick="updateProgress(${index})"
+            />
+            <div class="content">
+              <h4 class="title">${prg}</h4>
+            </div>
+          </div>
+          `;
+
+      })
+    }
+    FillProgressTimeline();
+
+    function updateProgress(index){
+      $.ajax({
+        url: "https://6ef2-2409-40c4-101e-87f8-5fca-3436-f233-fa5f.ngrok-free.app/api/updateProgress",
+        type: "POST",
+        data: {
+          progress: index,
+          id: getCookie("userID"),
+        },
+        success: function (data) {
+          // set cookie
+          document.cookie = `progress=${index};`+document.cookie;
+          console.log(data);
+          FillProgressTimeline();
+        },
+        error: function (err) {
+          console.log(err);
+        },
+      });
+    }
+    </script>
+
+
+    
   </body>
 </html>

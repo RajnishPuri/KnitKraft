@@ -151,119 +151,60 @@
     <!-- App Capsule -->
     <div id="appCapsule">
       <div class="listview-title mt-1">Breed Services</div>
-      <div id="myModal" class="modal" style="z-index: 100">
+      <div id="myModal" class="modal" style="z-index: 100;">
         <!-- Modal content -->
         <div class="modal-content">
           <!-- <span class="close">&times;</span> -->
+          <form id="requestBreedForm" >
+            <h5 class="title mb-2">Request For Breed Service</h5>
+            <input type="hidden" name="service" value="breed-service" />
+            <input
+              type="text"
+              id="name"
+              placeholder="Enter your name"
+              class="form-control mb-2"
+              name="name"
+            />
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter your email"
+              class="form-control mb-2"
+              name="email"
+              />
+            <input
+              type="text"
+              id="mobile"
+              placeholder="Enter your mobile number"
+              class="form-control mb-2"
+              name="mobile"
+            />
+            <select class="form-control mb-2" name="serviceType">
+              <option value="breed-service" selected>Breed</option>
+              <option value="farm-equipment">Farm Equipment</option>
+              <option value="shearing">Shearing</option>
+              <option value="fodder">Bread Detection</option>
+              <option value="vaterinary">Vaterinary</option>
+            </select>
+            <div>
+              <!-- <label for="date">Select Date</label> -->
+              <input
+                type="date"
+                id="date"
+                class="form-control mb-2"
+                value="2022-12-21"
+                name="serviceDate"
+              />
+            </div>
+            <input
+              type="text"
+              placeholder="Enter your message"
+              class="form-control mb-2"
+              id="message"
+              name="message"
+            />
 
-          <form id="requestBreedForm">
-            <h5 class="title mb-2">Request for Breed</h5>
-            <div class="form-group basic">
-              <div class="input-wrapper">
-                <input type="hidden" name="serviceType" value="breed" />
-                <input type="hidden" name="farmerId" value="43689564389" />
-                <label class="label" for="nameInput">Name</label>
-                <input
-                  type="text"
-                  id="nameInput"
-                  class="form-control"
-                  placeholder="Enter Name"
-                  name="name"
-                />
-              </div>
-            </div>
-            <div class="form-group basic">
-              <div class="input-wrapper">
-                <label class="label" for="mobileInput">Phone Number</label>
-                <input
-                  type="tel"
-                  id="mobileInput"
-                  class="form-control"
-                  placeholder="Enter Phone Number"
-                  name="mobile"
-                />
-              </div>
-            </div>
-            <div class="form-group basic">
-              <div class="input-wrapper">
-                <label class="label" for="emailInput">Email</label>
-                <input
-                  type="email"
-                  id="emailInput"
-                  class="form-control"
-                  placeholder="Enter Email"
-                  name="email"
-                />
-              </div>
-            </div>
-            <div class="form-group basic">
-              <div class="input-wrapper">
-                <label class="label" for="addressInput">Address</label>
-                <input
-                  type="text"
-                  id="addressInput"
-                  class="form-control"
-                  placeholder="Enter Address"
-                  name="address"
-                />
-              </div>
-            </div>
-            <div class="form-group basic">
-              <div class="input-wrapper">
-                <label class="label" for="quantityInput">Quantity</label>
-                <input
-                  type="number"
-                  id="quantityInput"
-                  class="form-control"
-                  placeholder="Enter Quantity"
-                  name="quantity"
-                />
-              </div>
-            </div>
-            <div class="form-group basic">
-              <div class="input-wrapper">
-                <label class="label" for="qualityInput">Wool Type</label>
-                <input
-                  type="text"
-                  id="qualityInput"
-                  class="form-control"
-                  placeholder="Wool Type"
-                  name="woolType"
-                />
-              </div>
-            </div>
-            <div class="form-group basic">
-              <div class="input-wrapper">
-                <label class="label" for="fromDateInput">From Date</label>
-                <input
-                  type="date"
-                  id="fromDateInput"
-                  class="form-control"
-                  placeholder="Select From Date"
-                  name="fromDate"
-                />
-                
-              </div>
-            </div>
-            <div class="form-group basic">
-              <div class="input-wrapper">
-                <label class="label" for="toDateInput">To Date</label>
-                <input
-                  type="date"
-                  id="toDateInput"
-                  class="form-control"
-                  placeholder="Select To Date"
-                  name="toDate"
-                />
-              </div>
-            </div>
-            <script>
-              // stop taking past date
-              fromDateInput.min = new Date().toISOString().split("T")[0];
-              toDateInput.min = new Date().toISOString().split("T")[0];
-            </script>
-            <p style="text-align: center; margin-top: 1rem">
-              <button
+            <button
                 class="btn btn-success btn-sm mb-2"
                 style="margin: 0 auto"
                 data-bs-toggle="modal"
@@ -273,14 +214,6 @@
               >
                 Pay
               </button>
-              <button
-                class="btn btn-danger btn-sm mb-2"
-                style="margin: 0 auto"
-                onclick="document.getElementById('myModal').style.display = 'none'"
-              >
-                Cancel
-              </button>
-            </p>
           </form>
         </div>
       </div>
@@ -306,6 +239,7 @@
           id="BreedSearch"
           placeholder="Search for Breed location"
           autocomplete="off"
+          suggested="false"
           style="padding: 2px 5px; border-radius: 5px; border: 1px solid #ccc"
         />
       </div>
@@ -320,25 +254,24 @@
       <script>
         payBtn.onclick = function (e) {
           e.preventDefault();
-          var fromDate = new Date(
-            document.getElementById("fromDateInput").value
-          );
-          var toDate = new Date(document.getElementById("toDateInput").value);
-          var days = (toDate - fromDate) / (1000 * 3600 * 24);
-          var amount =
-            days *
-            document.getElementById("quantityInput").value *
-            CHOOSED_Breed_PRICE;
+          var amount = CHOOSED_Breed_PRICE;
           myModal.style.display = "none";
           document.getElementById("calPrice").innerHTML = amount;
           document.getElementById("calPrice2").innerHTML = amount;
+          
         };
-
+        // add a hidden input field for the amount in requestBreedsForm
+        
         function submitRequestForm() {
+        var hiddenAmount = document.createElement("input");
+        hiddenAmount.setAttribute("type", "hidden");
+        hiddenAmount.setAttribute("name", "farmerId");
+        hiddenAmount.setAttribute("value", getCookie("userId"));
+        requestBreedForm.appendChild(hiddenAmount);
           var form = $("#requestBreedForm");
           $.ajax({
             type: "POST",
-            url: "http://localhost:4000/api/bookService",
+            url: "https://6ef2-2409-40c4-101e-87f8-5fca-3436-f233-fa5f.ngrok-free.app/api/bookService",
             data: form.serialize(), // serializes the form's elements.
             success: function (data) {
               console.log(data);
@@ -400,7 +333,7 @@
               },
               description:
                 "SecureStorage Plus offers state-of-the-art storage solutions for your valuable goods. Our Breed, conveniently located in Bakhtiyarpur, Bihar, provides top-notch security measures, climate-controlled units, and 24/7 monitoring. Whether you need short-term storage during a move or long-term storage for business inventory, SecureStorage Plus has you covered. Pricing starts at $10 per kilogram per day, ensuring affordability without compromising on quality.",
-              pricePerKGperDay: 10,
+              price: 10,
               image: "https://placekitten.com/200/300",
             },
             {
@@ -419,7 +352,7 @@
               },
               description:
                 "Welcome to ClimateControl Warehousing, where your belongings are safeguarded in a controlled environment. Our facility in Patna, Bihar, ensures that temperature-sensitive items are kept at optimal conditions. With a focus on reliability and customer satisfaction, we offer competitive pricing starting at $8 per kilogram per day. Trust ClimateControl Warehousing for secure and climate-friendly storage solutions.",
-              pricePerKGperDay: 8,
+              price: 8,
               image: "https://placekitten.com/200/301",
             },
             {
@@ -438,7 +371,7 @@
               },
               description:
                 "Central Storage Hub is your go-to destination for secure and efficient storage solutions in Bangalore, Karnataka. Our facility boasts cutting-edge security features and spacious storage units suitable for various needs. Whether it's household items or commercial inventory, we provide reliable storage at a competitive price of $12 per kilogram per day.",
-              pricePerKGperDay: 12,
+              price: 12,
               image: "https://placekitten.com/200/302",
             },
             {
@@ -457,7 +390,7 @@
               },
               description:
                 "Discover secure storage solutions at Rajasthan Warehousing in the historic city of Jaipur, Rajasthan. Our facility offers a range of storage options with 24/7 surveillance and excellent customer service. For a competitive price of $11 per kilogram per day, trust Rajasthan Warehousing for all your storage needs.",
-              pricePerKGperDay: 11,
+              price: 11,
               image: "https://placekitten.com/200/303",
             },
             {
@@ -476,7 +409,7 @@
               },
               description:
                 "Central India Storage, located in the vibrant city of Indore, Madhya Pradesh, provides secure and reliable storage solutions. Our facility is equipped with advanced security measures, and our experienced team ensures the safety of your belongings. Avail our storage services at a competitive price of $9 per kilogram per day.",
-              pricePerKGperDay: 9,
+              price: 9,
               image: "https://placekitten.com/200/304",
             },
             {
@@ -495,7 +428,7 @@
               },
               description:
                 "Eastern Oasis Storage welcomes you to Kolkata, West Bengal, with secure and affordable storage solutions. Our facility ensures the safety of your possessions with 24/7 monitoring and climate-controlled storage units. Experience quality storage services at a competitive price of $10 per kilogram per day.",
-              pricePerKGperDay: 10,
+              price: 10,
               image: "https://placekitten.com/200/305",
             },
             {
@@ -514,7 +447,7 @@
               },
               description:
                 "Discover secure and convenient storage solutions at Golden Triangle Storage in the historic city of Agra, Uttar Pradesh. Our facility combines advanced security features with friendly service, providing storage options for various needs. Avail our competitive pricing starting at $10 per kilogram per day.",
-              pricePerKGperDay: 10,
+              price: 10,
               image: "https://placekitten.com/200/306",
             },
             {
@@ -533,7 +466,7 @@
               },
               description:
                 "Welcome to Western Gateway Warehousing in the vibrant city of Ahmedabad, Gujarat. Our facility offers secure and well-maintained storage solutions for your belongings. With competitive pricing starting at $11 per kilogram per day, trust us for reliable and cost-effective storage services.",
-              pricePerKGperDay: 11,
+              price: 11,
               image: "https://placekitten.com/200/307",
             },
             {
@@ -552,7 +485,7 @@
               },
               description:
                 "Discover secure storage at Northern Breeze Warehousing in the heart of New Delhi, India's capital territory. Our facility offers reliable storage solutions with advanced security features and competitive pricing starting at $12 per kilogram per day. Trust us for your storage needs.",
-              pricePerKGperDay: 12,
+              price: 12,
               image: "https://placekitten.com/200/309",
             },
           ];
@@ -599,6 +532,7 @@
                           ${dist} <br>
                           <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addCardActionSheet">Request</button>
                         `)
+
               )
               .addTo(map);
           });
@@ -636,7 +570,7 @@
                 Breed.description
                   .toLowerCase()
                   .includes(searchText.toLowerCase()) ||
-                Breed.pricePerKGperDay
+                Breed.price
                   .toString()
                   .includes(searchText.toLowerCase()) ||
                 Breed.distance
@@ -682,12 +616,12 @@
                                 <strong>Owner:</strong> ${Breed.owner.name} <br>
                                 <strong>Phone:</strong> ${Breed.owner.mobile} <br>
                                 <strong>Email:</strong> ${Breed.owner.email} <br>
-                                <strong>Price:</strong> ₹${Breed.pricePerKGperDay}/kg/day <br>
+                                <strong>Price:</strong> ₹${Breed.price}/kg/day <br>
                                 <strong>Description:</strong> ${Breed.description} <br>
 
                                 <p style="text-align: center; margin-top: 1rem">
                                   <button class="btn btn-success btn-sm mb-2" style="margin: 0 auto;"
-                                  onclick="CHOOSED_Breed_PRICE = ${Breed.pricePerKGperDay}; document.getElementById('myModal').style.display = 'flex';"
+                                  onclick="CHOOSED_Breed_PRICE = ${Breed.price}; document.getElementById('myModal').style.display = 'flex';"
                                   >Request</button>
                                 </p>
                               </div>
@@ -739,7 +673,7 @@
           <ion-icon name="share-outline"></ion-icon> Request For This Service
         </a>
       </div> -->
-
+      
       <div
         class="modal fade action-sheet"
         id="addCardActionSheet"

@@ -158,9 +158,7 @@ router.post('/pages/login', async (req, res) => {
 
     // return back index page with more than one cookies
     console.log(user._id.toString());
-    res.cookie("token", token).cookie("userID", user._id.toString()).cookie("role", user.role).redirect('/index.html');
-
-
+    res.cookie("token", token).cookie("progress",user.progress).cookie("userID", user._id.toString()).cookie("role", user.role).cookie("user",JSON.stringify(user)).redirect('/index.html');
   } catch (error) {
     res.status(400).json({ message: error.message });
     console.log(error);
