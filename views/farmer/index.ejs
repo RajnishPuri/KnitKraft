@@ -440,11 +440,10 @@ Credit to https://dribbble.com/shots/2350761-Weather-app-illustration for the de
             <select class="form-control custom-select" id="account2"  onchange="FillProgressTimeline(this.value)">
               <option value="0" >B4TIJ(Batch 1)</option>
               <option value="1" >B8KIJ(Batch 2)</option>
-              <option value="2" >B9KIM(Batch 3)</option>
 
             </select>
           </div>
-          <a href="../assets/img/certificate.jpeg" type="button" class="btn btn-primary" style="float:right;">
+          <a href="../assets/img/certificate.jpeg" id="certDownloadBtn"  type="button" class="btn btn-primary" style="float:right;">
             View Certificate
           </a>
         </div>
@@ -1334,8 +1333,10 @@ Credit to https://dribbble.com/shots/2350761-Weather-app-illustration for the de
           lastUpdated: 1627776000000,
         },
       ]
+      var CERTIFICATES = ["../assets/img/Batch 1.jpg", "../assets/img/Batch 2.jpg"];
      function FillProgressTimeline(i=0){
       i = parseInt(i);
+      certDownloadBtn.href = CERTIFICATES[i];
       batchName.innerHTML = BATCHES[i].name + " (Batch "+(i+1)+")";
       var progressTimeline = document.getElementById("progressTimeline");
       progressTimeline.innerHTML = "";
@@ -1365,7 +1366,7 @@ Credit to https://dribbble.com/shots/2350761-Weather-app-illustration for the de
 
     function updateProgress(index){
       $.ajax({
-        url: "http://localhost:4000/api/updateProgress",
+        url: "https://knitkraft.onrender.com/api/updateProgress",
         type: "POST",
         data: {
           progress: index,
