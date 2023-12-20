@@ -107,7 +107,7 @@
                   data-bs-dismiss="modal"
                   >Cancel</a
                 >
-                <a href="meetPage.html" class="btn btn-text-primary"
+                <a href="../Learning/meetPage.ejs" class="btn btn-text-primary"
                   >Request/Join</a
                 >
               </div>
@@ -225,7 +225,7 @@
           checkElement.style.display = "none";
         }
       }
-      $.getJSON("http://localhost:4000/api/getMeetings", function (data) {
+      $.getJSON("https://knitkraft.onrender.com/api/getMeetings", function (data) {
         var allMeetings = "";
         if (data.status == "success") {
           data = data.meetings;
@@ -281,7 +281,7 @@
       });
       function updateMeeting(id, status, meetResponse) {
         $.ajax({
-          url: "http://localhost:4000/api/updateMeet",
+          url: "https://knitkraft.onrender.com/api/updateMeet",
           type: "POST",
           data: {
             id: id,

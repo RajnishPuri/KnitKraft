@@ -545,7 +545,7 @@
     <script>
       var ALL_service_BOOKINGS = [];
       $.getJSON(
-        "http://localhost:4000/api/getServiceBookings",
+        "https://knitkraft.onrender.com/api/getServiceBookings",
         function (data) {
           if (data.status == "success") {
             ALL_service_BOOKINGS = data.service;
@@ -621,7 +621,7 @@
       }
       function updateServiceStatus(id, status, response) {
         $.post(
-          "http://localhost:4000/api/updateServiceStatus",
+          "https://knitkraft.onrender.com/api/updateServiceStatus",
           {
             id,
             status,
@@ -645,7 +645,7 @@
         // var formData = new FormData(form);
         // formData.append("farmerId", farmerId);
         // $.ajax({
-        //   url: `http://localhost:4000/api/${farmerId}/${batchNo}/generateCertificate`,
+        //   url: `https://knitkraft.onrender.com/api/${farmerId}/${batchNo}/generateCertificate`,
         //   type: "POST",
         //   data: formData,
         //   processData: false,
