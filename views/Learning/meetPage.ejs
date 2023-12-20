@@ -238,7 +238,7 @@
               <div>
                 <!-- take input time as 12 hour clock format -->
                 <input
-                  type="time"
+                  type="bookMeetBtntime"
                   id="time"
                   name="time"
                   class="form-control mb-2"
@@ -525,7 +525,7 @@
     <script>
       var allMeetings = document.getElementById("allMeetings");
 
-      $.getJSON("https://knitkraft.onrender.com/api/getMeetings", function (data) {
+      $.getJSON("http://localhost:4000/api/getMeetings", function (data) {
         var allMeetings = "";
         if (data.status == "success") {
           data = data.meetings;
@@ -580,15 +580,15 @@
       function deleteMeeting(id) {
         $.ajax({
           type: "POST",
-          url: "https://knitkraft.onrender.com/api/deleteMeet",
+          url: "http://localhost:4000/api/deleteMeet",
           data: { id: id },
           success: function (data) {
             console.log(data);
             if (data.status == "success") {
-              alert("Meeting Deleted");
+              console.error("Meeting Deleted");
               location.reload();
             } else {
-              alert("There is some error");
+              console.error("There is some error");
             }
           },
         });
@@ -601,14 +601,14 @@
           var url = form.attr("action");
           $.ajax({
             type: "POST",
-            url: "https://knitkraft.onrender.com/api/bookMeet",
+            url: "http://localhost:4000/api/bookMeet",
             data: form.serialize(),
             success: function (data) {
               console.log(data);
               if (data.status == "success") {
                 $("#myModal").css("display", "none");
               } else {
-                alert("There is some error");
+                console.error("There is some error");
               }
             },
           });

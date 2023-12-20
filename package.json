@@ -19,6 +19,7 @@
     "mongodb": "^2.2.12",
     "mongoose": "^8.0.3",
     "morgan": "~1.9.1",
-    "popper.js": "^1.16.1"
+    "popper.js": "^1.16.1",
+    "socket.io": "^4.7.2"
   }
 }

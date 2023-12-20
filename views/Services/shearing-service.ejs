@@ -191,7 +191,9 @@
               <option value="fodder">Bread Detection</option>
               <option value="vaterinary">Vaterinary</option>
             </select>
+            <input type="hidden" name="farmerId" id="hiddenAmount"/>
             <div>
+              
               <!-- <label for="date">Select Date</label> -->
               <input
                 type="date"
@@ -273,17 +275,16 @@
         // add a hidden input field for the amount in requestBreedsForm
         
         function submitRequestForm(){
-        var hiddenAmount = document.createElement("input");
+        var hiddenAmount = document.getElementById("hiddenAmount");
         hiddenAmount.setAttribute("type", "hidden");
         hiddenAmount.setAttribute("name", "farmerId");
-        hiddenAmount.setAttribute("value", getCookie("userId"));
-        requestBreedForm.appendChild(hiddenAmount);
+        hiddenAmount.setAttribute("value", getCookie("userID"));
           var form = $("#requestBreedForm");
           $.ajax({
             type: "POST",
-            url: "https://knitkraft.onrender.com/api/bookService",
+            url: "http://localhost:4000/api/bookService",
             data: form.serialize(), // serializes the form's elements.
-            success: function (data) {
+            success: function(data){
               console.log(data);
               successCall.click();
             },
@@ -344,10 +345,10 @@
               description:
                 "SecureStorage Plus offers state-of-the-art storage solutions for your valuable goods. Our Breed, conveniently located in Bakhtiyarpur, Bihar, provides top-notch security measures, climate-controlled units, and 24/7 monitoring. Whether you need short-term storage during a move or long-term storage for business inventory, SecureStorage Plus has you covered. Pricing starts at $10 per kilogram per day, ensuring affordability without compromising on quality.",
               price: 10,
-              image: "https://placekitten.com/200/300",
+              image: "../assets/Shearing1.png",
             },
             {
-              name: "ClimateControl Warehousing",
+              name: "ClimateControl Shearing",
               location: { lng: 85.5278481979343, lat: 25.601939994727994 },
               address: {
                 state: "Bihar",
@@ -361,9 +362,9 @@
                 email: "jane@example.com",
               },
               description:
-                "Welcome to ClimateControl Warehousing, where your belongings are safeguarded in a controlled environment. Our facility in Patna, Bihar, ensures that temperature-sensitive items are kept at optimal conditions. With a focus on reliability and customer satisfaction, we offer competitive pricing starting at $8 per kilogram per day. Trust ClimateControl Warehousing for secure and climate-friendly storage solutions.",
+                "Welcome to ClimateControl Shearing, where your belongings are safeguarded in a controlled environment. Our facility in Patna, Bihar, ensures that temperature-sensitive items are kept at optimal conditions. With a focus on reliability and customer satisfaction, we offer competitive pricing starting at $8 per kilogram per day. Trust ClimateControl Shearing for secure and climate-friendly storage solutions.",
               price: 8,
-              image: "https://placekitten.com/200/301",
+              image: "../assets/Shearing2.png",
             },
             {
               name: "Central Storage Hub",
@@ -382,10 +383,10 @@
               description:
                 "Central Storage Hub is your go-to destination for secure and efficient storage solutions in Bangalore, Karnataka. Our facility boasts cutting-edge security features and spacious storage units suitable for various needs. Whether it's household items or commercial inventory, we provide reliable storage at a competitive price of $12 per kilogram per day.",
               price: 12,
-              image: "https://placekitten.com/200/302",
+              image: "../assets/Shearing3.png",
             },
             {
-              name: "Rajasthan Warehousing",
+              name: "Rajasthan Shearing",
               location: { lng: 75.78727, lat: 26.912434 },
               address: {
                 state: "Rajasthan",
@@ -399,9 +400,9 @@
                 email: "raj@example.com",
               },
               description:
-                "Discover secure storage solutions at Rajasthan Warehousing in the historic city of Jaipur, Rajasthan. Our facility offers a range of storage options with 24/7 surveillance and excellent customer service. For a competitive price of $11 per kilogram per day, trust Rajasthan Warehousing for all your storage needs.",
+                "Discover secure storage solutions at Rajasthan Shearing in the historic city of Jaipur, Rajasthan. Our facility offers a range of storage options with 24/7 surveillance and excellent customer service. For a competitive price of $11 per kilogram per day, trust Rajasthan Shearing for all your storage needs.",
               price: 11,
-              image: "https://placekitten.com/200/303",
+              image: "../assets/Shearing4.png",
             },
             {
               name: "Central India Storage",
@@ -420,7 +421,7 @@
               description:
                 "Central India Storage, located in the vibrant city of Indore, Madhya Pradesh, provides secure and reliable storage solutions. Our facility is equipped with advanced security measures, and our experienced team ensures the safety of your belongings. Avail our storage services at a competitive price of $9 per kilogram per day.",
               price: 9,
-              image: "https://placekitten.com/200/304",
+              image: "../assets/Shearing5.png",
             },
             {
               name: "Eastern Oasis Storage",
@@ -439,7 +440,7 @@
               description:
                 "Eastern Oasis Storage welcomes you to Kolkata, West Bengal, with secure and affordable storage solutions. Our facility ensures the safety of your possessions with 24/7 monitoring and climate-controlled storage units. Experience quality storage services at a competitive price of $10 per kilogram per day.",
               price: 10,
-              image: "https://placekitten.com/200/305",
+              image: "../assets/Shearing6.png",
             },
             {
               name: "Golden Triangle Storage",
@@ -458,10 +459,10 @@
               description:
                 "Discover secure and convenient storage solutions at Golden Triangle Storage in the historic city of Agra, Uttar Pradesh. Our facility combines advanced security features with friendly service, providing storage options for various needs. Avail our competitive pricing starting at $10 per kilogram per day.",
               price: 10,
-              image: "https://placekitten.com/200/306",
+              image: "../assets/Shearing7.png",
             },
             {
-              name: "Western Gateway Warehousing",
+              name: "Western Gateway Shearing",
               location: { lng: 72.825836, lat: 18.975 },
               address: {
                 state: "Gujarat",
@@ -475,12 +476,12 @@
                 email: "amit@example.com",
               },
               description:
-                "Welcome to Western Gateway Warehousing in the vibrant city of Ahmedabad, Gujarat. Our facility offers secure and well-maintained storage solutions for your belongings. With competitive pricing starting at $11 per kilogram per day, trust us for reliable and cost-effective storage services.",
+                "Welcome to Western Gateway Shearing in the vibrant city of Ahmedabad, Gujarat. Our facility offers secure and well-maintained storage solutions for your belongings. With competitive pricing starting at $11 per kilogram per day, trust us for reliable and cost-effective storage services.",
               price: 11,
-              image: "https://placekitten.com/200/307",
+              image: "../assets/Shearing8.png",
             },
             {
-              name: "Northern Breeze Warehousing",
+              name: "Northern Breeze Shearing",
               location: { lng: 77.209021, lat: 28.613939 },
               address: {
                 state: "Delhi",
@@ -494,9 +495,9 @@
                 email: "ankit@example.com",
               },
               description:
-                "Discover secure storage at Northern Breeze Warehousing in the heart of New Delhi, India's capital territory. Our facility offers reliable storage solutions with advanced security features and competitive pricing starting at $12 per kilogram per day. Trust us for your storage needs.",
+                "Discover secure storage at Northern Breeze Shearing in the heart of New Delhi, India's capital territory. Our facility offers reliable storage solutions with advanced security features and competitive pricing starting at $12 per kilogram per day. Trust us for your storage needs.",
               price: 12,
-              image: "https://placekitten.com/200/309",
+              image: "../assets/Shearing9.png",
             },
           ];
 

@@ -225,7 +225,7 @@
           checkElement.style.display = "none";
         }
       }
-      $.getJSON("https://knitkraft.onrender.com/api/getMeetings", function (data) {
+      $.getJSON("http://localhost:4000/api/getMeetings", function (data) {
         var allMeetings = "";
         if (data.status == "success") {
           data = data.meetings;
@@ -281,7 +281,7 @@
       });
       function updateMeeting(id, status, meetResponse) {
         $.ajax({
-          url: "https://knitkraft.onrender.com/api/updateMeet",
+          url: "http://localhost:4000/api/updateMeet",
           type: "POST",
           data: {
             id: id,
@@ -290,10 +290,10 @@
           },
           success: function (data) {
             if (data.status == "success") {
-              alert("Meeting Updated");
+             console.log("Meeting Updated");
               window.location.reload();
             } else {
-              alert("Error");
+             console.log("Error");
             }
           },
         });

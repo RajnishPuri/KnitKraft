@@ -251,7 +251,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-      $.getJSON("https://knitkraft.onrender.com/api/getTransports", function (data) {
+      $.getJSON("http://localhost:4000/api/getTransports", function (data) {
         var transportData = "";
         if (data.status == "success") {
           data = data.transport;
@@ -409,7 +409,7 @@
         var progress = TRANSPORTATION[i].progress;
         progress[phase] = true;
 
-        $.ajax("https://knitkraft.onrender.com/api/updateTransportProgress", {
+        $.ajax("http://localhost:4000/api/updateTransportProgress", {
           type: "POST",
           data: {
             id: TRANSPORTATION[i]._id,
@@ -420,15 +420,15 @@
           success: function (data) {
             console.log(data);
             if (data.status == "success") {
-              alert("Progress Updated");
+             console.log("Progress Updated");
               window.location.reload();
             } else {
-              alert("Error Occured");
+             console.log("Error Occured");
             }
           },
           error: function (err) {
             console.log(err);
-            alert("Error Occured");
+           console.log("Error Occured");
           },
         });
       }

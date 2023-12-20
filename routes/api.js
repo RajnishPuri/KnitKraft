@@ -337,17 +337,57 @@ router.post("/bookService", function (req, res) {
     mobile: req.body.mobile,
     serviceDate: req.body.serviceDate,
     message: req.body.message,
+    batchNo: req.body.batchId,
     status: "pending",
   });
+  // create a batch for the farmer if it doesn't exist in the database of farmer
+  
+
+  //else add the service to the batch
   service
     .save()
     .then((result) => {
-      console.log(result);
-      res.status(201).json({
-        message: "Service Booked Successfully",
-        service: service,
-        status: "success",
-      });
+      try {
+        User.findOne({ _id: req.body.farmerId }).then((result) => {
+          if (result) {
+            var batch = result.batches.find(
+              (card) => card.name.toString() === req.body.batchNo
+            );
+            if (!batch) {
+              var batch = {
+                name: req.body.batchNo,
+                progress: 0,
+                lastUpdatedBy: "service",
+              };
+              User.findOneAndUpdate(
+                { _id: req.body.farmerId },
+                { $push: { batches: batch } }
+              ).then((result) => {
+                console.log(result);
+                res.status(201).json({
+                  message: "batch Added Successfully",
+                  user: result,
+                  status: "success",
+                });
+    
+              });
+            }else{
+              res.status(201).json({
+                message: "batch already exists",
+                user: result,
+                status: "success",
+              });
+            }
+    
+          }else{
+            res.status(500).json({ message: "Farmer not found" });
+          }
+        });
+      } catch (err) {
+        console.log("error in creating batch for farmer");
+        console.log(err);
+        res.status(500).json({ message: "Farmer not found" });
+      }
     })
     .catch((err) => {
       console.log(err);
@@ -471,18 +511,28 @@ router.post("/:userId/:BatchId/editProgress", async (req, res) => {
   });
   await user.save();
   res.json({
-    status: "success"
-  })
+    status: "success",
+  });
 });
 
-router.post("/getUserById",(req,res)=>{
-  User.findById(req.body.id).then((result)=>{
+router.post("/:userId/:BatchId/generateCertificate", async (req, res) => {
+  const user = User.findById(req.params.userId);
+  var batch = user.batches.find(
+    (card) => card._id.toString() === req.params.BatchId
+  );
+  Object.assign(batch, req.body);
+  await user.save();
+  res.json({
+    status: "success",
+  });
+});
+router.post("/getUserById", (req, res) => {
+  User.findById(req.body.id).then((result) => {
     res.json({
-      user:result
-    })
-  })
-  
-})
+      user: result,
+    });
+  });
+});
 
-console.log("https://knitkraft.onrender.com");
+console.log("http://localhost:4000");
 module.exports = router;
