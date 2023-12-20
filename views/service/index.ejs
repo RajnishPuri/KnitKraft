@@ -534,7 +534,7 @@
     <script>
       var ALL_service_BOOKINGS = [];
       $.getJSON(
-        "http://localhost:4000/api/getServiceBookings",
+        "https://knitkraft.onrender.com/api/getServiceBookings",
         function (data) {
           if (data.status == "success") {
             ALL_service_BOOKINGS = data.service;
@@ -604,7 +604,7 @@
       }
       function updateServiceStatus(id, status, response) {
         $.post(
-          "http://localhost:4000/api/updateServiceStatus",
+          "https://knitkraft.onrender.com/api/updateServiceStatus",
           {
             id,
             status,
