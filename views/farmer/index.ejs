@@ -449,51 +449,29 @@ Credit to https://dribbble.com/shots/2350761-Weather-app-illustration for the de
           <h2 class="title">Progress Timeline</h2>
           <a href="app-transactions.html" class="link"></a>
         </div>
+
+        <div class="form-group basic">
+          <div class="input-wrapper">
+            <label class="label" for="account2">Select Batch</label>
+            <select class="form-control custom-select" id="account2">
+              <option>B4TIJ(Batch 1)</option>
+              <option>B8KIJ(Batch 2)</option>
+              <option>B9KIM(Batch 3)</option>
+
+            </select>
+          </div>
+          <a href="../assets/img/certificate.jpeg" type="button" class="btn btn-primary" style="float:right;">
+            View Certificate
+          </a>
+        </div>
         <div class="card" id="allBadges">
           <!-- timeline -->
+          
           <div class="timeline ms-3" id="progressTimeline">
             
           </div>
-          <!-- * timeline -->
-        </div>
       
     </div>
-    <!-- <script>
-      allBadges.innerHTML = "";
-      var BADGES = ["E11","A44","Z46","KM6"];
-      var PROGRESS = [0, 2, 5,2];
-      BADGES.forEach((badge)=>{
-        allBadges.innerHTML += "<h2>"+badge+"</h3>";
-          var progressHTML = "";
-              var progress = farmer.progress;
-              PROGRESS_ARRAY.forEach((prg, index) => {
-                var lastUpdated = new Date(
-                  parseInt(farmer.lastUpdated)
-                ).toLocaleString();
-                progressHTML += `
-          <div class="item">
-            <div type="radio" class="dot ${
-              index <= progress ? "bg-danger" : "bg-secondary"
-            }" ></div>
-            <div class="content">
-              <h4 class="title">${prg}</h4>
-              ${
-                index == progress
-                  ? `<p class="text-danger">${
-                      lastUpdated
-                        ? `Last Updated: ${new Date(
-                            parseInt(lastUpdated)
-                          ).toLocaleString()}`
-                        : ""
-                    }</p>`
-                  : ""
-              }
-            </div>
-          </div>`;
-
-      })
-
-      </script> -->
     <!-- * App Capsule -->
 
     <!-- App Bottom Menu -->
