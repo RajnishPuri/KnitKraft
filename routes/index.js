@@ -142,7 +142,7 @@ router.post('/pages/login', async (req, res) => {
     const user = await User.findOne({ email }); // Assuming you're using Mongoose or a similar ORM
 
     if (!user) {
-      return res.status(401).json({ message: 'User not found' });
+      return res.redirect('/pages/app-login.html');
     }
 
     // Validate the password
