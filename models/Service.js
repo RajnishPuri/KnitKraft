@@ -44,6 +44,11 @@ const serviceSchema = new Schema({
         type: Date,
         default: Date.now,
     },
+    batchNo: {
+        type: String,
+        required: false,
+        default: '',
+    },
 
 });
 

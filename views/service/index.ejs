@@ -55,12 +55,8 @@
     <!-- App Header -->
     <div class="appHeader bg-primary text-light">
       <div class="left">
-        <a
-          href="#"
-          class="headerButton"
-          onclick="logout()"
-        >
-        <ion-icon name="log-out-outline"></ion-icon>
+        <a href="#" class="headerButton" onclick="logout()">
+          <ion-icon name="log-out-outline"></ion-icon>
         </a>
       </div>
       <div class="pageTitle">
@@ -375,100 +371,139 @@
             <form id="requestserviceForm" style="padding: 0 2vw">
               <h5 class="title mb-2">Request for service</h5>
 
-              <div class="form-group basic">
+              <div class="form-group boxed">
                 <div class="input-wrapper">
-                  <label class="label" for="quantityInput">Quantity</label>
-                  <input
-                    type="number"
-                    id="quantityInput"
-                    class="form-control"
-                    placeholder="Enter Quantity"
-                    name="quantity"
-                  />
-                </div>
-              </div>
-
-              <div class="form-group basic">
-                <div class="input-wrapper">
-                  <label class="label" for="woolTypeInput">Wool Type</label>
-                  <input
-                    type="text"
-                    id="woolTypeInput"
-                    class="form-control"
-                    placeholder="Wool Type"
-                    name="woolType"
-                  />
-                </div>
-              </div>
-
-              <div class="form-group basic">
-                <div class="input-wrapper">
-                  <label class="label" for="fromDateInput">From Date</label>
-                  <input
-                    type="date"
-                    id="fromDateInput"
-                    class="form-control"
-                    placeholder="Select From Date"
-                    name="fromDate"
-                  />
-                </div>
-              </div>
-
-              <div class="form-group basic">
-                <div class="input-wrapper">
-                  <label class="label" for="toDateInput">To Date</label>
-                  <input
-                    type="date"
-                    id="toDateInput"
-                    class="form-control"
-                    placeholder="Select To Date"
-                    name="toDate"
-                  />
-                </div>
-              </div>
-
-              <!-- Additional Inputs -->
-              <!-- Status select box pending and accepted -->
-              <div class="form-group basic">
-                <div class="input-wrapper">
-                  <label class="label" for="statusInput">Status</label>
-                  <select
-                    class="form-control custom-select"
-                    id="statusInput"
-                    name="status"
-                  >
-                    <option value="pending">Pending</option>
-                    <option value="accepted">accepted</option>
+                  <label class="label" for="fleecetype"
+                    >Type of Fleece :
+                  </label>
+                  <select class="form-control custom-select" id="fleecetype">
+                    <option>Select Fleece</option>
+                    <option value="Lohi">Lohi</option>
+                    <option value="Rampur">Rampur</option>
+                    <option value="Nali">Nali</option>
+                    <option value="Bakharwal">Bakharwal</option>
+                    <option value="Marwari">Marwari</option>
+                    <option value="Patanwadi">Patanwadi</option>
+                    <option value="Cashmere">Cashmere</option>
+                    <option value="Alpaca">Alpaca</option>
+                    <option value="Angora">Angora</option>
+                    <option value="Mohair">Mohair</option>
+                    <option value="Merino">Merino</option>
+                    <option value="Camel">Camel</option>
                   </select>
                 </div>
               </div>
 
-              <!-- for message -->
-              <div class="form-group basic">
+              <div class="form-group boxed">
                 <div class="input-wrapper">
-                  <label class="label" for="messageInput">Message</label>
-                  <textarea
-                    class="form-control"
-                    id="messageInput"
-                    rows="3"
-                    name="message"
-                  ></textarea>
-                </div>
-              </div>
-
-              <!-- for shelf -->
-              <div class="form-group basic">
-                <div class="input-wrapper">
-                  <label class="label" for="shelfInput">Shelf</label>
+                  <label class="label" for="lengthassessment"
+                    >Length Assessment</label
+                  >
+                  <h4>Fiber Length :</h4>
                   <input
-                    type="text"
-                    id="shelfInput"
+                    type="number"
                     class="form-control"
-                    placeholder="Shelf"
-                    name="shelf"
+                    id="fiberlength"
+                    placeholder="Enter Fiber Length in inches"
+                  />
+                  <br />
+                  <h4>Staple Length :</h4>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="staplelength"
+                    placeholder="Enter Staple Length in inches"
                   />
                 </div>
               </div>
+
+              <div class="form-group boxed">
+                <div class="input-wrapper">
+                  <label class="label" for="fineness">Fiber Fineness :</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="fiberfineness"
+                    placeholder="Enter Fiber Fineness in micrometer"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group boxed">
+                <div class="input-wrapper">
+                  <label class="label" for="fineness">Moisure Content</label>
+                  <h4>A: Mass of dry specimen :</h4>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="undried"
+                    placeholder=""
+                  />
+                  <br />
+                  <h4>B: Mass of undried specimen :</h4>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="dry"
+                    placeholder=""
+                  />
+                  <br />
+                  <h4>C: Mass of absorbed specimen :</h4>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="absorbed"
+                    placeholder=""
+                  />
+                  <br />
+                  <label class="label" for="regain">Moisure Regain % : </label>
+                  <label class="label" for="content"
+                    >Moisure Content % :
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group boxed">
+                <div class="input-wrapper">
+                  <label class="label" for="fineness">Fiber Diameter :</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="fiberdiameter"
+                    placeholder="Enter Fiber Diameter in mm"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group boxed">
+                <div class="input-wrapper">
+                  <label class="label" for="fineness">Burr Content :</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="burr"
+                    placeholder="Enter Burr Content %"
+                  />
+                </div>
+              </div>
+
+
+              <div class="form-group boxed">
+                <div class="input-wrapper">
+                    <label class="label" for="colour">Colour of Fleece :
+                    </label>
+                    <select class="form-control custom-select"
+                        id="colour">
+                        <option>Select Colour</option>
+                        <option value="alb">White (ALB)</option>
+                        <option value="ly">Light Yellow (LY)</option>
+                        <option value="my">Medium Yellow (MY)</option>
+                        <option value="hy">Heavy Yellow (HY)</option>
+                        <option value="black">Black</option>
+                        <option value="brown">Brown</option>
+                    </select>
+                </div>
+            </div>
 
               <p style="text-align: center; margin-top: 1rem">
                 <button
@@ -535,13 +570,24 @@
                                         }</p>
                                         <p class="card-text badge
                                         ${
-                                          service.status == "pending"? "bg-danger" : "bg-success"
+                                          service.status == "pending"
+                                            ? "bg-danger"
+                                            : "bg-success"
                                         }">Status: ${service.status}</p>
-                                        <td><input type="text" id="meetResponse" class="form-control" value="${
+                                        <input type="text" id="meetResponse" class="form-control" value="${
                                           service.response
-                                        }" ></td>
+                                        }" >
+                                        ${
+                                          service.status == "accepted"
+                                            ? `<button onclick="document.getElementById('modelShow').click()" class="btn btn-primary" >
+                                                  Give Grade and Finish
+                                              </button>`
+                                            : ""
+                                        }
                                     </div>
-                                    <button onclick="updateServiceStatus('${service._id}',
+                                    <button onclick="updateServiceStatus('${
+                                      service._id
+                                    }',
                                     'accepted', this.parentElement.querySelector('#meetResponse').value
                                     )" class="btn btn-primary" >Approve</button>
                                     <button onclick="updateServiceStatus('${
@@ -575,8 +621,7 @@
           }
         );
       }
-      
-      </script>
+    </script>
     <!-- * App Capsule -->
 
     <!-- App Bottom Menu -->

@@ -1,6 +1,27 @@
 const mongoose = require('mongoose');
 
 // Create a schema for the user
+const batchSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: false,
+    default: '',
+  },
+  progress: {
+    type: Number,
+    required: false,
+    default: 0,
+  },
+  lastUpdatedBy: {
+    type: String,
+    required: false,
+    default: '',
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+});
 const userSchema = new mongoose.Schema({
     email: {
         type: String,
@@ -9,7 +30,7 @@ const userSchema = new mongoose.Schema({
       },
       password: {
         type: String,
-        required: true
+        required: true 
       },
       name: {
         type: String,
@@ -44,6 +65,10 @@ const userSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
       },
+      batches: {
+        type: [batchSchema],
+        default: []
+      }
     });
     
 

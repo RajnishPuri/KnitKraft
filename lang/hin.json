@@ -33,7 +33,7 @@
       },
       "FarmServices": "खेत सेवाएं",
     "SheepBreedingServices": "भेड़ प्रजनन सेवाएं",
-    "WoolHarvestingShearingServices": "ऊन कटाई और केश सेवाएं",
+    "ShearingServices": "ऊन कटाई सेवाएं",
     "FodderNutritionServices": "चारा और पोषण सेवाएं",
     "VeterinaryServices": "पशुचिकित्सा सेवाएं",
     "QualityServices": "गुणवत्ता सेवाएं",
