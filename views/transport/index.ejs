@@ -420,15 +420,15 @@
           success: function (data) {
             console.log(data);
             if (data.status == "success") {
-              alert("Progress Updated");
+             console.log("Progress Updated");
               window.location.reload();
             } else {
-              alert("Error Occured");
+             console.log("Error Occured");
             }
           },
           error: function (err) {
             console.log(err);
-            alert("Error Occured");
+           console.log("Error Occured");
           },
         });
       }

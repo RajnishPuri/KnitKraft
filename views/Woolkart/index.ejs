@@ -8,8 +8,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#000000">
-    <title>Knitkraft</title>
-    <meta name="description" content="Knitkraft HTML Mobile Template">
+    <title>Finapp</title>
+    <meta name="description" content="Finapp HTML Mobile Template">
     <meta name="keywords"
         content="bootstrap, wallet, banking, fintech mobile template, cordova, phonegap, mobile, html, responsive" />
     <link rel="icon" type="image/png" href="../assets/img/favicon.png" sizes="32x32">
@@ -59,8 +59,6 @@
 
     <!-- App Capsule -->
     <div id="appCapsule">
-        
-
 
 
         <div class="section mt-1">
@@ -68,13 +66,13 @@
                 <div class="card-body pt-0">
                     <ul class="nav nav-tabs lined" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" data-bs-toggle="tab" href="#overview2" role="tab">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#buy" role="tab">
                                 Buy
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#settings2" role="tab">
+                            <a class="nav-link" data-bs-toggle="tab" href="#sell" role="tab">
                                 Sell
                             </a>
                         </li>
@@ -83,8 +81,8 @@
             </div>
         </div>
         <div class="tab-content mt-2">
-            <div class="tab-pane fade show active" id="overview2" role="tabpanel">
-                <div class="section tab-content mt-2 mb-2">
+            <div class="tab-pane fade show active" id="buy" role="tabpanel">
+                <div class="section tab-content mt-2 mb-2" id="allBuys">
                     <div class="row">
                         <!-- box start -->
                         <div class="col-6 mb-2">
@@ -165,9 +163,7 @@
                             </div>
 
                         </div>
-                        <!--  -->
-
-                    </div>
+                        </div>
                     <!-- * App Capsule -->
 
 
@@ -211,7 +207,7 @@
 
             </div>
 
-            <div class="tab-pane fade" id="settings2" role="tabpanel">
+            <div class="tab-pane fade" id="sell" role="tabpanel">
                 <div class="section tab-content mt-2 mb-2">
                     <div class="appHeader no-border transparent">
                         <div class="left">
@@ -221,76 +217,184 @@
                         </div>
                         <!-- <div class="pageTitle">Welcome</div> -->
                         <div class="right">
-                            
                         </div>
                     </div>
                     <!-- * App Header -->
-                   <!-- * Search Component -->
 
-    <div id="appCapsule">
+                    <!-- App Capsule -->
+                    <div id="appCapsule">
 
-        <!-- carousel slider -->
-        <div class="section mt-2">
-            <!-- <div class="section-title">Basic</div> -->
-            <div class="card">
-                <div class="card-body">
 
-                    <form>
+                        <div class="section mt-2">
+                            <div class="section-title">Product Information</div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <form>
+                                        <div class="custom-file-upload" id="fileUpload1">
+                                            <input type="file" id="fileuploadInput" accept=".png, .jpg, .jpeg">
+                                            <label for="fileuploadInput">
+                                                <span>
+                                                    <strong>
+                                                        <ion-icon name="arrow-up-circle-outline"></ion-icon>
+                                                        <i>Upload a Photo</i>
+                                                    </strong>
+                                                </span>
+                                            </label>
+                                        </div>
 
-                        <div class="form-group basic">
-                            <div class="input-wrapper">
-                                <label class="label" for="userid1">User ID</label>
-                                <input type="text" class="form-control" id="userid1"
-                                    placeholder="Enter an User ID">
-                                <i class="clear-input">
-                                    <ion-icon name="close-circle"></ion-icon>
-                                </i>
+                                        <div class="form-group basic">
+                                            <div class="input-wrapper">
+                                                <label class="label" for="text4">Product Title</label>
+                                                <input type="text" class="form-control" id="Product_Title"
+                                                    placeholder="Enter Product Title">
+                                                <i class="clear-input">
+                                                    <ion-icon name="close-circle"></ion-icon>
+                                                </i>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group boxed">
+                                            <div class="input-wrapper">
+                                                <label class="label" for="textarea4b">Product Description</label>
+                                                <textarea id="Product_Description" "
+                                                    rows=" 2" class="form-control"
+                                                    placeholder="Product Description"></textarea>
+                                                <i class="clear-input">
+                                                    <ion-icon name="close-circle" role="img" class="md hydrated"
+                                                        aria-label="close circle"></ion-icon>
+                                                </i>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group basic">
+                                            <div class="input-wrapper">
+                                                <label class="label" for="select4">Select Batch</label>
+                                                <select class="form-control custom-select" onchange="ExpectedMSP.innerHTML=500*(1-parseInt(this.value)/10)" id="Product_Category">
+                                                    <option value="1">Batch 1</option>
+                                                    <option value="2">Batch 2</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <p>Expected MSP: <span id="ExpectedMSP">₹50</span></p>
+                                            </div>
+                                        </div>
+
+
+
+
+
+                                        <div class="form-group basic">
+                                            <div class="input-wrapper">
+                                                <label class="label" for="phone4">Price</label>
+                                                <input type="price" class="form-control" id="price"
+                                                    placeholder="Enter a Price">
+                                                <i class="clear-input">
+                                                    <ion-icon name="close-circle"></ion-icon>
+                                                </i>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group basic">
+                                            <div class="input-wrapper">
+                                                <label class="label" for="select4">Tax Types</label>
+                                                <select class="form-control custom-select" id="Tax_type">
+                                                    <option value="1">5%</option>
+                                                    <option value="2">10%</option>
+                                                    <option value="3">18%</option>
+                                                    <option value="4">28%</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="input-wrapper">
+                                            <div class="label" for="select5">certificate</div>
+                                            <div class="custom-file-upload" id="certificate">
+
+                                                <input type="file" id="fileuploadInput3" accept=".png, .jpg, .jpeg,pdf">
+                                                <label for="fileuploadInput3">
+                                                    <span>
+                                                        <strong>
+
+                                                            <ion-icon name="arrow-up-circle-outline"></ion-icon>
+                                                            <i>certificate</i>
+                                                        </strong>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
 
+                        <div class="col-12">
+                            <a href="../Pages/Verificationuser.html" id="submitButton"
+                                class="btn btn-primary btn-lg btn-block">submit</a>
+                        </div>
+                    </div>
 
 
-                        <div class="form-group basic">
-                            <div class="input-wrapper">
-                                <label class="label" for="password4">Password</label>
-                                <input type="password" class="form-control" id="password4"
-                                    autocomplete="off" placeholder="Password Input">
-                                <i class="clear-input">
-                                    <ion-icon name="close-circle"></ion-icon>
-                                </i>
+                </div>
+                <!-- * App Capsule -->
+                <!-- * App Capsule -->
+
+                <script>
+                    // Assuming you have a submit button with the ID 'submitButton'
+                    const submitButton = document.getElementById('submitButton');
+
+                    // Event listener when the form is submitted
+                    submitButton.addEventListener('click', function (event) {
+                        event.preventDefault(); // Prevent default form submission behavior
+
+                        // Get values from the form fields
+                        const productTitle = document.getElementById('Product_Title').value;
+                        const productDescription = document.getElementById('Product_Description').value;
+                        const productCategory = document.getElementById('Product_Category').value;
+                        const price = document.getElementById('price').value;
+                        const taxType = document.getElementById('Tax_type').value;
+
+
+
+                        allBuys.innerHTML += `
+                            <div class="row">
+                        <!-- box start -->
+                        <div class="col-6 mb-2">
+                            <div class="blog-card position-relative">
+                                <img src="" id="img1" alt="image" class="imaged w-100">
+                              
+                                <div class="text">
+                                    <div class="price">₹${price}</div>
+                                    <p>${productTitle}</p>
+                                    <a href="./Woolkart/buynow" class="btn btn-primary btn-block btn-sm">Buy NOW</a>
+                                </div>
                             </div>
                         </div>
-                    </form>
+                        </div>
+                            `;
+                        img1.src = URL.createObjectURL(fileuploadInput.files[0]);
 
-                </div>
-            </div>
-        </div>
-        <!-- * carousel slider -->
-
-        <div class="carousel-button-footer">
-            <div class="row">
-                <div class="col-6">
-                    <a href="../Pages/Registration.html"
-                        class="btn btn-outline-secondary btn-lg btn-block">Register</a>
-                </div>
-                <div class="col-6">
-                    <a href="../Pages/form.html" class="btn btn-primary btn-lg btn-block">Login</a>
-                </div>
-            </div>
-        </div>
+                    });
+                </script>
 
 
-    </div>
-    <!-- App Capsule -->
 
-                    <!-- Bootstrap -->
-                    <script src="../assets/js/lib/bootstrap.bundle.min.js"></script>
-                    <!-- Ionicons -->
-                    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-                    <!-- Splide -->
-                    <script src="../assets/js/plugins/splide/splide.min.js"></script>
-                    <!-- Base Js File -->
-                    <script src="../assets/js/base.js"></script>
+
+                <!-- * App Bottom Menu -->
+
+
+                <!-- ========= JS Files =========  -->
+                <!-- Bootstrap -->
+                <script src="../assets/js/lib/bootstrap.bundle.min.js"></script>
+                <!-- Ionicons -->
+                <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+                <!-- Splide -->
+                <script src="../assets/js/plugins/splide/splide.min.js"></script>
+                <!-- Base Js File -->
+                <script src="../assets/js/base.js"></script>
 
 
 </body>

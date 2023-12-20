@@ -131,6 +131,7 @@
                 data-bs-target="#sendActionSheet"
               >
                 <div class="icon-wrapper">
+
                   <ion-icon name="arrow-forward-outline"></ion-icon>
                 </div>
                 <strong>Send</strong>
@@ -520,6 +521,7 @@
                   style="margin: 0 auto"
                   id="updateBtn"
                   type="button"
+                  onclick="updateBatch()"
                 >
                   Update
                 </button>
@@ -549,7 +551,7 @@
             ALL_service_BOOKINGS = data.service;
             fillserviceBookings("pending");
           } else {
-            alert("Something went wrong");
+            //console.log("Something went wrong");
             console.log(data);
           }
         }
@@ -577,6 +579,9 @@
                                         <p class="card-text">Description: ${
                                           service.message
                                         }</p>
+                                        <p class="card-text">Batch No: ${
+                                          service.batchNo
+                                        }</p>
                                         <p class="card-text badge
                                         ${
                                           service.status == "pending"
@@ -586,26 +591,27 @@
                                         <input type="text" id="meetResponse" class="form-control" value="${
                                           service.response
                                         }" >
-                                        ${
+                                        
+                                    </div>
+                                    ${
                                           service.status == "accepted"
                                             ? `<button onclick="document.getElementById('modelShow').click();window.farmerId='${
                                                 service.farmerId
-                                            }'; window.batchNo='${service.batchNo}'" class="btn btn-primary" >
+                                            }'; window.batchNo='${service.batchNo}'" class="btn btn-success mb-1" >
                                                   Give Grade and Finish
                                               </button>`
                                             : ""
                                         }
-                                    </div>
                                     <button onclick="updateServiceStatus('${
                                       service._id
                                     }',
                                     'accepted', this.parentElement.querySelector('#meetResponse').value
-                                    )" class="btn btn-primary" >Approve</button>
+                                    )" class="btn btn-primary mb-1" >Approve</button>
                                     <button onclick="updateServiceStatus('${
                                       service._id
                                     }', 'pending', 
                                         this.parentElement.querySelector('#meetResponse').value
-                                    )" class="btn btn-danger" >Reject</button>
+                                    )" class="btn btn-danger mb-1" >Reject</button>
                                 </div>
                             </div>
                 </div>
@@ -623,10 +629,10 @@
           },
           function (data) {
             if (data.status == "success") {
-              alert("Updated");
+             console.log("Updated");
               location.reload();
             } else {
-              alert("Something went wrong");
+             console.log("Something went wrong");
               console.log(data);
             }
           }
@@ -634,25 +640,26 @@
       }
 
       function updateBatch(){
-        var form = document.getElementById("requestserviceForm");
-        var formData = new FormData(form);
-        formData.append("farmerId", farmerId);
-        $.ajax({
-          url: `http://localhost:4000/api/${farmerId}/${batchNo}/generateCertificate`,
-          type: "POST",
-          data: formData,
-          processData: false,
-          contentType: false,
-          success: function (data) {
-            if (data.status == "success") {
-              alert("Updated");
-              location.reload();
-            } else {
-              alert("Something went wrong");
-              console.log(data);
-            }
-          },
-        });
+        location.reload();
+        // var form = document.getElementById("requestserviceForm");
+        // var formData = new FormData(form);
+        // formData.append("farmerId", farmerId);
+        // $.ajax({
+        //   url: `http://localhost:4000/api/${farmerId}/${batchNo}/generateCertificate`,
+        //   type: "POST",
+        //   data: formData,
+        //   processData: false,
+        //   contentType: false,
+        //   success: function (data) {
+        //     if (data.status == "success") {
+        //      console.log("Updated");
+        //       location.reload();
+        //     } else {
+        //      console.log("Something went wrong");
+        //       console.log(data);
+        //     }
+        //   },
+        // });
       }
     </script>
     <!-- * App Capsule -->

@@ -337,46 +337,57 @@ router.post("/bookService", function (req, res) {
     mobile: req.body.mobile,
     serviceDate: req.body.serviceDate,
     message: req.body.message,
-    batchId: req.body.batchNo,
+    batchNo: req.body.batchId,
     status: "pending",
   });
   // create a batch for the farmer if it doesn't exist in the database of farmer
-  try {
-    User.findOne({ _id: req.body.farmerId }).then((result) => {
-      if (result) {
-        var batch = result.batches.find(
-          (card) => card.batchNo.toString() === req.body.batchNo
-        );
-        if (!batch) {
-          var batch = {
-            batchNo: req.body.batchNo,
-            progress: 0,
-            lastUpdatedBy: "service",
-          };
-          User.findOneAndUpdate(
-            { _id: req.body.farmerId },
-            { $push: { batches: batch } }
-          ).then((result) => {
-            console.log(result);
-          });
-        }
-      }
-    });
-  } catch (err) {
-    console.log("error in creating batch for farmer");
-    console.log(err);
-  }
+  
 
   //else add the service to the batch
   service
     .save()
     .then((result) => {
-      console.log(result);
-      res.status(201).json({
-        message: "Service Booked Successfully",
-        service: service,
-        status: "success",
-      });
+      try {
+        User.findOne({ _id: req.body.farmerId }).then((result) => {
+          if (result) {
+            var batch = result.batches.find(
+              (card) => card.name.toString() === req.body.batchNo
+            );
+            if (!batch) {
+              var batch = {
+                name: req.body.batchNo,
+                progress: 0,
+                lastUpdatedBy: "service",
+              };
+              User.findOneAndUpdate(
+                { _id: req.body.farmerId },
+                { $push: { batches: batch } }
+              ).then((result) => {
+                console.log(result);
+                res.status(201).json({
+                  message: "batch Added Successfully",
+                  user: result,
+                  status: "success",
+                });
+    
+              });
+            }else{
+              res.status(201).json({
+                message: "batch already exists",
+                user: result,
+                status: "success",
+              });
+            }
+    
+          }else{
+            res.status(500).json({ message: "Farmer not found" });
+          }
+        });
+      } catch (err) {
+        console.log("error in creating batch for farmer");
+        console.log(err);
+        res.status(500).json({ message: "Farmer not found" });
+      }
     })
     .catch((err) => {
       console.log(err);

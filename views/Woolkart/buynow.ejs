@@ -47,10 +47,10 @@
         <div class="section">
             <div class="splash-page mt-5 mb-5">
                 <div class="mb-3">
-                    <img src="../assets/img/sample/photo/Virgin Product.png" alt="image" class="imaged w-50 square" />
+                    <img src="../assets/img/alpaca-fleece.jpg" alt="image" class="imaged w-50 square" />
                 </div>
                 <h2 class="mb-2">
-                    Ganga Acrowools Desire Hand Knitting and Crochet Yarn!
+                    Alpaca Fleece Wool
                 </h2>
                 <div class="d-flex flex-row my-3">
                     <div class="text-warning mb-1 me-2">
@@ -68,14 +68,13 @@
             </div>
 
             <p>
-                Discover the luxurious world of Vardhman Wool, hand knitting yarn
-                and shop online for the best quality wool
+                Discover the latest trends in design and architecture, get inspired by our styles selections and choose Alpaca Fleece Wool for your home.
             </p>
 
             <!-- Display Price and Discount -->
             <div class="row">
                 <div class="col-6">
-                    <label class="mb-2">Size</label>
+                    <label class="mb-2">Package</label>
                     <select class="form-select border border-secondary" style="height: 35px">
                         <option>Small</option>
                         <option>Medium</option>
@@ -101,8 +100,8 @@
             </div>          
               <!-- price show in center -->
               <div class="mb-4">
-                <span class="h3 text-dark">$75.00</span>
-                <span class="text-muted">/per box</span>
+                <span class="h3 text-dark">₹550.00</span>
+                <span class="text-muted">/per kg</span>
             </div>
             
 
@@ -116,14 +115,186 @@
                     <button class="btn btn-lg btn-outline-secondary btn-block" onclick="history.back()">Clear</button>
                 </div>
                 <div class="col-6">
-                    <a href="#" class="btn btn-lg btn-primary btn-block">Buy Now</a>
+                    <a href="#" class="btn btn-lg btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#addCardActionSheet" >Buy Now</a>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- End of Price and Discount Display -->
-    </div>
-    </div>
+        <a href="#" role="modal"  id="addCardBtn"></a>
+        <div
+        class="modal fade action-sheet"
+        id="addCardActionSheet"
+        tabindex="-1"
+        role="dialog"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Amount: ₹<span id="calPrice"></span></h5>
+            </div>
+            <div class="modal-body">
+              <div class="action-sheet-content">
+                <form>
+                  <div class="form-group basic">
+                    <div class="input-wrapper">
+                      <label class="label" for="cardnumber1">Card Number</label>
+                      <input
+                        type="number"
+                        id="cardnumber1"
+                        class="form-control"
+                        placeholder="Enter Card Number"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="form-group basic">
+                        <div class="input-wrapper">
+                          <label class="label">Expiry Date</label>
+                          <div class="row">
+                            <div class="col-4">
+                              <select
+                                class="form-control custom-select"
+                                id="exp-month"
+                              >
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                              </select>
+                            </div>
+                            <div class="col-6">
+                              <select
+                                class="form-control custom-select"
+                                id="exp-year"
+                              >
+                                <option value="2020">2020</option>
+                                <option value="2021">2021</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group basic">
+                        <div class="input-wrapper">
+                          <label class="label" for="cardcvv">
+                            CVV
+                            <a
+                              href="#"
+                              class="ms-05"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title="3-4 digit number back of your card"
+                            >
+                              What is this?
+                            </a>
+                          </label>
+                          <input
+                            type="number"
+                            id="cardcvv"
+                            class="form-control pininp"
+                            placeholder="Enter 3 digit"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <p class="carousel-slider">OR</p>
+                  </div>
+
+                  <!--  -->
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="form-group basic">
+                        <div class="input-wrapper">
+                          <label class="label">Current Wallet Balance</label>
+                          <div class="row">
+                            <div class="col-10">₹20000</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group basic">
+                        <div class="input-wrapper">
+                          <label class="label" for="cardcvv">
+                            PIN
+                            <a
+                              href="#"
+                              class="ms-05"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title="4 digit wallet pin you created in KnitKraft"
+                            >
+                              Your wallet pin
+                            </a>
+                          </label>
+                          <input
+                            type="number"
+                            id="walletPin"
+                            class="form-control pininp"
+                            placeholder="Enter 4 digit"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--  -->
+                  <div class="form-group basic mt-2" style="text-align: center">
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-block btn-lg mb-1"
+                      data-bs-dismiss="modal"
+                      id="confirmBtn"
+                    >
+                      Confirm Payment
+                    </button>
+                    <a href="../Pages/negotiate.html" style="text-decoration: underline"
+                      >Negotiate</a
+                    >
+                  </div>
+                  <script>
+                    confirmBtn.addEventListener("click", function () {
+                      if (walletPin.value == "1111") {
+                        loader.setAttribute("style", "display: flex;");
+                        loader.classList.add("service-loader");
+                        setTimeout(function () {
+                          loader.setAttribute("style", "display: none;");
+                          submitRequestForm();
+                        }, 1500);
+                      } else {
+                        loader.setAttribute("style", "display: flex;");
+                        loader.classList.add("service-loader");
+                        setTimeout(function () {
+                          loader.setAttribute("style", "display: none;");
+                          failCall.click();
+                        }, 1000);
+                      }
+                    });
+                  </script>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- * App Capsule -->

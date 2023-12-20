@@ -57,9 +57,7 @@
         background: #0005;
         color: white;
       }
-      /* input */
       #geocoder-container .mapboxgl-ctrl-geocoder input[type="text"] {
-        /* style this input */
         background: #0005;
         color: white;
         border: none;
@@ -123,7 +121,7 @@
 
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
     <script>
-      var CHOOSED_WAREHOUSE_PRICE = 0;
+      var CHOOSED_Breed_PRICE = 0;
       var FARMER_DETAILS = {};
     </script>
   </head>
@@ -146,125 +144,74 @@
           <ion-icon name="chevron-back-outline"></ion-icon>
         </a>
       </div>
-      <div class="pageTitle">WareHouse Services</div>
+      <div class="pageTitle">sorting Services</div>
     </div>
     <!-- App Header -->
 
     <!-- App Capsule -->
     <div id="appCapsule">
-      <div class="listview-title mt-1">WareHouse Services</div>
-      <div id="myModal" class="modal" style="z-index: 100">
+      <div class="listview-title mt-1">sorting Services</div>
+      <div id="myModal" class="modal" style="z-index: 100;">
         <!-- Modal content -->
         <div class="modal-content">
           <!-- <span class="close">&times;</span> -->
+          <form id="requestBreedForm" >
+            <h5 class="title mb-2">Request For sorting Service</h5>
 
-          <form id="requestWareHouseForm">
-            <h5 class="title mb-2">Request for WareHouse</h5>
-            <div class="form-group basic">
-              <div class="input-wrapper">
-                <input type="hidden" name="farmerId" value="43689564389" />
-                <label class="label" for="nameInput">Name</label>
-                <input
-                  type="text"
-                  id="nameInput"
-                  class="form-control"
-                  placeholder="Enter Name"
-                  name="name"
-                />
-              </div>
+            <input type="hidden" name="service" value="breed-service" />
+            <input class="form-control mb-2" list="batches" name="batchId" placeholder="choose your batch"  />
+            <datalist id="batches">
+              
+            </datalist>
+            <input
+              type="text"
+              id="name"
+              placeholder="Enter your name"
+              class="form-control mb-2"
+              name="name"
+            />
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter your email"
+              class="form-control mb-2"
+              name="email"
+              />
+            <input
+              type="text"
+              id="mobile"
+              placeholder="Enter your mobile number"
+              class="form-control mb-2"
+              name="mobile"
+            />
+            <select class="form-control mb-2" name="serviceType">
+              <option value="breed-service">Breed</option>
+              <option value="farm-equipment">Farm Equipment</option>
+              <option value="sorting" selected>sorting</option>
+              <option value="fodder">Bread Detection</option>
+              <option value="vaterinary">Vaterinary</option>
+            </select>
+            <input type="hidden" name="farmerId" id="hiddenAmount"/>
+            <div>
+              
+              <!-- <label for="date">Select Date</label> -->
+              <input
+                type="date"
+                id="date"
+                class="form-control mb-2"
+                value="2022-12-21"
+                name="serviceDate"
+              />
             </div>
-            <div class="form-group basic">
-              <div class="input-wrapper">
-                <label class="label" for="mobileInput">Phone Number</label>
-                <input
-                  type="tel"
-                  id="mobileInput"
-                  class="form-control"
-                  placeholder="Enter Phone Number"
-                  name="mobile"
-                />
-              </div>
-            </div>
-            <div class="form-group basic">
-              <div class="input-wrapper">
-                <label class="label" for="emailInput">Email</label>
-                <input
-                  type="email"
-                  id="emailInput"
-                  class="form-control"
-                  placeholder="Enter Email"
-                  name="email"
-                />
-              </div>
-            </div>
-            <div class="form-group basic">
-              <div class="input-wrapper">
-                <label class="label" for="addressInput">Address</label>
-                <input
-                  type="text"
-                  id="addressInput"
-                  class="form-control"
-                  placeholder="Enter Address"
-                  name="address"
-                />
-              </div>
-            </div>
-            <div class="form-group basic">
-              <div class="input-wrapper">
-                <label class="label" for="quantityInput">Quantity</label>
-                <input
-                  type="number"
-                  id="quantityInput"
-                  class="form-control"
-                  placeholder="Enter Quantity"
-                  name="quantity"
-                />
-              </div>
-            </div>
-            <div class="form-group basic">
-              <div class="input-wrapper">
-                <label class="label" for="qualityInput">Wool Type</label>
-                <input
-                  type="text"
-                  id="qualityInput"
-                  class="form-control"
-                  placeholder="Wool Type"
-                  name="woolType"
-                />
-              </div>
-            </div>
-            <div class="form-group basic">
-              <div class="input-wrapper">
-                <label class="label" for="fromDateInput">From Date</label>
-                <input
-                  type="date"
-                  id="fromDateInput"
-                  class="form-control"
-                  placeholder="Select From Date"
-                  name="fromDate"
-                />
-                
-              </div>
-            </div>
-            <div class="form-group basic">
-              <div class="input-wrapper">
-                <label class="label" for="toDateInput">To Date</label>
-                <input
-                  type="date"
-                  id="toDateInput"
-                  class="form-control"
-                  placeholder="Select To Date"
-                  name="toDate"
-                />
-              </div>
-            </div>
-            <script>
-              // stop taking past date
-              fromDateInput.min = new Date().toISOString().split("T")[0];
-              toDateInput.min = new Date().toISOString().split("T")[0];
-            </script>
-            <p style="text-align: center; margin-top: 1rem">
-              <button
+            <input
+              type="text"
+              placeholder="Enter your message"
+              class="form-control mb-2"
+              id="message"
+              name="message"
+            />
+
+            <button
                 class="btn btn-success btn-sm mb-2"
                 style="margin: 0 auto"
                 data-bs-toggle="modal"
@@ -274,14 +221,6 @@
               >
                 Pay
               </button>
-              <button
-                class="btn btn-danger btn-sm mb-2"
-                style="margin: 0 auto"
-                onclick="document.getElementById('myModal').style.display = 'none'"
-              >
-                Cancel
-              </button>
-            </p>
           </form>
         </div>
       </div>
@@ -300,17 +239,18 @@
           align-items: center;
         "
       >
-        <h5 class="mb-1">Warehouses</h5>
+        <h5 class="mb-1">Breeds</h5>
         <input
           type="search"
           name="search"
-          id="warehouseSearch"
-          placeholder="Search for warehouse location"
+          id="BreedSearch"
+          placeholder="Search for sortinglocation"
           autocomplete="off"
+          suggested="false"
           style="padding: 2px 5px; border-radius: 5px; border: 1px solid #ccc"
         />
       </div>
-      <div id="warehousesList"></div>
+      <div id="BreedsList"></div>
 
       <!-- <mapbox-search-box
         access-token="pk.eyJ1IjoibGVnaXRjb2RlciIsImEiOiJjbHEzczEwYmUwZmZxMnNxd3FwZWhjbzdmIn0.Jzm8D0cdCnrJrcInGe1p4Q"
@@ -319,29 +259,32 @@
 
       <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
       <script>
+        var ALL_BATCHES = ["BATCH1", "BATCH2", "BATCH3", "BATCH4", "BATCH5"];
+        batches.innerHTML = "";
+        ALL_BATCHES.forEach((batch) => {
+          batches.innerHTML += `<option value="${batch}">${batch}</option>`;
+        });
         payBtn.onclick = function (e) {
           e.preventDefault();
-          var fromDate = new Date(
-            document.getElementById("fromDateInput").value
-          );
-          var toDate = new Date(document.getElementById("toDateInput").value);
-          var days = (toDate - fromDate) / (1000 * 3600 * 24);
-          var amount =
-            days *
-            document.getElementById("quantityInput").value *
-            CHOOSED_WAREHOUSE_PRICE;
+          var amount = CHOOSED_Breed_PRICE;
           myModal.style.display = "none";
           document.getElementById("calPrice").innerHTML = amount;
           document.getElementById("calPrice2").innerHTML = amount;
+          
         };
-
-        function submitRequestForm() {
-          var form = $("#requestWareHouseForm");
+        // add a hidden input field for the amount in requestBreedsForm
+        
+        function submitRequestForm(){
+        var hiddenAmount = document.getElementById("hiddenAmount");
+        hiddenAmount.setAttribute("type", "hidden");
+        hiddenAmount.setAttribute("name", "farmerId");
+        hiddenAmount.setAttribute("value", getCookie("userID"));
+          var form = $("#requestBreedForm");
           $.ajax({
             type: "POST",
-            url: "http://localhost:4000/api/bookWarehouse",
+            url: "http://localhost:4000/api/bookService",
             data: form.serialize(), // serializes the form's elements.
-            success: function (data) {
+            success: function(data){
               console.log(data);
               successCall.click();
             },
@@ -377,14 +320,14 @@
           const geocoder = new MapboxGeocoder({
             accessToken: mapboxgl.accessToken,
             mapboxgl: mapboxgl,
-            placeholder: "Search for warehouses",
+            placeholder: "Search for Breeds",
             proximity: {
               longitude: center[0],
               latitude: center[1],
             },
           });
 
-          var WAREHOUSES = [
+          var BreedS = [
             {
               name: "SecureStorage Plus",
               location: { lng: 85.52357816010955, lat: 25.641208847465327 },
@@ -400,12 +343,12 @@
                 email: "bob@example.com",
               },
               description:
-                "SecureStorage Plus offers state-of-the-art storage solutions for your valuable goods. Our warehouse, conveniently located in Bakhtiyarpur, Bihar, provides top-notch security measures, climate-controlled units, and 24/7 monitoring. Whether you need short-term storage during a move or long-term storage for business inventory, SecureStorage Plus has you covered. Pricing starts at $10 per kilogram per day, ensuring affordability without compromising on quality.",
-              pricePerKGperDay: 10,
-              image: "../assets/Warehouse1.png",
+                "SecureStorage Plus offers state-of-the-art storage solutions for your valuable goods. Our Breed, conveniently located in Bakhtiyarpur, Bihar, provides top-notch security measures, climate-controlled units, and 24/7 monitoring. Whether you need short-term storage during a move or long-term storage for business inventory, SecureStorage Plus has you covered. Pricing starts at $10 per kilogram per day, ensuring affordability without compromising on quality.",
+              price: 10,
+              image: "../assets/Shearing1.png",
             },
             {
-              name: "ClimateControl Warehousing",
+              name: "ClimateControl sorting",
               location: { lng: 85.5278481979343, lat: 25.601939994727994 },
               address: {
                 state: "Bihar",
@@ -419,9 +362,9 @@
                 email: "jane@example.com",
               },
               description:
-                "Welcome to ClimateControl Warehousing, where your belongings are safeguarded in a controlled environment. Our facility in Patna, Bihar, ensures that temperature-sensitive items are kept at optimal conditions. With a focus on reliability and customer satisfaction, we offer competitive pricing starting at $8 per kilogram per day. Trust ClimateControl Warehousing for secure and climate-friendly storage solutions.",
-              pricePerKGperDay: 8,
-              image: "../assets/Warehouse2.png",
+                "Welcome to ClimateControl Shearing, where your belongings are safeguarded in a controlled environment. Our facility in Patna, Bihar, ensures that temperature-sensitive items are kept at optimal conditions. With a focus on reliability and customer satisfaction, we offer competitive pricing starting at $8 per kilogram per day. Trust ClimateControl sorting for secure and climate-friendly storage solutions.",
+              price: 8,
+              image: "../assets/Shearing2.png",
             },
             {
               name: "Central Storage Hub",
@@ -439,11 +382,11 @@
               },
               description:
                 "Central Storage Hub is your go-to destination for secure and efficient storage solutions in Bangalore, Karnataka. Our facility boasts cutting-edge security features and spacious storage units suitable for various needs. Whether it's household items or commercial inventory, we provide reliable storage at a competitive price of $12 per kilogram per day.",
-              pricePerKGperDay: 12,
-              image: "../assets/Warehouse3.png",
+              price: 12,
+              image: "../assets/Shearing3.png",
             },
             {
-              name: "Rajasthan Warehousing",
+              name: "Rajasthan sorting",
               location: { lng: 75.78727, lat: 26.912434 },
               address: {
                 state: "Rajasthan",
@@ -457,9 +400,9 @@
                 email: "raj@example.com",
               },
               description:
-                "Discover secure storage solutions at Rajasthan Warehousing in the historic city of Jaipur, Rajasthan. Our facility offers a range of storage options with 24/7 surveillance and excellent customer service. For a competitive price of $11 per kilogram per day, trust Rajasthan Warehousing for all your storage needs.",
-              pricePerKGperDay: 11,
-              image: "../assets/Warehouse4.png",
+                "Discover secure storage solutions at Rajasthan sorting in the historic city of Jaipur, Rajasthan. Our facility offers a range of storage options with 24/7 surveillance and excellent customer service. For a competitive price of $11 per kilogram per day, trust Rajasthan sorting for all your storage needs.",
+              price: 11,
+              image: "../assets/Shearing4.png",
             },
             {
               name: "Central India Storage",
@@ -477,8 +420,8 @@
               },
               description:
                 "Central India Storage, located in the vibrant city of Indore, Madhya Pradesh, provides secure and reliable storage solutions. Our facility is equipped with advanced security measures, and our experienced team ensures the safety of your belongings. Avail our storage services at a competitive price of $9 per kilogram per day.",
-              pricePerKGperDay: 9,
-              image: "../assets/Warehouse5.png",
+              price: 9,
+              image: "../assets/Shearing5.png",
             },
             {
               name: "Eastern Oasis Storage",
@@ -496,8 +439,8 @@
               },
               description:
                 "Eastern Oasis Storage welcomes you to Kolkata, West Bengal, with secure and affordable storage solutions. Our facility ensures the safety of your possessions with 24/7 monitoring and climate-controlled storage units. Experience quality storage services at a competitive price of $10 per kilogram per day.",
-              pricePerKGperDay: 10,
-              image: "../assets/Warehouse6.png",
+              price: 10,
+              image: "../assets/Shearing6.png",
             },
             {
               name: "Golden Triangle Storage",
@@ -515,11 +458,11 @@
               },
               description:
                 "Discover secure and convenient storage solutions at Golden Triangle Storage in the historic city of Agra, Uttar Pradesh. Our facility combines advanced security features with friendly service, providing storage options for various needs. Avail our competitive pricing starting at $10 per kilogram per day.",
-              pricePerKGperDay: 10,
-              image: "../assets/Warehouse7.png",
+              price: 10,
+              image: "../assets/Shearing7.png",
             },
             {
-              name: "Western Gateway Warehousing",
+              name: "Western Gateway sorting",
               location: { lng: 72.825836, lat: 18.975 },
               address: {
                 state: "Gujarat",
@@ -533,12 +476,12 @@
                 email: "amit@example.com",
               },
               description:
-                "Welcome to Western Gateway Warehousing in the vibrant city of Ahmedabad, Gujarat. Our facility offers secure and well-maintained storage solutions for your belongings. With competitive pricing starting at $11 per kilogram per day, trust us for reliable and cost-effective storage services.",
-              pricePerKGperDay: 11,
-              image: "../assets/Warehouse8.png",
+                "Welcome to Western Gateway sorting in the vibrant city of Ahmedabad, Gujarat. Our facility offers secure and well-maintained storage solutions for your belongings. With competitive pricing starting at $11 per kilogram per day, trust us for reliable and cost-effective storage services.",
+              price: 11,
+              image: "../assets/Shearing8.png",
             },
             {
-              name: "Northern Breeze Warehousing",
+              name: "Northern Breeze sorting",
               location: { lng: 77.209021, lat: 28.613939 },
               address: {
                 state: "Delhi",
@@ -552,43 +495,43 @@
                 email: "ankit@example.com",
               },
               description:
-                "Discover secure storage at Northern Breeze Warehousing in the heart of New Delhi, India's capital territory. Our facility offers reliable storage solutions with advanced security features and competitive pricing starting at $12 per kilogram per day. Trust us for your storage needs.",
-              pricePerKGperDay: 12,
-              image: "../assets/Warehouse9.png",
+                "Discover secure storage at Northern Breeze sorting in the heart of New Delhi, India's capital territory. Our facility offers reliable storage solutions with advanced security features and competitive pricing starting at $12 per kilogram per day. Trust us for your storage needs.",
+              price: 12,
+              image: "../assets/Shearing9.png",
             },
           ];
 
-          WAREHOUSES = WAREHOUSES.map((warehouse) => {
+          BreedS = BreedS.map((Breed) => {
             return {
-              ...warehouse,
-              distance: calculateDistance(center, warehouse.location),
+              ...Breed,
+              distance: calculateDistance(center, Breed.location),
             };
           });
-          WAREHOUSES.sort((a, b) => {
+          BreedS.sort((a, b) => {
             return a.distance - b.distance;
           });
-          var RESULTWAREHOUSE = WAREHOUSES.filter((warehouse) => {
-            return warehouse.distance;
+          var RESULTBreed = BreedS.filter((Breed) => {
+            return Breed.distance;
           });
-          console.log(WAREHOUSES);
+          console.log(BreedS);
           document
             .getElementById("geocoder-container")
             .appendChild(geocoder.onAdd(map));
-          document.getElementById("warehouseSearch").onkeyup = function (e) {
+          document.getElementById("BreedSearch").onkeyup = function (e) {
             if (e.key == "Enter") {
-              var first = warehousesListFill(WAREHOUSES, e.target.value);
+              var first = BreedsListFill(BreedS, e.target.value);
               if (first.location)
                 map.flyTo({
                   center: first.location,
                   zoom: 14,
                 });
             } else {
-              warehousesListFill(WAREHOUSES, e.target.value);
+              BreedsListFill(BreedS, e.target.value);
             }
           };
 
           // add markers to map
-          WAREHOUSES.forEach((marker) => {
+          BreedS.forEach((marker) => {
             var dist = calculateDistance(center, marker.location);
             var el = document.createElement("div");
             el.className = "marker";
@@ -600,56 +543,57 @@
                           ${dist} <br>
                           <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addCardActionSheet">Request</button>
                         `)
+
               )
               .addTo(map);
           });
-          function warehousesListFill(WAREHOUSES, searchText = "", mode) {
-            var warehousesList = document.getElementById("warehousesList");
-            warehousesList.innerHTML = "";
+          function BreedsListFill(BreedS, searchText = "", mode) {
+            var BreedsList = document.getElementById("BreedsList");
+            BreedsList.innerHTML = "";
             var FIRST = {};
-            WAREHOUSES.forEach((warehouse, index) => {
-              console.log(warehouse);
+            BreedS.forEach((Breed, index) => {
+              console.log(Breed);
               if (
-                warehouse.name
+                Breed.name
                   .toLowerCase()
                   .includes(searchText.toLowerCase()) ||
-                warehouse.address.city
+                Breed.address.city
                   .toLowerCase()
                   .includes(searchText.toLowerCase()) ||
-                warehouse.address.state
+                Breed.address.state
                   .toLowerCase()
                   .includes(searchText.toLowerCase()) ||
-                warehouse.address.country
+                Breed.address.country
                   .toLowerCase()
                   .includes(searchText.toLowerCase()) ||
-                warehouse.address.pincode
+                Breed.address.pincode
                   .toLowerCase()
                   .includes(searchText.toLowerCase()) ||
-                warehouse.owner.name
+                Breed.owner.name
                   .toLowerCase()
                   .includes(searchText.toLowerCase()) ||
-                warehouse.owner.mobile
+                Breed.owner.mobile
                   .toLowerCase()
                   .includes(searchText.toLowerCase()) ||
-                warehouse.owner.email
+                Breed.owner.email
                   .toLowerCase()
                   .includes(searchText.toLowerCase()) ||
-                warehouse.description
+                Breed.description
                   .toLowerCase()
                   .includes(searchText.toLowerCase()) ||
-                warehouse.pricePerKGperDay
+                Breed.price
                   .toString()
                   .includes(searchText.toLowerCase()) ||
-                warehouse.distance
+                Breed.distance
                   .toString()
                   .includes(searchText.toLowerCase()) ||
-                warehouse.image
+                Breed.image
                   .toLowerCase()
                   .includes(searchText.toLowerCase()) ||
                 searchText == ""
               ) {
-                if (!FIRST.name) FIRST = warehouse;
-                warehousesList.innerHTML += `
+                if (!FIRST.name) FIRST = Breed;
+                BreedsList.innerHTML += `
                           <div class="accordion mb-2" id="accordionExample${index}">
                           <div class="accordion-item">
                             <h2
@@ -663,7 +607,7 @@
                                 data-bs-toggle="collapse"
                                 data-bs-target="#accordion00${index}"
                               >
-                                ${warehouse.name} - ${warehouse.distance} km
+                                ${Breed.name} - ${Breed.distance} km
                               </button>
                             </h2>
                             <div
@@ -674,21 +618,21 @@
                               <div class="accordion-body">
                                 <p style="text-align: center; margin-top: 1rem">
                                   <img
-                                    src="${warehouse.image}"
-                                    alt="warehouse image"
+                                    src="${Breed.image}"
+                                    alt="Breed image"
                                     style=" max-height: 200px"
                                   />
                                 </p>
-                                <strong>Address:</strong> ${warehouse.address.city}, ${warehouse.address.state}, ${warehouse.address.country}, ${warehouse.address.pincode} <br>
-                                <strong>Owner:</strong> ${warehouse.owner.name} <br>
-                                <strong>Phone:</strong> ${warehouse.owner.mobile} <br>
-                                <strong>Email:</strong> ${warehouse.owner.email} <br>
-                                <strong>Price:</strong> ₹${warehouse.pricePerKGperDay}/kg/day <br>
-                                <strong>Description:</strong> ${warehouse.description} <br>
+                                <strong>Address:</strong> ${Breed.address.city}, ${Breed.address.state}, ${Breed.address.country}, ${Breed.address.pincode} <br>
+                                <strong>Owner:</strong> ${Breed.owner.name} <br>
+                                <strong>Phone:</strong> ${Breed.owner.mobile} <br>
+                                <strong>Email:</strong> ${Breed.owner.email} <br>
+                                <strong>Price:</strong> ₹${Breed.price}/kg/day <br>
+                                <strong>Description:</strong> ${Breed.description} <br>
 
                                 <p style="text-align: center; margin-top: 1rem">
                                   <button class="btn btn-success btn-sm mb-2" style="margin: 0 auto;"
-                                  onclick="CHOOSED_WAREHOUSE_PRICE = ${warehouse.pricePerKGperDay}; document.getElementById('myModal').style.display = 'flex';"
+                                  onclick="CHOOSED_Breed_PRICE = ${Breed.price}; document.getElementById('myModal').style.display = 'flex';"
                                   >Request</button>
                                 </p>
                               </div>
@@ -699,11 +643,11 @@
               }
             });
             if (!FIRST.location)
-              warehousesList.innerHTML =
+              BreedsList.innerHTML =
                 "<p style='text-align: center'>No results found</p>";
             return FIRST;
           }
-          warehousesListFill(WAREHOUSES);
+          BreedsListFill(BreedS);
         }
         function calculateDistance(center, location) {
           var R = 6371e3; // metres
@@ -740,7 +684,7 @@
           <ion-icon name="share-outline"></ion-icon> Request For This Service
         </a>
       </div> -->
-
+      
       <div
         class="modal fade action-sheet"
         id="addCardActionSheet"
@@ -991,7 +935,7 @@
               <h5 class="modal-title">Success</h5>
             </div>
             <div class="modal-body">
-              Your WareHouse has been booked.
+              Your Service has been booked.
               <br />
               <br />
               <a href="../Orders.html" class="btn btn-primary"
