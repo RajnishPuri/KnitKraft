@@ -276,12 +276,12 @@
         var hiddenAmount = document.createElement("input");
         hiddenAmount.setAttribute("type", "hidden");
         hiddenAmount.setAttribute("name", "farmerId");
-        hiddenAmount.setAttribute("value", getCookie("userId"));
+        hiddenAmount.setAttribute("value", getCookie("userID"));
         requestBreedForm.appendChild(hiddenAmount);
           var form = $("#requestBreedForm");
           $.ajax({
             type: "POST",
-            url: "https://knitkraft.onrender.com/api/bookService",
+            url: "http://localhost:4000/api/bookService",
             data: form.serialize(), // serializes the form's elements.
             success: function (data) {
               console.log(data);

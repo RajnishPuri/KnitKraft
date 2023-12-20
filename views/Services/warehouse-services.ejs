@@ -339,7 +339,7 @@
           var form = $("#requestWareHouseForm");
           $.ajax({
             type: "POST",
-            url: "https://knitkraft.onrender.com/api/bookWarehouse",
+            url: "http://localhost:4000/api/bookWarehouse",
             data: form.serialize(), // serializes the form's elements.
             success: function (data) {
               console.log(data);

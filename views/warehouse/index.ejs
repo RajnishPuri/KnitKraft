@@ -506,7 +506,7 @@
     <script>
       var ALL_WAREHOUSE_BOOKINGS = [];
       $.getJSON(
-        "https://knitkraft.onrender.com/api/getWarehousesBooking",
+        "http://localhost:4000/api/getWarehousesBooking",
         function (data) {
           if (data.status == "success") {
             ALL_WAREHOUSE_BOOKINGS = data.warehouse;
@@ -621,7 +621,7 @@
         console.log(data, "Updating warehouse booking");
         $.ajax({
           type: "POST",
-          url: "https://knitkraft.onrender.com/api/updateWarehouseBooking",
+          url: "http://localhost:4000/api/updateWarehouseBooking",
           data: JSON.stringify(data),
           contentType: "application/json",
           dataType: "json",

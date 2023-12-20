@@ -376,7 +376,7 @@
                   <label class="label" for="fleecetype"
                     >Type of Fleece :
                   </label>
-                  <select class="form-control custom-select" id="fleecetype">
+                  <select class="form-control custom-select" id="fleecetype" name="fleeceType" >
                     <option>Select Fleece</option>
                     <option value="Lohi">Lohi</option>
                     <option value="Rampur">Rampur</option>
@@ -401,6 +401,7 @@
                   >
                   <h4>Fiber Length :</h4>
                   <input
+                    name="fiberLength"
                     type="number"
                     class="form-control"
                     id="fiberlength"
@@ -409,6 +410,7 @@
                   <br />
                   <h4>Staple Length :</h4>
                   <input
+                    name="stapleLength"
                     type="number"
                     class="form-control"
                     id="staplelength"
@@ -421,6 +423,7 @@
                 <div class="input-wrapper">
                   <label class="label" for="fineness">Fiber Fineness :</label>
                   <input
+                    name="fiberFineness"
                     type="number"
                     class="form-control"
                     id="fiberfineness"
@@ -434,14 +437,17 @@
                   <label class="label" for="fineness">Moisure Content</label>
                   <h4>A: Mass of dry specimen :</h4>
                   <input
+                    name="massOfDrySpecimen"
                     type="number"
                     class="form-control"
                     id="undried"
                     placeholder=""
+
                   />
                   <br />
                   <h4>B: Mass of undried specimen :</h4>
                   <input
+                    name="massOfUndriedSpecimen"
                     type="number"
                     class="form-control"
                     id="dry"
@@ -450,16 +456,17 @@
                   <br />
                   <h4>C: Mass of absorbed specimen :</h4>
                   <input
+                    name="massOfAbsorbedSpecimen"
                     type="number"
                     class="form-control"
                     id="absorbed"
                     placeholder=""
                   />
                   <br />
-                  <label class="label" for="regain">Moisure Regain % : </label>
-                  <label class="label" for="content"
+                  <!-- <label class="label" id="regainValue">Moisure Regain % : </label>
+                  <label class="label" id="contentValue"
                     >Moisure Content % :
-                  </label>
+                  </label> -->
                 </div>
               </div>
 
@@ -467,6 +474,7 @@
                 <div class="input-wrapper">
                   <label class="label" for="fineness">Fiber Diameter :</label>
                   <input
+                    name="fiberDiameter"
                     type="number"
                     class="form-control"
                     id="fiberdiameter"
@@ -479,6 +487,7 @@
                 <div class="input-wrapper">
                   <label class="label" for="fineness">Burr Content :</label>
                   <input
+                    name="burrContent"
                     type="number"
                     class="form-control"
                     id="burr"
@@ -493,7 +502,7 @@
                     <label class="label" for="colour">Colour of Fleece :
                     </label>
                     <select class="form-control custom-select"
-                        id="colour">
+                        id="colour" name="color" >
                         <option>Select Colour</option>
                         <option value="alb">White (ALB)</option>
                         <option value="ly">Light Yellow (LY)</option>
@@ -534,7 +543,7 @@
     <script>
       var ALL_service_BOOKINGS = [];
       $.getJSON(
-        "https://knitkraft.onrender.com/api/getServiceBookings",
+        "http://localhost:4000/api/getServiceBookings",
         function (data) {
           if (data.status == "success") {
             ALL_service_BOOKINGS = data.service;
@@ -579,7 +588,9 @@
                                         }" >
                                         ${
                                           service.status == "accepted"
-                                            ? `<button onclick="document.getElementById('modelShow').click()" class="btn btn-primary" >
+                                            ? `<button onclick="document.getElementById('modelShow').click();window.farmerId='${
+                                                service.farmerId
+                                            }'; window.batchNo='${service.batchNo}'" class="btn btn-primary" >
                                                   Give Grade and Finish
                                               </button>`
                                             : ""
@@ -604,7 +615,7 @@
       }
       function updateServiceStatus(id, status, response) {
         $.post(
-          "https://knitkraft.onrender.com/api/updateServiceStatus",
+          "http://localhost:4000/api/updateServiceStatus",
           {
             id,
             status,
@@ -620,6 +631,28 @@
             }
           }
         );
+      }
+
+      function updateBatch(){
+        var form = document.getElementById("requestserviceForm");
+        var formData = new FormData(form);
+        formData.append("farmerId", farmerId);
+        $.ajax({
+          url: `http://localhost:4000/api/${farmerId}/${batchNo}/generateCertificate`,
+          type: "POST",
+          data: formData,
+          processData: false,
+          contentType: false,
+          success: function (data) {
+            if (data.status == "success") {
+              alert("Updated");
+              location.reload();
+            } else {
+              alert("Something went wrong");
+              console.log(data);
+            }
+          },
+        });
       }
     </script>
     <!-- * App Capsule -->

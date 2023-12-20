@@ -1,6 +1,48 @@
 const mongoose = require('mongoose');
 
 // Create a schema for the user
+const certificateSchema = new mongoose.Schema({
+  fleeceType: {
+    type: String,
+    required: false,
+  },
+  fiberLength: {
+    type: String,
+    required: false,
+  },
+  stapleLength: {
+    type: String,
+    required: false,
+  },
+  fiberFineness: {
+    type: String,
+    required: false,
+  },
+  massOfDrySpecimen: {
+    type: String,
+    required: false,
+  },
+  massOfUndriedSpecimen: {
+    type: String,
+    required: false,
+  },
+  massOfAbsorbedWater: {
+    type: String,
+    required: false,
+  },
+  fiberDiameter: {
+    type: String,
+    required: false,
+  },
+  burrContent: {
+    type: String,
+    required: false,
+  },
+  color: {
+    type: String,
+    required: false,
+  },
+});
 const batchSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -21,6 +63,11 @@ const batchSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
+  certificate: {
+    type: String,
+    required: false,
+    default: "",
+  }
 });
 const userSchema = new mongoose.Schema({
     email: {

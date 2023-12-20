@@ -450,13 +450,13 @@ Credit to https://dribbble.com/shots/2350761-Weather-app-illustration for the de
           <a href="app-transactions.html" class="link"></a>
         </div>
 
-        <div class="form-group basic">
+        <div class="form-group basic" style="display: flex; justify-content: space-between;">
           <div class="input-wrapper">
             <label class="label" for="account2">Select Batch</label>
-            <select class="form-control custom-select" id="account2">
-              <option>B4TIJ(Batch 1)</option>
-              <option>B8KIJ(Batch 2)</option>
-              <option>B9KIM(Batch 3)</option>
+            <select class="form-control custom-select" id="account2"  onchange="FillProgressTimeline(this.value)">
+              <option value="0" >B4TIJ(Batch 1)</option>
+              <option value="1" >B8KIJ(Batch 2)</option>
+              <option value="2" >B9KIM(Batch 3)</option>
 
             </select>
           </div>
@@ -466,11 +466,41 @@ Credit to https://dribbble.com/shots/2350761-Weather-app-illustration for the de
         </div>
         <div class="card" id="allBadges">
           <!-- timeline -->
-          
-          <div class="timeline ms-3" id="progressTimeline">
-            
+          <div class="accordion mb-2" id="accordionExample1">
+            <div class="accordion-item">
+              <h2
+                class="accordion-header"
+                style="display: flex; align-items: center; margin-left: 3vw"
+              >
+
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#accordion001"
+                  id="batchName"
+                >
+                  Batch 1 (B4TIJ)
+                </button>
+              </h2>
+              <div
+                id="accordion001"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionExample1"
+              >
+                <div class="accordion-body">
+                  <div class="timeline ms-3" id="progressTimeline">
+                      ${progressHTML}
+
+</div>
+                </div>
+              </div>
+            </div>
           </div>
-      
+
+
+
+     
     </div>
     <!-- * App Capsule -->
 
@@ -1303,12 +1333,30 @@ Credit to https://dribbble.com/shots/2350761-Weather-app-illustration for the de
 
       var PROGRESS_ARRAY = ["Raising livestock", "Shearing", "Skirting & Sorting", "Cleaning", "Carding", "Combing", "Spinnging", "Dyeing", "Weaving", "Finishing", "Ready to ship"]
       
-     function FillProgressTimeline(){
+      var BATCHES = [
+        {
+          name: "B4TIJ",
+          progress: 3,
+          lastUpdated: 1627776000000,
+        },
+        {
+          name: "B8KIJ",
+          progress: 7,
+          lastUpdated: 1627776000000,
+        },
+        {
+          name: "B9KIM",
+          progress: 4,
+          lastUpdated: 1627776000000,
+        },
+      ]
+     function FillProgressTimeline(i=0){
+      i = parseInt(i);
+      batchName.innerHTML = BATCHES[i].name + " (Batch "+(i+1)+")";
       var progressTimeline = document.getElementById("progressTimeline");
       progressTimeline.innerHTML = "";
-      progressActionSheetBody.innerHTML = "";
-      const progress = getCookie("progress");
-      var lastUpdated = getCookie("lastUpdated");
+      const progress = BATCHES[i].progress;
+      var lastUpdated = BATCHES[i].lastUpdated;
       PROGRESS_ARRAY.forEach((prg,index)=>{
         
         progressTimeline.innerHTML += `
@@ -1326,18 +1374,6 @@ Credit to https://dribbble.com/shots/2350761-Weather-app-illustration for the de
             </div>
           </div>
           `;
-          progressActionSheetBody.innerHTML += `
-          <div class="item">
-            <input type="radio" class="dot bg-danger" ${
-              index <= progress ? "checked":""
-            }
-            onclick="updateProgress(${index})"
-            />
-            <div class="content">
-              <h4 class="title">${prg}</h4>
-            </div>
-          </div>
-          `;
 
       })
     }
@@ -1345,7 +1381,7 @@ Credit to https://dribbble.com/shots/2350761-Weather-app-illustration for the de
 
     function updateProgress(index){
       $.ajax({
-        url: "https://knitkraft.onrender.com/api/updateProgress",
+        url: "http://localhost:4000/api/updateProgress",
         type: "POST",
         data: {
           progress: index,
