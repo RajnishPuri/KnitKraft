@@ -525,7 +525,7 @@
     <script>
       var allMeetings = document.getElementById("allMeetings");
 
-      $.getJSON("https://knitkraft.onrender.com/api/getMeetings", function (data) {
+      $.getJSON("http://localhost:4000/api/getMeetings", function (data) {
         var allMeetings = "";
         if (data.status == "success") {
           data = data.meetings;
@@ -580,7 +580,7 @@
       function deleteMeeting(id) {
         $.ajax({
           type: "POST",
-          url: "https://knitkraft.onrender.com/api/deleteMeet",
+          url: "http://localhost:4000/api/deleteMeet",
           data: { id: id },
           success: function (data) {
             console.log(data);
@@ -601,7 +601,7 @@
           var url = form.attr("action");
           $.ajax({
             type: "POST",
-            url: "https://knitkraft.onrender.com/api/bookMeet",
+            url: "http://localhost:4000/api/bookMeet",
             data: form.serialize(),
             success: function (data) {
               console.log(data);

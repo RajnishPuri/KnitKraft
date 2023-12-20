@@ -144,22 +144,25 @@
           <ion-icon name="chevron-back-outline"></ion-icon>
         </a>
       </div>
-      <div class="pageTitle">Breed Services</div>
+      <div class="pageTitle">Shearing Services</div>
     </div>
     <!-- App Header -->
 
     <!-- App Capsule -->
     <div id="appCapsule">
-      <div class="listview-title mt-1">Breed Services</div>
+      <div class="listview-title mt-1">Shearing Services</div>
       <div id="myModal" class="modal" style="z-index: 100;">
         <!-- Modal content -->
         <div class="modal-content">
           <!-- <span class="close">&times;</span> -->
           <form id="requestBreedForm" >
-            <h5 class="title mb-2">Request For Breed Service</h5>
+            <h5 class="title mb-2">Request For Shearing Service</h5>
 
             <input type="hidden" name="service" value="breed-service" />
-            
+            <input class="form-control mb-2" list="batches" name="batchId" placeholder="choose your batch"  />
+            <datalist id="batches">
+              
+            </datalist>
             <input
               type="text"
               id="name"
@@ -182,9 +185,9 @@
               name="mobile"
             />
             <select class="form-control mb-2" name="serviceType">
-              <option value="breed-service" selected>Breed</option>
+              <option value="breed-service">Breed</option>
               <option value="farm-equipment">Farm Equipment</option>
-              <option value="shearing">Shearing</option>
+              <option value="shearing" selected>Shearing</option>
               <option value="fodder">Bread Detection</option>
               <option value="vaterinary">Vaterinary</option>
             </select>
@@ -239,7 +242,7 @@
           type="search"
           name="search"
           id="BreedSearch"
-          placeholder="Search for Breed location"
+          placeholder="Search for Shearinglocation"
           autocomplete="off"
           suggested="false"
           style="padding: 2px 5px; border-radius: 5px; border: 1px solid #ccc"
@@ -254,6 +257,11 @@
 
       <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
       <script>
+        var ALL_BATCHES = ["BATCH1", "BATCH2", "BATCH3", "BATCH4", "BATCH5"];
+        batches.innerHTML = "";
+        ALL_BATCHES.forEach((batch) => {
+          batches.innerHTML += `<option value="${batch}">${batch}</option>`;
+        });
         payBtn.onclick = function (e) {
           e.preventDefault();
           var amount = CHOOSED_Breed_PRICE;
@@ -264,7 +272,7 @@
         };
         // add a hidden input field for the amount in requestBreedsForm
         
-        function submitRequestForm() {
+        function submitRequestForm(){
         var hiddenAmount = document.createElement("input");
         hiddenAmount.setAttribute("type", "hidden");
         hiddenAmount.setAttribute("name", "farmerId");
@@ -926,7 +934,7 @@
               <h5 class="modal-title">Success</h5>
             </div>
             <div class="modal-body">
-              Your Breed has been booked.
+              Your Service has been booked.
               <br />
               <br />
               <a href="../Orders.html" class="btn btn-primary"
